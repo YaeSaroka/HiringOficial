@@ -2,7 +2,6 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using Dapper;
-<<<<<<< HEAD
 namespace Hiring.Models;
 
 public  class BD
@@ -61,11 +60,3 @@ public  class BD
         }
         return Contraseña_recuperada;
     }}
-=======
-namespace Integrador.Models;
-public static class BD
-{
-
-
-}
->>>>>>> ed00ea72a6157697bf4f507249b494d34aa1bb91

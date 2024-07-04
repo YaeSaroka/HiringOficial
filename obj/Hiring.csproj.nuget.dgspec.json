@@ -1,19 +1,6 @@
 {
   "format": 1,
   "restore": {
-<<<<<<< HEAD
-    "Z:\\ORT 2024\\PF\\Oficial\\Hiring\\Hiring.csproj": {}
-  },
-  "projects": {
-    "Z:\\ORT 2024\\PF\\Oficial\\Hiring\\Hiring.csproj": {
-      "version": "1.0.0",
-      "restore": {
-        "projectUniqueName": "Z:\\ORT 2024\\PF\\Oficial\\Hiring\\Hiring.csproj",
-        "projectName": "Hiring",
-        "projectPath": "Z:\\ORT 2024\\PF\\Oficial\\Hiring\\Hiring.csproj",
-        "packagesPath": "C:\\Users\\47431986\\.nuget\\packages\\",
-        "outputPath": "Z:\\ORT 2024\\PF\\Oficial\\Hiring\\obj\\",
-=======
     "Z:\\ORT 2024\\PF\\Hiring\\Hiring.csproj": {}
   },
   "projects": {
@@ -25,7 +12,6 @@
         "projectPath": "Z:\\ORT 2024\\PF\\Hiring\\Hiring.csproj",
         "packagesPath": "C:\\Users\\47431986\\.nuget\\packages\\",
         "outputPath": "Z:\\ORT 2024\\PF\\Hiring\\obj\\",
->>>>>>> ed00ea72a6157697bf4f507249b494d34aa1bb91
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -70,13 +56,6 @@
             "System.Data.SqlClient": {
               "target": "Package",
               "version": "[4.8.6, )"
-<<<<<<< HEAD
-            },
-            "System.IdentityModel.Tokens.Jwt": {
-              "target": "Package",
-              "version": "[7.6.2, )"
-=======
->>>>>>> ed00ea72a6157697bf4f507249b494d34aa1bb91
             }
           },
           "imports": [

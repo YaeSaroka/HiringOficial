@@ -9,74 +9,39 @@ build_property.EnforceExtendedAnalyzerRules =
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = Hiring
 build_property.RootNamespace = Hiring
-<<<<<<< HEAD
-build_property.ProjectDir = Z:\ORT 2024\PF\Oficial\Hiring\
-=======
-build_property.ProjectDir = z:\ORT 2024\PF\Hiring\
->>>>>>> ed00ea72a6157697bf4f507249b494d34aa1bb91
+build_property.ProjectDir = Z:\ORT 2024\PF\Hiring\
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 
 build_property.RazorLangVersion = 8.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-<<<<<<< HEAD
-build_property.MSBuildProjectDirectory = Z:\ORT 2024\PF\Oficial\Hiring
+build_property.MSBuildProjectDirectory = Z:\ORT 2024\PF\Hiring
 build_property._RazorSourceGeneratorDebug = 
 
-[Z:/ORT 2024/PF/Oficial/Hiring/Views/Home/Index.cshtml]
+[Z:/ORT 2024/PF/Hiring/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[Z:/ORT 2024/PF/Oficial/Hiring/Views/Home/Privacy.cshtml]
+[Z:/ORT 2024/PF/Hiring/Views/Home/Privacy.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[Z:/ORT 2024/PF/Oficial/Hiring/Views/Shared/Error.cshtml]
+[Z:/ORT 2024/PF/Hiring/Views/Shared/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[Z:/ORT 2024/PF/Oficial/Hiring/Views/Shared/_ValidationScriptsPartial.cshtml]
+[Z:/ORT 2024/PF/Hiring/Views/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[Z:/ORT 2024/PF/Oficial/Hiring/Views/_ViewImports.cshtml]
+[Z:/ORT 2024/PF/Hiring/Views/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[Z:/ORT 2024/PF/Oficial/Hiring/Views/_ViewStart.cshtml]
+[Z:/ORT 2024/PF/Hiring/Views/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[Z:/ORT 2024/PF/Oficial/Hiring/Views/Shared/_Layout.cshtml]
-=======
-build_property.MSBuildProjectDirectory = z:\ORT 2024\PF\Hiring
-build_property._RazorSourceGeneratorDebug = 
-
-[z:/ORT 2024/PF/Hiring/Views/Home/Index.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
-build_metadata.AdditionalFiles.CssScope = 
-
-[z:/ORT 2024/PF/Hiring/Views/Home/Privacy.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
-build_metadata.AdditionalFiles.CssScope = 
-
-[z:/ORT 2024/PF/Hiring/Views/Shared/Error.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
-build_metadata.AdditionalFiles.CssScope = 
-
-[z:/ORT 2024/PF/Hiring/Views/Shared/_ValidationScriptsPartial.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
-build_metadata.AdditionalFiles.CssScope = 
-
-[z:/ORT 2024/PF/Hiring/Views/_ViewImports.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
-build_metadata.AdditionalFiles.CssScope = 
-
-[z:/ORT 2024/PF/Hiring/Views/_ViewStart.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
-build_metadata.AdditionalFiles.CssScope = 
-
-[z:/ORT 2024/PF/Hiring/Views/Shared/_Layout.cshtml]
->>>>>>> ed00ea72a6157697bf4f507249b494d34aa1bb91
+[Z:/ORT 2024/PF/Hiring/Views/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = b-50en0jbhoy
