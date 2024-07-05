@@ -1,0 +1,67 @@
+<form action='@Url.Action("RegistrarUsuario")' method="post">
+    <div class="form-config">
+        <h3>Registro</h3>
+        
+        <input type="email" name="Mail" placeholder="Mail" required />
+        <input type="password" name="Contraseña" placeholder="Contraseña" required />
+        <input type="password" name="ConfirmarContraseña" placeholder="Confirmar Contraseña" required />
+    </div>
+
+     <div class="opciones">
+        <label class="radio-option">
+            <input type="radio" name="id_discapacidad" value="1" required>
+            <span>LEE Y ESCRIBE</span>
+        </label>
+        <label class="radio-option">
+            <input type="radio" name="id_discapacidad" value="2" required>
+            <span>NO LEE</span>
+        </label>
+    </div>
+    
+
+    <div class="social">
+        <div class="go"><i class="fab fa-google"></i> Google</div>
+    </div>
+
+    <input class="round-button" type="submit" value="Registrarse" />
+</form>
+ @if (ViewBag.MensajeError != null)
+                {
+                    <div class="alert alert-danger" role="alert">
+                        @ViewBag.MensajeError
+                    </div>
+                }
+                @if (ViewBag.MensajeError2 != null)
+                {
+                    <div class="alert alert-danger" role="alert">
+                        @ViewBag.MensajeError2
+                    </div>
+                }
+
+<style>
+.opciones{
+  margin-left:80px;
+}
+    .radio-option {
+        display: inline-block;
+        cursor: pointer;
+    }
+
+    .radio-option input[type="radio"] {
+        display: none; /* Ocultar el botón de radio predeterminado */
+    }
+
+    .radio-option span {
+        display: inline-block;
+        padding: 8px 12px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        text-align: center;
+    }
+
+    .radio-option input[type="radio"]:checked + span {
+        background-color: #007bff;
+        color: #fff;
+        border-color: #007bff;
+    }
+</style>

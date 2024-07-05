@@ -25,6 +25,14 @@
       "PackagePath": "staticwebassets\\img\\banner\\banner_sarah.png"
     },
     {
+      "Id": "Z:\\ORT 2024\\PF\\Hiring\\wwwroot\\img\\default\\encabezado.png",
+      "PackagePath": "staticwebassets\\img\\default\\encabezado.png"
+    },
+    {
+      "Id": "Z:\\ORT 2024\\PF\\Hiring\\wwwroot\\img\\default\\photo_default.png",
+      "PackagePath": "staticwebassets\\img\\default\\photo_default.png"
+    },
+    {
       "Id": "Z:\\ORT 2024\\PF\\Hiring\\wwwroot\\img\\perfiles\\Thumbs.db",
       "PackagePath": "staticwebassets\\img\\perfiles\\Thumbs.db"
     },

@@ -31,21 +31,21 @@ public  class BD
         return user;
     }
     
-     public static Usuario Registro_VerificarExistencia(string Username)
+     public static Usuario Registro_VerificarExistencia(string Mail)
     {
        Usuario user = null;
         using(SqlConnection db = new SqlConnection(ConnectionString)){
             string sp = "Registro_VerificarExistencia";
-            user= db.QueryFirstOrDefault<Usuario>(sp, new {pUsername = Username }, commandType: CommandType.StoredProcedure);
+            user= db.QueryFirstOrDefault<Usuario>(sp, new {Mail = Mail }, commandType: CommandType.StoredProcedure);
         }
         return user;
     }
     
-      public static void Registro(string Mail, string Contraseña)
+      public static void Registro(string Mail, string Contraseña, int id_discapacidad)
     {
         using(SqlConnection db = new SqlConnection(ConnectionString)){
             string sp = "Registro";
-            var parameters = new { pMail = Mail, pContraseña = Contraseña };
+            var parameters = new { Mail = Mail, Contraseña = Contraseña , id_discapacidad=id_discapacidad};
             db.Execute(sp, parameters, commandType: CommandType.StoredProcedure);
         }
     }
@@ -59,4 +59,17 @@ public  class BD
             Contraseña_recuperada= db.QueryFirstOrDefault<string>(sp, new { Mail=pMail }, commandType: CommandType.StoredProcedure);
         }
         return Contraseña_recuperada;
-    }}
+    }
+    public static void CargaPerfilDefault(Usuario usuario, string estilo, string foto_perfil, string encabezado, string nombre_apellido, string telefono, string mail)
+    {
+        using(SqlConnection db = new SqlConnection(ConnectionString)){
+            string sp = "CargaPerfilDefault";
+            var parameters = new { id = usuario.id, estilo=estilo, foto_perfil=foto_perfil, encabezado=encabezado, nombre_apellido = nombre_apellido, telefono = telefono, mail = mail};
+            db.Execute(sp, parameters, commandType: CommandType.StoredProcedure);
+        }
+    }
+    
+    
+    
+    }
+

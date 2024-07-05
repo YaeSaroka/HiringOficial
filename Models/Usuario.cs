@@ -5,6 +5,7 @@ public class Usuario
     public string contraseña { get; set; }
     public bool empleado { get; set; }
     public bool reclutador { get; set; }
+    public int id_discapacidad {get; set;}
 
 
 }

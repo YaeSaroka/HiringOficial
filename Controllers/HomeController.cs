@@ -25,7 +25,7 @@ public class HomeController : Controller
         return View();
     }
    
-   public IActionResult RegistrarView()
+   public IActionResult Registro()
     {
         return View();
     }
@@ -43,30 +43,43 @@ public class HomeController : Controller
     [HttpPost]
     public IActionResult Login(string Mail , string Contraseña)
     {
+        const string estilo= "#ABE7DD", foto_perfil="../img/default/photo_default.png", encabezado="encabezado.png", nombre_apellido = "Tu nombre", telefono = "", mail="";
         Usuario Usuario = Models.BD.Login(Mail,Contraseña);
         if (Usuario == null )
         {
             ViewBag.MensajeError = "Usuario o Contraseña Incorrecto";
-            return View("RegistrarView");
+            return View("Registro");
         }
-        else
+        else if (Usuario.id_discapacidad == 1)
         {
             BD.user = Usuario;
-            return RedirectToAction("Index");
+            Models.BD.CargaPerfilDefault(Usuario, estilo, foto_perfil, encabezado, nombre_apellido, telefono, mail);
+            ViewBag.nombre_apellido = nombre_apellido;
+            ViewBag.estilo = estilo;
+            ViewBag.telefono = telefono;
+            ViewBag.mail = mail;
+            ViewBag.foto_perfil = foto_perfil;
+            return View("PerfilLee");
+        }
+        else  {
+            BD.user = Usuario;
+            return RedirectToAction("PerfilNoLee");
         }
     }
     [HttpPost]
     public IActionResult RegistrarUsuario(Usuario user){
         Usuario userr = BD.Registro_VerificarExistencia(user.mail);
         if(userr == null){
-           BD.Registro(user.mail, user.contraseña);
-            return View("Index");
+           BD.Registro(user.mail, user.contraseña, user.id_discapacidad);
+            if(user.id_discapacidad==1) return View("PerfilLee");
+            else return View("PerfilNoLee");
         }
         else{
             ViewBag.MSJError= "El usuario ya existe!";
             return View("RegistrarView");
         }
     }
+
     public IActionResult OlvidarContraseña(string Mail)
     {
         string contraseña = BD.OlvideMiContraseña(Mail);

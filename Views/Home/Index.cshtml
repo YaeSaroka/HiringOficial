@@ -2,23 +2,33 @@
     ViewData["Title"] = "Home Page";
 }
 
-<div class="text-center">
-     <form action='@Url.Action("Login")' method="post">
-              <img src="/Img/logologin.png" width="250px">
-            <h2 style="color: #E0BD9F;">INICIAR SESIÓN</h2>
-            <hr style="border-color: #E0BD9F; border-width: 2px; margin: 10px 0;">
-            
-            <input class="IngresoUsername"  type="text" name="Username" placeholder="Usuario" value="tomi_2" required/>
-            <input type="password" name="Contraseña" placeholder="Contraseña" value="tommm111" required/>
-            </p>
-            <p>
-                <button class="round-button" type="submit">Iniciar Sesión</button>
-            </p>
-            <p class="signup">
-               ¿No tenés una cuenta?
-            </p>
 
-              <a href="#" onclick="toggleForm();" <button class="round-button">REGISTRATE.</button></a>
-            </p>
-    </form>
+<body id="fondo_fondo">
+  <div class="background">
+    <div class="shape"></div>
+    <div class="shape"></div>
+  </div>
+<section id="Box">
+  <form action='@Url.Action("Login")' method="post" id="form_login">
+    <div class="form-config">
+    <h3>Login Here</h3>
+
+    < <input type="email" name="Mail" placeholder="Mail" value="yaesaroka@gmail.com" required />
+        <input type="password" name="Contraseña" placeholder="Contraseña" value="123645" required />
+ 
+    <button id="butttt">Log In</button>
+    <div class="social">
+      <div class="go"><i class="fab fa-google"></i> Google</div>
+    </div>
+    </div>
+  </form>
+</section>
 </div>
+
+<section id="sign-up-box">
+  <div> 
+     <a href='@Url.Action("Registro")' onclick="toggleForm();" <button class="round-button">¿Estás empezando a usar LinkedIn? Únete ahora.</button></a>
+  </div>
+
+</section>
+</body>

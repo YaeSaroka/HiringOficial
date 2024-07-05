@@ -1,0 +1,84 @@
+@{
+    ViewData["Title"] = "Lee";
+}
+<h3>Perfil q lee</h3>
+
+<a data-bs-toggle="modal" data-bs-target="#ModalForm"><img src= "@ViewBag.foto_perfil"></a>
+
+<p>@ViewBag.nombre_apellido</p>
+
+
+
+
+
+
+<!-- MODAL -->
+
+<div class="modal fade" id="ModalForm" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <!-- Sección 1 -->
+            <div id="seccion1" class="modal-header">
+                <h5 class="modal-title">Información Personal</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Cerrar">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div id="seccion1-body" class="modal-body">
+            <p>HOLIS</p>
+                <!--  FORM  se borra todo :(-->
+                <form action='@Url.Action("Login")' method="post" id="form-modal">
+                        <div >
+                            <input type="email" name="Mail" placeholder="Mail" value="yaesaroka@gmail.com" required />
+                            <input type="password" name="Contraseña" placeholder="Contraseña" value="123645" required />
+                        </div>
+                 </form>
+            </div>
+           
+            <div id="seccion1-footer" class="modal-footer">
+                
+                <button type="button" class="btn btn-primary" onclick="mostrarSiguienteSeccion(2)">Siguiente</button>
+            </div>
+            
+
+            <!-- Sección 2 -->
+            <div id="seccion2" class="modal-header" style="display: none;">
+                <h5 class="modal-title">Sección 2</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Cerrar">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div id="seccion2-body" class="modal-body" style="display: none;">
+                <p>Contenido de la sección 2...</p>
+            </div>
+            <div id="seccion2-footer" class="modal-footer" style="display: none;">
+                <button type="button" class="btn btn-secondary" onclick="mostrarSiguienteSeccion(1)">Anterior</button>
+                <button type="button" class="btn btn-primary" data-dismiss="modal">Guardar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<script>
+    function mostrarSiguienteSeccion(numeroSeccion) {
+        if (numeroSeccion === 1) {
+            $('#seccion1').show();
+            $('#seccion1-body').show();
+            $('#seccion1-footer').show();
+
+            $('#seccion2').hide();
+            $('#seccion2-body').hide();
+            $('#seccion2-footer').hide();
+        } else if (numeroSeccion === 2) {
+            $('#seccion2').show();
+            $('#seccion2-body').show();
+            $('#seccion2-footer').show();
+
+            $('#seccion1').hide();
+            $('#seccion1-body').hide();
+            $('#seccion1-footer').hide();
+        }
+    }
+</script>
