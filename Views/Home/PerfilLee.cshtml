@@ -1,59 +1,83 @@
 @{
     ViewData["Title"] = "Lee";
 }
-<h3>Perfil q lee</h3>
-
-<a data-bs-toggle="modal" data-bs-target="#ModalForm"><img src= "@ViewBag.foto_perfil"></a>
-
-<p>@ViewBag.nombre_apellido</p>
 
 
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Perfil que lee</title>
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+
+</head>
+<body>
+
+  <div class="card-container">
+
+    <a data-bs-toggle="modal" data-bs-target="#ModalForm">
+      <div class="rectangulo-encabezado"></div>
+      <img  class="foto-perfil" src="@ViewBag.perfil.foto_perfil" alt="Foto de perfil">
+      <h3 class="nombre-apellido">@ViewBag.perfil.nombre_apellido</h3>
+    </a>
+    
+  </div>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
 
 
 
 
-<!-- MODAL -->
+
+
 
 <div class="modal fade" id="ModalForm" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
-            <!-- Sección 1 -->
             <div id="seccion1" class="modal-header">
-                <h5 class="modal-title">Información Personal</h5>
+                <h5 class="modal-title">Información Personal - Parte 1</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Cerrar">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div id="seccion1-body" class="modal-body">
-            <p>HOLIS</p>
-                <!--  FORM  se borra todo :(-->
-                <form action='@Url.Action("Login")' method="post" id="form-modal">
-                        <div >
-                            <input type="email" name="Mail" placeholder="Mail" value="yaesaroka@gmail.com" required />
-                            <input type="password" name="Contraseña" placeholder="Contraseña" value="123645" required />
-                        </div>
-                 </form>
+                <form action='@Url.Action("InsertarInformacionPersonal1")' method="post" id="form-modal">
+                    <div>
+                        <input type="text" name="Nombre_Apellido" placeholder="Nombre y Apellido" required />
+                        <input type="email" name="Mail" placeholder="Correo electrónico" required />
+                        <input type="number" name="Telefono" placeholder="Teléfono" required />
+                        <input type="text" name="Estilo" placeholder="Estilo" value="#" required />
+                    </div>
+                    <div id="seccion1-footer" class="modal-footer">
+                    <button type="submit" class="btn btn-primary">Guardar</button>
+                        <button type="button" class="btn btn-primary" onclick="mostrarSiguienteSeccion(2)">Siguiente</button>
+                    </div>
+                </form>
             </div>
-           
-            <div id="seccion1-footer" class="modal-footer">
-                
-                <button type="button" class="btn btn-primary" onclick="mostrarSiguienteSeccion(2)">Siguiente</button>
-            </div>
-            
-
-            <!-- Sección 2 -->
             <div id="seccion2" class="modal-header" style="display: none;">
-                <h5 class="modal-title">Sección 2</h5>
+                <h5 class="modal-title">Información Personal - Parte 2</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Cerrar">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div id="seccion2-body" class="modal-body" style="display: none;">
-                <p>Contenido de la sección 2...</p>
-            </div>
+                <form action='@Url.Action("InsertarInformacionPersonal2")' method="post" id="form-modal">
+                    <div>
+                        <input type="text" name="acerca_de_mi" placeholder="Nombre y Apellido" required />
+                        <input type="text" name="profesion" placeholder="Correo electrónico" required />
+                         <input type="text" name="ubicacion" placeholder="Correo electrónico" required />
+                          <input type="text" name="foto_perfil" placeholder="Correo electrónico" required />
+                    </div
+
             <div id="seccion2-footer" class="modal-footer" style="display: none;">
                 <button type="button" class="btn btn-secondary" onclick="mostrarSiguienteSeccion(1)">Anterior</button>
-                <button type="button" class="btn btn-primary" data-dismiss="modal">Guardar</button>
+                <button type="submit" class="btn btn-primary">Guardar</button>
+            </div>
+            </form>
             </div>
         </div>
     </div>

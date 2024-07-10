@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "0ykyL+zqMsimWrJ9DTi6e9tFQP0ReoGcpNoMXMgFPls=",
+  "Hash": "sIUEOcS3lwySCWTzn3PVRSlb5+ojhvwHE7UH6ZOsnt0=",
   "Source": "Hiring",
   "BasePath": "_content/Hiring",
   "Mode": "Default",
@@ -169,12 +169,12 @@
       "OriginalItemSpec": "wwwroot\\img\\default\\encabezado.png"
     },
     {
-      "Identity": "Z:\\ORT 2024\\PF\\Hiring\\wwwroot\\img\\default\\photo_default.png",
+      "Identity": "Z:\\ORT 2024\\PF\\Hiring\\wwwroot\\img\\default\\foto_Default.png",
       "SourceId": "Hiring",
       "SourceType": "Discovered",
       "ContentRoot": "Z:\\ORT 2024\\PF\\Hiring\\wwwroot\\",
       "BasePath": "_content/Hiring",
-      "RelativePath": "img/default/photo_default.png",
+      "RelativePath": "img/default/foto_Default.png",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -185,7 +185,7 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\img\\default\\photo_default.png"
+      "OriginalItemSpec": "wwwroot\\img\\default\\foto_Default.png"
     },
     {
       "Identity": "Z:\\ORT 2024\\PF\\Hiring\\wwwroot\\img\\perfiles\\sarah.png",

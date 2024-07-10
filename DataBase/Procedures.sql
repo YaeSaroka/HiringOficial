@@ -71,12 +71,21 @@ GO
 /*----------------------------------------------------------------------------------------------------------------*/
 =======
 >>>>>>> ed00ea72a6157697bf4f507249b494d34aa1bb91
-CREATE PROCEDURE InsertarInformacionPersonalEmpleado
-	@Nombre_Apellido varchar(max), @Mail varchar(254),@telefono varchar(max), @acerca_de_mi varchar(max), @profesion_actual varchar(max), @estilo varchar(max), @ubicacion varchar(max), @foto_perfil varchar(max)
+CREATE PROCEDURE InsertarInformacionPersonalEmpleado1
+	@id int, @Nombre_Apellido varchar(max), @Mail varchar(254),@telefono varchar(max),  @estilo varchar(max)
+	AS
+BEGIN
+	INSERT INTO Informacion_Personal_Empleado(id, nombre_apellido, mail, telefono,estilo)
+	VALUES (@id,@Nombre_Apellido,@Mail,@telefono,@estilo)
+END
+GO
+
+CREATE PROCEDURE InsertarInformacionPersonalEmpleado2
+	 @acerca_de_mi varchar(max), @profesion_actual varchar(max), @ubicacion varchar(max), @foto_perfil varchar(max)
 AS
 BEGIN
-	INSERT INTO Informacion_Personal_Empleado(nombre_apellido, mail, telefono, acerca_de_mi, profesion_actual, estilo, ubicacion, foto_perfil)
-	VALUES (@Nombre_Apellido,@Mail,@telefono, @acerca_de_mi, @profesion_actual,@estilo,@ubicacion,@foto_perfil )
+	INSERT INTO Informacion_Personal_Empleado(acerca_de_mi, profesion_actual,ubicacion, foto_perfil)
+	VALUES (@acerca_de_mi, @profesion_actual,@ubicacion,@foto_perfil )
 END
 GO
 
@@ -108,6 +117,7 @@ BEGIN
 	VALUES (@fecha_expedicion, @fecha_caducidad,@id_info_empleado)
 END 
 GO
+
 
 CREATE PROCEDURE InsertarEducacion
 	@titulo varchar (max), @nombre_institucion varchar (max), @disciplina_academica varchar(max), @actividades_grupo varchar(max), @descripcion varchar(max), @id_info_empleado int

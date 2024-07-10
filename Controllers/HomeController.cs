@@ -29,7 +29,10 @@ public class HomeController : Controller
     {
         return View();
     }
-   
+   public IActionResult Login()
+    {
+        return View();
+    }
 
 
     [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
@@ -43,35 +46,35 @@ public class HomeController : Controller
     [HttpPost]
     public IActionResult Login(string Mail , string Contraseña)
     {
-        const string estilo= "#ABE7DD", foto_perfil="../img/default/photo_default.png", encabezado="encabezado.png", nombre_apellido = "Tu nombre", telefono = "", mail="";
-        Usuario Usuario = Models.BD.Login(Mail,Contraseña);
-        if (Usuario == null )
+        Usuario usuario = Models.BD.Login(Mail,Contraseña);
+         int id;
+         id=usuario.id;
+         
+        if (usuario == null )
         {
             ViewBag.MensajeError = "Usuario o Contraseña Incorrecto";
             return View("Registro");
         }
-        else if (Usuario.id_discapacidad == 1)
+        else if (usuario.id_discapacidad == 1)
         {
-            BD.user = Usuario;
-            Models.BD.CargaPerfilDefault(Usuario, estilo, foto_perfil, encabezado, nombre_apellido, telefono, mail);
-            ViewBag.nombre_apellido = nombre_apellido;
-            ViewBag.estilo = estilo;
-            ViewBag.telefono = telefono;
-            ViewBag.mail = mail;
-            ViewBag.foto_perfil = foto_perfil;
+           Informacion_Personal_Empleado perfil= Models.BD.CargarPerfilLogin(id);
+           ViewBag.perfil=perfil;
             return View("PerfilLee");
         }
         else  {
-            BD.user = Usuario;
+            BD.user = usuario;
             return RedirectToAction("PerfilNoLee");
         }
     }
     [HttpPost]
     public IActionResult RegistrarUsuario(Usuario user){
+        const string estilo= "#ABE7DD", foto_perfil="../img/default/foto_Default.png", encabezado="encabezado.png", nombre_apellido = "Tu nombre", telefono = "", mail="";
         Usuario userr = BD.Registro_VerificarExistencia(user.mail);
         if(userr == null){
-           BD.Registro(user.mail, user.contraseña, user.id_discapacidad);
-            if(user.id_discapacidad==1) return View("PerfilLee");
+            BD.Registro(user.mail, user.contraseña, user.id_discapacidad);
+            if(user.id_discapacidad==1) {
+            Models.BD.CargaPerfilDefault(userr, estilo, foto_perfil, encabezado, nombre_apellido, telefono, mail);
+            return View("PerfilLee");}
             else return View("PerfilNoLee");
         }
         else{
@@ -93,4 +96,20 @@ public class HomeController : Controller
             return View("OlvideContraseña");
         }
     }
+ 
+ [HttpPost]
+    public IActionResult InsertarInformacionPersonal1(Usuario user, Informacion_Personal_Empleado usuario)
+    {
+        int id = BD.user.id;
+        
+       Models.BD.InsertarInformacionPersonalEmpleado1(user, usuario);
+       
+            return View("PerfilLeeCargada");}
+    [HttpPost]
+    public IActionResult InsertarInformacionPersonal2(Usuario user, Informacion_Personal_Empleado usuario)
+    {
+       Models.BD.InsertarInformacionPersonalEmpleado2(user, usuario);
+       
+            return View("PerfilLeeCargada");}
+    
 }
