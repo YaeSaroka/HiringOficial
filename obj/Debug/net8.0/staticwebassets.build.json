@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "sIUEOcS3lwySCWTzn3PVRSlb5+ojhvwHE7UH6ZOsnt0=",
+  "Hash": "bLdlBGqT9hqrVYv21gqatWmQu9f6UchjNb+k7qIbCZA=",
   "Source": "Hiring",
   "BasePath": "_content/Hiring",
   "Mode": "Default",
@@ -148,6 +148,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\img\\banner\\Thumbs.db"
+    },
+    {
+      "Identity": "Z:\\ORT 2024\\PF\\Hiring\\wwwroot\\img\\componente\\subir_archivo.png",
+      "SourceId": "Hiring",
+      "SourceType": "Discovered",
+      "ContentRoot": "Z:\\ORT 2024\\PF\\Hiring\\wwwroot\\",
+      "BasePath": "_content/Hiring",
+      "RelativePath": "img/componente/subir_archivo.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\img\\componente\\subir_archivo.png"
     },
     {
       "Identity": "Z:\\ORT 2024\\PF\\Hiring\\wwwroot\\img\\default\\encabezado.png",

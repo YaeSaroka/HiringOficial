@@ -7,10 +7,11 @@ namespace Hiring.Models;
 public  class BD
 {
      private static string ConnectionString { get; set; } = @"Server=.;DataBase=Hiring;Trusted_Connection=True;";   
-     public static Usuario usuario; //agarra el usuario loggeado
+     public static Usuario user; //agarra el usuario loggeado
 
 
     /*LOGIN + VERIFICACIONES*/
+    
     public static Usuario Login(string pMail, string pContraseña)
     {
         Usuario user = null;
@@ -46,9 +47,10 @@ public  class BD
       public static void Registro(string Mail, string Contraseña, int id_discapacidad)
     {
         using(SqlConnection db = new SqlConnection(ConnectionString)){
+             
             string sp = "Registro";
             var parameters = new { Mail = Mail, Contraseña = Contraseña , id_discapacidad=id_discapacidad};
-            db.Execute(sp, parameters, commandType: CommandType.StoredProcedure);
+             db.Execute(sp, parameters, commandType: CommandType.StoredProcedure);
         }
     }
 
@@ -64,16 +66,16 @@ public  class BD
     }
 
     /*----------------------------------------------------------------*/
-    public static void CargaPerfilDefault(Usuario usuario, string estilo, string foto_perfil, string encabezado, string nombre_apellido, string telefono, string mail)
+    public static void CargaPerfilDefault(Usuario userr, string estilo, string foto_perfil, string encabezado, string nombre_apellido, string telefono, string mail)
     {
         using(SqlConnection db = new SqlConnection(ConnectionString)){
             string sp = "CargaPerfilDefault";
-            var parameters = new { id = usuario.id, estilo=estilo, foto_perfil=foto_perfil, encabezado=encabezado, nombre_apellido = nombre_apellido, telefono = telefono, mail = mail};
+            var parameters = new { id = userr.id, estilo=estilo, foto_perfil=foto_perfil, encabezado=encabezado, nombre_apellido = nombre_apellido, telefono = telefono, mail = mail};
             db.Execute(sp, parameters, commandType: CommandType.StoredProcedure);
         }
     }
      public static Informacion_Personal_Empleado CargarPerfilLogin(int id)
-{
+    {
      // Inicializamos perfil como null
     Informacion_Personal_Empleado perfil = null;
     using (SqlConnection db = new SqlConnection(ConnectionString))
@@ -86,22 +88,32 @@ public  class BD
 
     return perfil;}
     
-    public static void InsertarInformacionPersonalEmpleado1(Usuario user, Informacion_Personal_Empleado usuario)
+    public static void InsertarInformacionPersonalEmpleado1( Informacion_Personal_Empleado usuario)
     {
         using(SqlConnection db = new SqlConnection(ConnectionString)){
             string sp = "InsertarInformacionPersonalEmpleado1";
-            var parameters = new { id = user.id, estilo=usuario.estilo, nombre_apellido = usuario.nombre_apellido, telefono = usuario.telefono, mail = usuario.mail};
+            var parameters = new { id = usuario.id, estilo=usuario.estilo, nombre_apellido = usuario.nombre_apellido, telefono = usuario.telefono, mail = usuario.mail};
             db.Execute(sp, parameters, commandType: CommandType.StoredProcedure);
         }
     }
-    public static void InsertarInformacionPersonalEmpleado2(Usuario user, Informacion_Personal_Empleado usuario)
+    public static void InsertarInformacionPersonalEmpleado2(Informacion_Personal_Empleado usuario)
     {
         using(SqlConnection db = new SqlConnection(ConnectionString)){
             string sp = "InsertarInformacionPersonalEmpleado2";
-            var parameters = new { id=user.id, foto_perfil=usuario.foto_perfil, acerca_de_mi=usuario.acerca_de_mi, profesion=usuario.profesion_actual, ubicacion=usuario.ubicacion};
+            var parameters = new { id=usuario.id, foto_perfil=usuario.foto_perfil, acerca_de_mi=usuario.acerca_de_mi, profesion_actual=usuario.profesion_actual, ubicacion=usuario.ubicacion};
             db.Execute(sp, parameters, commandType: CommandType.StoredProcedure);
         }
     }
-    
     }
+
+    /*public static Usuario SelectUser(int id)
+    {
+        Usuario user = null;
+        using(SqlConnection db = new SqlConnection(ConnectionString))
+        {
+            string sp = "SelectUser";
+            user= db.QueryFirstOrDefault<Usuario>(sp, new {id=id}, commandType: CommandType.StoredProcedure);
+        }
+        return user;
+    }*/
 

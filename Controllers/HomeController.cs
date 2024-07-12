@@ -9,6 +9,7 @@ public class HomeController : Controller
 {
     private readonly ILogger<HomeController> _logger;
 
+
     public HomeController(ILogger<HomeController> logger)
     {
         _logger = logger;
@@ -46,20 +47,16 @@ public class HomeController : Controller
     [HttpPost]
     public IActionResult Login(string Mail , string Contraseña)
     {
-        Usuario usuario = Models.BD.Login(Mail,Contraseña);
-         int id;
-         id=usuario.id;
-         
+        Usuario usuario = Models.BD.Login(Mail,Contraseña); 
         if (usuario == null )
         {
             ViewBag.MensajeError = "Usuario o Contraseña Incorrecto";
-            return View("Registro");
+            return View("Index");
         }
         else if (usuario.id_discapacidad == 1)
         {
-           Informacion_Personal_Empleado perfil= Models.BD.CargarPerfilLogin(id);
-           ViewBag.perfil=perfil;
-            return View("PerfilLee");
+            Informacion_Personal_Empleado perfil= Models.BD.CargarPerfilLogin(usuario.id);
+            return View("PerfilLee", perfil);
         }
         else  {
             BD.user = usuario;
@@ -70,14 +67,21 @@ public class HomeController : Controller
     public IActionResult RegistrarUsuario(Usuario user){
         const string estilo= "#ABE7DD", foto_perfil="../img/default/foto_Default.png", encabezado="encabezado.png", nombre_apellido = "Tu nombre", telefono = "", mail="";
         Usuario userr = BD.Registro_VerificarExistencia(user.mail);
-        if(userr == null){
+
+        if(userr == null)
+        {
             BD.Registro(user.mail, user.contraseña, user.id_discapacidad);
+            userr = BD.Registro_VerificarExistencia(user.mail);
+
             if(user.id_discapacidad==1) {
-            Models.BD.CargaPerfilDefault(userr, estilo, foto_perfil, encabezado, nombre_apellido, telefono, mail);
-            return View("PerfilLee");}
+                Models.BD.CargaPerfilDefault(userr,estilo, foto_perfil, encabezado, nombre_apellido, telefono, mail);
+                Informacion_Personal_Empleado perfil= Models.BD.CargarPerfilLogin(userr.id);
+                return View("PerfilLee", perfil);
+            }
             else return View("PerfilNoLee");
         }
-        else{
+        else
+        {
             ViewBag.MSJError= "El usuario ya existe!";
             return View("RegistrarView");
         }
@@ -98,18 +102,20 @@ public class HomeController : Controller
     }
  
  [HttpPost]
-    public IActionResult InsertarInformacionPersonal1(Usuario user, Informacion_Personal_Empleado usuario)
+    public IActionResult InsertarInformacionPersonal1(Informacion_Personal_Empleado usuario)
     {
-        int id = BD.user.id;
-        
-       Models.BD.InsertarInformacionPersonalEmpleado1(user, usuario);
-       
-            return View("PerfilLeeCargada");}
+        Models.BD.InsertarInformacionPersonalEmpleado1(usuario);
+        Informacion_Personal_Empleado perfil= Models.BD.CargarPerfilLogin(usuario.id);
+        return View("PerfilLee", perfil);
+        }
+
+
     [HttpPost]
-    public IActionResult InsertarInformacionPersonal2(Usuario user, Informacion_Personal_Empleado usuario)
+    public IActionResult InsertarInformacionPersonal2( Informacion_Personal_Empleado usuario)
     {
-       Models.BD.InsertarInformacionPersonalEmpleado2(user, usuario);
-       
-            return View("PerfilLeeCargada");}
+        Models.BD.InsertarInformacionPersonalEmpleado2(usuario);
+        Informacion_Personal_Empleado perfil= Models.BD.CargarPerfilLogin(usuario.id);
+        return View("PerfilLee", perfil);
+    }
     
 }

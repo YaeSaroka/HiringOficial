@@ -1,3 +1,5 @@
+@using Hiring.Models
+@model Informacion_Personal_Empleado
 @{
     ViewData["Title"] = "Lee";
 }
@@ -13,16 +15,36 @@
 </head>
 <body>
 
-  <div class="card-container">
-
-    <a data-bs-toggle="modal" data-bs-target="#ModalForm">
-      <div class="rectangulo-encabezado"></div>
-      <img  class="foto-perfil" src="@ViewBag.perfil.foto_perfil" alt="Foto de perfil">
-      <h3 class="nombre-apellido">@ViewBag.perfil.nombre_apellido</h3>
-    </a>
-    
-  </div>
-
+ <div class="container">
+        <div class="card-container">
+            <a data-bs-toggle="modal" data-bs-target="#ModalForm">
+                <div class="rectangulo-encabezado" style="background-color: @Model.estilo;"></div>
+                <img class="foto-perfil" src="@Model.foto_perfil" alt="Foto de perfil">
+                <h3 class="nombre-apellido">@Model.nombre_apellido</h3>
+                <hr style="color: @Model.estilo;"><hr/>
+                <div class="contact-info">
+                    <h5> @Model.telefono</h5>
+                </div>
+                <h5> @Model.acerca_de_mi</h5>
+                <h5> @Model.profesion_actual</h5>
+            </a>
+            <div class="upload-container">
+                <img src="../img/componente/subir_archivo.png" alt="Subir Archivos" class="upload-image" onclick="document.getElementById('fileInput').click()">
+                <input type="file" id="fileInput" multiple style="display: none;" accept=".png, .jpg, .jpeg, .pdf, .txt, .mp3, .mp4" onchange="handleFiles(this.files)">
+            </div>
+            <div id="carouselExampleControls" class="carousel-container carousel slide">
+                <div class="carousel-inner" id="fileList"></div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
+            </div>
+        </div>
+    </div>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
@@ -45,18 +67,23 @@
                 </button>
             </div>
             <div id="seccion1-body" class="modal-body">
-                <form action='@Url.Action("InsertarInformacionPersonal1")' method="post" id="form-modal">
+                 @using(Html.BeginForm("InsertarInformacionPersonal1","Home",  FormMethod.Post, new {id="form-modal"}))
+                {
                     <div>
-                        <input type="text" name="Nombre_Apellido" placeholder="Nombre y Apellido" required />
-                        <input type="email" name="Mail" placeholder="Correo electrónico" required />
-                        <input type="number" name="Telefono" placeholder="Teléfono" required />
-                        <input type="text" name="Estilo" placeholder="Estilo" value="#" required />
+                        @Html.TextBoxFor(model=>model.nombre_apellido, new {placeholder="Nombre y Apellido"})
+                        @Html.TextBoxFor(model=>model.mail, new {placeholder="Correo electrónico",type="email"})
+                        @Html.TextBoxFor(model=>model.telefono, new {placeholder="Teléfono"})
+                        @Html.TextBoxFor(model=>model.estilo, new {placeholder="Estilo",  value="#"})
+    
+
+                        @Html.HiddenFor(model=>model.id)
                     </div>
                     <div id="seccion1-footer" class="modal-footer">
                     <button type="submit" class="btn btn-primary">Guardar</button>
                         <button type="button" class="btn btn-primary" onclick="mostrarSiguienteSeccion(2)">Siguiente</button>
                     </div>
-                </form>
+
+                }
             </div>
             <div id="seccion2" class="modal-header" style="display: none;">
                 <h5 class="modal-title">Información Personal - Parte 2</h5>
@@ -67,10 +94,11 @@
             <div id="seccion2-body" class="modal-body" style="display: none;">
                 <form action='@Url.Action("InsertarInformacionPersonal2")' method="post" id="form-modal">
                     <div>
-                        <input type="text" name="acerca_de_mi" placeholder="Nombre y Apellido" required />
-                        <input type="text" name="profesion" placeholder="Correo electrónico" required />
-                         <input type="text" name="ubicacion" placeholder="Correo electrónico" required />
-                          <input type="text" name="foto_perfil" placeholder="Correo electrónico" required />
+                     @Html.TextBoxFor(model=>model.acerca_de_mi, new {placeholder="Acerca De Mi"})
+                    @Html.TextBoxFor(model=>model.profesion_actual, new {placeholder="Profesion"})
+                    @Html.TextBoxFor(model=>model.ubicacion, new {placeholder="Ubicacion"})
+                    @Html.TextBoxFor(model=>model.foto_perfil, new {placeholder="URL Foto de Perfil"})
+                    @Html.HiddenFor(model=>model.id)
                     </div
 
             <div id="seccion2-footer" class="modal-footer" style="display: none;">
@@ -106,3 +134,182 @@
         }
     }
 </script>
+     <script>
+  let slideIndex = 0;
+
+        function handleFiles(files) {
+            const fileList = document.getElementById('fileList');
+            //fileList.innerHTML = ''; // Limpiar el contenido existente
+
+            for (let i = 0; i < files.length; i++) {
+                const file = files[i];
+                const listItem = document.createElement('div');
+                listItem.className = 'carousel-item';
+
+                const link = document.createElement('a');
+                link.href = URL.createObjectURL(file);
+                link.target = '_blank';
+
+                const deleteButton = document.createElement('button');
+                deleteButton.className = 'delete-button';
+                deleteButton.textContent = '×';
+                deleteButton.onclick = function() {
+                    listItem.remove();
+                    updateSlides();
+                };
+
+                if (file.type.startsWith('image/')) {
+                    const img = document.createElement('img');
+                    img.src = URL.createObjectURL(file);
+                    img.alt = file.name;
+                    img.className = 'file-preview';
+                    link.appendChild(img);
+                } else if (file.type.startsWith('video/')) {
+                    const video = document.createElement('video');
+                    video.src = URL.createObjectURL(file);
+                    video.controls = true;
+                    video.className = 'file-preview';
+                    link.appendChild(video);
+                } else if (file.type === 'application/pdf' || file.type === 'text/plain') {
+                    const icon = document.createElement('img');
+                    icon.src = 'ruta/a/icono/pdf_o_txt.png';
+                    icon.alt = file.name;
+                    icon.className = 'file-preview';
+                    link.appendChild(icon);
+                } else if (file.type === 'audio/mpeg') {
+                    const audio = document.createElement('audio');
+                    audio.src = URL.createObjectURL(file);
+                    audio.controls = true;
+                    audio.className = 'file-preview';
+                    link.appendChild(audio);
+                }
+
+                listItem.appendChild(link);
+                listItem.appendChild(deleteButton);
+                fileList.appendChild(listItem);
+            }
+            updateSlides();
+        }
+
+        function updateSlides() {
+            const slides = document.getElementsByClassName('carousel-item');
+            if (slides.length > 0) {
+                // Se asegura de que el primer elemento siempre sea visible
+                slides[0].classList.add('active');
+            }
+        }
+
+        function prevSlide() {
+            const carousel = new bootstrap.Carousel('#carouselExampleControls');
+            carousel.prev();
+        }
+
+        function nextSlide() {
+            const carousel = new bootstrap.Carousel('#carouselExampleControls');
+            carousel.next();
+        }
+
+        // Inicializa el carrusel para mostrar el primer archivo
+        document.addEventListener('DOMContentLoaded', () => {
+            updateSlides();
+        });
+
+        // Manejadores de eventos para botones prev y next
+        document.querySelector('.carousel-control-prev').addEventListener('click', prevSlide);
+        document.querySelector('.carousel-control-next').addEventListener('click', nextSlide);
+    
+
+
+    </script>
+<style>
+ .carousel-container 
+ {
+    position: relative;
+    max-width: 100%;
+    margin-top: 20px;
+}
+
+.carousel-item {
+    position: relative;
+}
+
+        .file-preview {
+            max-width: 180px; 
+            max-height: 180px; 
+        }
+
+        .delete-button {
+            position: absolute;
+            top: 5px;
+            right: 5px;
+            background-color: red;
+            color: white;
+            border: none;
+            padding: 5px;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+
+        .upload-container {
+            margin: 20px 0;
+        }
+
+        .carousel-control-prev,
+        .carousel-control-next {
+            width: 5%;
+        }
+
+        .carousel-control-prev-icon,
+        .carousel-control-next-icon {
+            background-color: rgba(0, 0, 0, 0.5);
+            border-radius: 50%;
+        }
+
+
+
+
+
+
+/*-------------------*/
+
+.nombre-apellido {
+    margin: 10px 0;
+    font-size: 1.2em;
+    font-weight: bold;
+}
+
+hr {
+    margin: 10px 0;
+    border: none;
+    border-top: 1px solid #ddd;
+}
+
+.contact-info {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 10px;
+    background-color: black;
+    border-radius: 60%;
+    width: 100px;
+}
+
+.telefono {
+    border-radius: 25px;
+    padding: 5px 15px;
+    margin-left: 10px;
+    font-size: 0.9em;
+    color: #00796b;
+    border: 1px solid #00796b;
+}
+
+h5 {
+    margin: 5px 0;
+    font-size: 0.9em;
+    color: #555;
+}
+
+button{
+    border-radius:  50px !important;
+}
+</style>

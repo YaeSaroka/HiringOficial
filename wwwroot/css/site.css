@@ -178,6 +178,15 @@ body {
       position: relative;
       height: 5rem;
     }
+
+
+    .alert
+    {
+      width: 300px;
+      left:42%;
+    }
+
+    
     
 /*************************************************************************/
 
@@ -190,35 +199,34 @@ body {
 }
 .rectangulo-encabezado {
   width: 100%;
-  height: 150px; /* Altura del rectángulo, ajustar según necesidad */
-  background-color: #16544B; /* Color del rectángulo, puedes cambiarlo */
+  height: 150px; 
 }
 
-/* Estilos para la contenedor de la tarjeta */
+
 .card-container {
-  max-width: 1000px; /* Ancho máximo de la tarjeta */
-  margin: 0 auto; /* Centrar la tarjeta horizontalmente */
-  padding: 20px; /* Espacio interno dentro de la tarjeta */
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Sombra al borde de la tarjeta */
+  max-width: 1000px; 
+  margin: 0 auto;
+  padding: 20px; 
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); 
 }
 
-/* Media query para dispositivos móviles (menos de 768px de ancho) */
+
 @media (max-width: 767px) {
   .card-container {
-    max-width: 100%; /* Ocupar todo el ancho disponible */
-    margin: 0; /* Eliminar margen */
-    border-radius: 0; /* Opcional: eliminar bordes redondeados */
-    padding: 10px; /* Reducir el espacio interno si es necesario */
-  }
+    max-width: 100%; 
+    margin: 0; 
+    border-radius: 0; 
+    padding: 10px; 
   
-}
+}}
 .foto-perfil {
-  width: 150px; /* Ancho de la foto de perfil */
-  height: 150px; /* Altura de la foto de perfil */
-  position: absolute; /* Posición absoluta */
+  width: 150px; 
+  height: 150px; 
+  position: absolute; 
   top: 11%;
-  left: 29%; /* Centrar horizontalmente */
-  transform: translateX(-50%); /* Centrar correctamente */
+  border-radius: 100%;
+  left: 29%; 
+  transform: translateX(-50%); 
 }
 .nombre-apellido {
   position: relative;
@@ -226,3 +234,12 @@ body {
   top: 18%; 
   color: #333333; 
 }
+
+hr{
+   top: 21%;
+   left: 32%; 
+  position: absolute;
+  width: 400px;
+}
+
+

@@ -25,18 +25,9 @@
 
     <input class="round-button" type="submit" value="Registrarse" />
 </form>
- @if (ViewBag.MensajeError != null)
-                {
-                    <div class="alert alert-danger" role="alert">
-                        @ViewBag.MensajeError
-                    </div>
-                }
-                @if (ViewBag.MensajeError2 != null)
-                {
-                    <div class="alert alert-danger" role="alert">
-                        @ViewBag.MensajeError2
-                    </div>
-                }
+ 
+
+
 
 <style>
 .opciones{
@@ -48,7 +39,7 @@
     }
 
     .radio-option input[type="radio"] {
-        display: none; /* Ocultar el botón de radio predeterminado */
+        display: none;
     }
 
     .radio-option span {

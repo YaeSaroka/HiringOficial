@@ -1,3 +1,4 @@
+namespace Hiring.Models;
 public class Usuario
 {
     public int id { get; set; }
