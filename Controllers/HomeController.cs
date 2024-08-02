@@ -83,7 +83,7 @@ public class HomeController : Controller
         else
         {
             ViewBag.MSJError= "El usuario ya existe!";
-            return View("RegistrarView");
+            return View("Registro");
         }
     }
 

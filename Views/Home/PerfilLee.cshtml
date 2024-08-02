@@ -4,35 +4,29 @@
     ViewData["Title"] = "Lee";
 }
 
-
-<html lang="es">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Perfil que lee</title>
-  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-
-</head>
-<body>
-
  <div class="container">
         <div class="card-container">
             <a data-bs-toggle="modal" data-bs-target="#ModalForm">
                 <div class="rectangulo-encabezado" style="background-color: @Model.estilo;"></div>
                 <img class="foto-perfil" src="@Model.foto_perfil" alt="Foto de perfil">
-                <h3 class="nombre-apellido">@Model.nombre_apellido</h3>
+                <h3 class="nombre-apellido">@Model.nombre_apellido  | <p id= "profesion" style="color:@Model.estilo;">@Model.profesion_actual </p></h3>
+                
                 <hr style="color: @Model.estilo;"><hr/>
                 <div class="contact-info">
-                    <h5> @Model.telefono</h5>
+                    <h5 class="telefono" style="background-color:@Model.estilo;"> @Model.telefono </h5><p class="mail" style="background-color:@Model.estilo;">@Model.mail</p> <p class="ubicacion" style="background-color:@Model.estilo;">@Model.ubicacion</p>
                 </div>
-                <h5> @Model.acerca_de_mi</h5>
-                <h5> @Model.profesion_actual</h5>
+              
+                
             </a>
+            <hr style="color: @Model.estilo;"><hr/>
+            <div class="acerca_de_mi_container">
+            <div class="acerca-de-mi"> 
+            @Model.acerca_de_mi</div></div>
             <div class="upload-container">
-                <img src="../img/componente/subir_archivo.png" alt="Subir Archivos" class="upload-image" onclick="document.getElementById('fileInput').click()">
+                <img class="img_upload_archivos" src="../img/componente/subir_archivo.png" alt="Subir Archivos" class="upload-image" onclick="document.getElementById('fileInput').click()">
                 <input type="file" id="fileInput" multiple style="display: none;" accept=".png, .jpg, .jpeg, .pdf, .txt, .mp3, .mp4" onchange="handleFiles(this.files)">
             </div>
-            <div id="carouselExampleControls" class="carousel-container carousel slide">
+            <!--<div id="carouselExampleControls" class="carousel-container carousel slide">
                 <div class="carousel-inner" id="fileList"></div>
                 <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
                     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -42,20 +36,20 @@
                     <span class="carousel-control-next-icon" aria-hidden="true"></span>
                     <span class="visually-hidden">Next</span>
                 </button>
-            </div>
+            </div>-->
+                <div id="CarouseLArchivos" class="carousel slide" style="display: none;">
+                    <div class="carousel-inner" id="fileList"></div>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#CarouseLArchivos" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#CarouseLArchivos" data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                    </button>
+                </div>
         </div>
     </div>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-</body>
-</html>
-
-
-
-
-
-
 
 <div class="modal fade" id="ModalForm" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
@@ -99,8 +93,7 @@
                     @Html.TextBoxFor(model=>model.ubicacion, new {placeholder="Ubicacion"})
                     @Html.TextBoxFor(model=>model.foto_perfil, new {placeholder="URL Foto de Perfil"})
                     @Html.HiddenFor(model=>model.id)
-                    </div
-
+                    </div>
             <div id="seccion2-footer" class="modal-footer" style="display: none;">
                 <button type="button" class="btn btn-secondary" onclick="mostrarSiguienteSeccion(1)">Anterior</button>
                 <button type="submit" class="btn btn-primary">Guardar</button>
@@ -110,8 +103,6 @@
         </div>
     </div>
 </div>
-
-
 
 <script>
     function mostrarSiguienteSeccion(numeroSeccion) {
@@ -133,13 +124,9 @@
             $('#seccion1-footer').hide();
         }
     }
-</script>
-     <script>
-  let slideIndex = 0;
-
-        function handleFiles(files) {
+    function handleFiles(files) {
             const fileList = document.getElementById('fileList');
-            //fileList.innerHTML = ''; // Limpiar el contenido existente
+            const items = document.getElementsByClassName("carousel-item");
 
             for (let i = 0; i < files.length; i++) {
                 const file = files[i];
@@ -162,7 +149,8 @@
                     const img = document.createElement('img');
                     img.src = URL.createObjectURL(file);
                     img.alt = file.name;
-                    img.className = 'file-preview';
+                    img.className = 'd-block w-100';
+                    //img.style='box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);';
                     link.appendChild(img);
                 } else if (file.type.startsWith('video/')) {
                     const video = document.createElement('video');
@@ -189,127 +177,181 @@
                 fileList.appendChild(listItem);
             }
             updateSlides();
+            const cantidadslides = document.getElementsByClassName('carousel-item');
+            console.log(cantidadslides.length);
+            // HACER UN FOREACH PARA BUSCAR SI HAY ACTIVE
+            if (cantidadslides.length == 1) cantidadslides[0].classList.add('active');
         }
 
         function updateSlides() {
             const slides = document.getElementsByClassName('carousel-item');
+            const carousel = document.getElementById('CarouseLArchivos');
             if (slides.length > 0) {
-                // Se asegura de que el primer elemento siempre sea visible
-                slides[0].classList.add('active');
+                carousel.style.display = 'block'; // Muestra el carrusel
+                const bootstrapCarousel = new bootstrap.Carousel(carousel);
+                document.querySelector('.carousel-control-prev').style.display = 'block';
+                document.querySelector('.carousel-control-next').style.display = 'block';
+            } else {
+                carousel.style.display = 'none'; // Oculta el carrusel
+                document.querySelector('.carousel-control-prev').style.display = 'none';
+                document.querySelector('.carousel-control-next').style.display = 'none';
             }
         }
-
-        function prevSlide() {
-            const carousel = new bootstrap.Carousel('#carouselExampleControls');
-            carousel.prev();
-        }
-
-        function nextSlide() {
-            const carousel = new bootstrap.Carousel('#carouselExampleControls');
-            carousel.next();
-        }
-
-        // Inicializa el carrusel para mostrar el primer archivo
-        document.addEventListener('DOMContentLoaded', () => {
-            updateSlides();
-        });
-
-        // Manejadores de eventos para botones prev y next
-        document.querySelector('.carousel-control-prev').addEventListener('click', prevSlide);
-        document.querySelector('.carousel-control-next').addEventListener('click', nextSlide);
-    
-
-
     </script>
+
+    <script>
+    function getBrightness(hex) {
+    hex = hex.replace('#', '');
+    var r = parseInt(hex.substring(0, 2), 16);
+    var g = parseInt(hex.substring(2, 4), 16);
+    var b = parseInt(hex.substring(4, 6), 16);
+    return (r * 299 + g * 587 + b * 114) / 1000;
+}
+
+function adjustTextColorBasedOnBackground() {
+    var card = document.querySelector('.card-container');
+    var bgColor = window.getComputedStyle(card.querySelector('.rectangulo-encabezado')).backgroundColor;
+
+    var rgb = bgColor.match(/\d+/g);
+    var hex = rgb.map(x => {
+        var hexPart = parseInt(x).toString(16);
+        return hexPart.length === 1 ? '0' + hexPart : hexPart;
+    }).join('');
+
+    var brightness = getBrightness(hex);
+
+    var textColor = brightness > 128 ? 'black' : 'white';
+    card.style.color = textColor;
+    card.querySelectorAll('.telefono, .mail, .ubicacion, .acerca_de_mi_container, #profesion').forEach(el => {
+        el.style.color = textColor;
+    });
+}
+
+document.addEventListener('DOMContentLoaded', adjustTextColorBasedOnBackground);
+</script>
+
 <style>
- .carousel-container 
- {
-    position: relative;
-    max-width: 100%;
-    margin-top: 20px;
-}
-
-.carousel-item {
-    position: relative;
-}
-
-        .file-preview {
-            max-width: 180px; 
-            max-height: 180px; 
-        }
-
-        .delete-button {
-            position: absolute;
-            top: 5px;
-            right: 5px;
-            background-color: red;
-            color: white;
-            border: none;
-            padding: 5px;
-            border-radius: 50%;
-            cursor: pointer;
-        }
-
-        .upload-container {
-            margin: 20px 0;
-        }
-
-        .carousel-control-prev,
-        .carousel-control-next {
-            width: 5%;
-        }
-
-        .carousel-control-prev-icon,
-        .carousel-control-next-icon {
-            background-color: rgba(0, 0, 0, 0.5);
-            border-radius: 50%;
-        }
-
-
-
-
-
-
-/*-------------------*/
-
-.nombre-apellido {
-    margin: 10px 0;
-    font-size: 1.2em;
-    font-weight: bold;
-}
-
-hr {
-    margin: 10px 0;
+.delete-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: black;
+    color: white;
     border: none;
-    border-top: 1px solid #ddd;
-}
-
-.contact-info {
+    border-radius: 50%;
+    cursor: pointer;
+    width: 30px;
+    height: 30px;
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-bottom: 10px;
-    background-color: black;
-    border-radius: 60%;
-    width: 100px;
 }
+
+.upload-container {
+    text-align: center;
+    margin: 20px;
+}
+
+.img_upload_archivos {
+    cursor: pointer;
+    max-width: 100%;
+}
+
+/*-------------------*/
+
+
 
 .telefono {
     border-radius: 25px;
-    padding: 5px 15px;
-    margin-left: 10px;
+    margin-left: 160px;
+    margin-right: 1px !important;
     font-size: 0.9em;
-    color: #00796b;
-    border: 1px solid #00796b;
-}
+    color: inherit;
+    width: 120px;
+    position: absolute;
+    margin-top: 35px;
+    text-align: center;
+    font-size: 17px;
 
+     background-color: inherit; /* Inherit the background color from the parent */
+    color: inherit; /* Inherit the text color from the parent */
+    display: inline-block; /* Ensure elements are inline */
+    white-space: nowrap; /* Prevent text from breaking into multiple lines */
+    overflow: hidden; /* Ensure text does not overflow */
+    text-overflow: ellipsis;
+    
+}
+.mail{
+    position: absolute;
+    width: 200px;
+    border-radius: 25px;
+    text-align: center;
+    margin-top: 35px;
+    margin-left: 300px;
+     color: inherit;
+
+      background-color: inherit; /* Inherit the background color from the parent */
+    color: inherit; /* Inherit the text color from the parent */
+    display: inline-block; /* Ensure elements are inline */
+    white-space: nowrap; /* Prevent text from breaking into multiple lines */
+    overflow: hidden; /* Ensure text does not overflow */
+    text-overflow: ellipsis;
+}
+.ubicacion{
+    position: absolute;
+    width: 100px;
+    border-radius: 25px;
+    text-align: center;
+    margin-top: 35px;
+    margin-left: 520px;
+     color: inherit;
+
+      background-color: inherit; /* Inherit the background color from the parent */
+    color: inherit; /* Inherit the text color from the parent */
+    display: inline-block; /* Ensure elements are inline */
+    white-space: nowrap; /* Prevent text from breaking into multiple lines */
+    overflow: hidden; /* Ensure text does not overflow */
+    text-overflow: ellipsis;
+}
+.acerca-de-mi{
+    width: 100%;
+    text-align: justify;
+    margin-top: 5%;
+    align-items: center;
+    padding: 10px;
+}
+.acerca_de_mi_container{
+     
+    background-color: #FEFEFE;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); 
+    height: 20%;
+    margin-top: 10%;
+}
 h5 {
     margin: 5px 0;
     font-size: 0.9em;
     color: #555;
 }
 
-button{
-    border-radius:  50px !important;
+button {
+    border-radius: 50px !important;
 }
+
+#profesion {
+    margin-left: 46%;
+    border-radius: 35%;
+    width: 100px;
+    text-align: center;
+    display: contents;
+  
+}
+.img_upload_archivos {
+  vertical-align: middle!important;
+  width: 40%!important;
+  border-style: none!important;
+  align-items: center!important;
+}
+
+
+
 </style>

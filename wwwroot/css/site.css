@@ -208,6 +208,7 @@ body {
   margin: 0 auto;
   padding: 20px; 
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); 
+ 
 }
 
 
@@ -228,18 +229,30 @@ body {
   left: 29%; 
   transform: translateX(-50%); 
 }
-.nombre-apellido {
-  position: relative;
-  left: 17%; 
-  top: 18%; 
-  color: #333333; 
-}
 
 hr{
-   top: 21%;
-   left: 32%; 
+   top: 25%;
+   left: 33%; 
   position: absolute;
   width: 400px;
 }
+
+
+.nombre-apellido {
+  text-align: center;
+  margin-left: -180px;
+  top: 10%;
+  color: inherit; 
+    white-space: nowrap; 
+    overflow: hidden; 
+    text-overflow: ellipsis;
+}
+.img {
+  vertical-align: middle!important;
+  width: 40%!important;
+  border-style: none!important;
+  align-items: center!important;
+}
+
 
 
