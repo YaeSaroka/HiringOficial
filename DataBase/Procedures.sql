@@ -69,8 +69,8 @@ GO
 
 
 /*----------------------------------------------------------------------------------------------------------------*/
-=======
->>>>>>> ed00ea72a6157697bf4f507249b494d34aa1bb91
+
+
 CREATE PROCEDURE InsertarInformacionPersonalEmpleado1
 	@id int, @Nombre_Apellido varchar(max), @Mail varchar(254),@telefono varchar(max),  @estilo varchar(max)
 	AS
@@ -118,6 +118,16 @@ BEGIN
 END 
 GO
 
+CREATE PROCEDURE InsertarMultimedia
+	@URL varchar(MAX), @Id_Info_Empleado int
+AS 
+BEGIN
+	INSERT INTO Multimedia(url, id_)
+	VALUES (@URL)
+END 
+GO
+
+
 
 CREATE PROCEDURE InsertarEducacion
 	@titulo varchar (max), @nombre_institucion varchar (max), @disciplina_academica varchar(max), @actividades_grupo varchar(max), @descripcion varchar(max), @id_info_empleado int
@@ -126,6 +136,3 @@ BEGIN
 	INSERT INTO Educacion (titulo, nombre_institucion,disciplina_academica,actividades_grupo,descripcion
 
 	
-
-	
-

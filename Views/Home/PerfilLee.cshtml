@@ -4,6 +4,8 @@
     ViewData["Title"] = "Lee";
 }
 
+
+
  <div class="container">
         <div class="card-container">
             <a data-bs-toggle="modal" data-bs-target="#ModalForm">
@@ -14,9 +16,7 @@
                 <hr style="color: @Model.estilo;"><hr/>
                 <div class="contact-info">
                     <h5 class="telefono" style="background-color:@Model.estilo;"> @Model.telefono </h5><p class="mail" style="background-color:@Model.estilo;">@Model.mail</p> <p class="ubicacion" style="background-color:@Model.estilo;">@Model.ubicacion</p>
-                </div>
-              
-                
+                </div>    
             </a>
             <hr style="color: @Model.estilo;"><hr/>
             <div class="acerca_de_mi_container">
@@ -26,58 +26,69 @@
                 <img class="img_upload_archivos" src="../img/componente/subir_archivo.png" alt="Subir Archivos" class="upload-image" onclick="document.getElementById('fileInput').click()">
                 <input type="file" id="fileInput" multiple style="display: none;" accept=".png, .jpg, .jpeg, .pdf, .txt, .mp3, .mp4" onchange="handleFiles(this.files)">
             </div>
-            <!--<div id="carouselExampleControls" class="carousel-container carousel slide">
-                <div class="carousel-inner" id="fileList"></div>
-                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
-                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Previous</span>
-                </button>
-                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
-                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Next</span>
-                </button>
-            </div>-->
-                <div id="CarouseLArchivos" class="carousel slide" style="display: none;">
-                    <div class="carousel-inner" id="fileList"></div>
-                    <button class="carousel-control-prev" type="button" data-bs-target="#CarouseLArchivos" data-bs-slide="prev">
-                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                        <span class="visually-hidden">Previous</span>
-                    </button>
-                    <button class="carousel-control-next" type="button" data-bs-target="#CarouseLArchivos" data-bs-slide="next">
-                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                        <span class="visually-hidden">Next</span>
-                    </button>
+            
+
+
+        @if (ViewBag.UrlMultimedia != null)
+        {
+        
+            <div class="container carousel-container">
+                <div id="carouselExampleAutoplaying" class="carousel slide carousel-fotos" data-bs-ride="carousel">
+                    <div class="carousel-inner" style="text-align: center; width: 100%;" id="carousel-inner">
+                        @{
+                            bool Activo = true;
+                        @foreach (string item in ViewBag.UrlMultimedia)
+            {
+                <div class='carousel-item @(Activo == true ? "active" : "")'>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <img src="@item" class="d-block w-100" >
+                        </div>
+                        </div>
+                    </div>
+                Activo = false;
+            }}
                 </div>
-        </div>
-    </div>
-
-<div class="modal fade" id="ModalForm" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div id="seccion1" class="modal-header">
-                <h5 class="modal-title">Información Personal - Parte 1</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Cerrar">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div id="seccion1-body" class="modal-body">
-                 @using(Html.BeginForm("InsertarInformacionPersonal1","Home",  FormMethod.Post, new {id="form-modal"}))
-                {
-                    <div>
-                        @Html.TextBoxFor(model=>model.nombre_apellido, new {placeholder="Nombre y Apellido"})
-                        @Html.TextBoxFor(model=>model.mail, new {placeholder="Correo electrónico",type="email"})
-                        @Html.TextBoxFor(model=>model.telefono, new {placeholder="Teléfono"})
-                        @Html.TextBoxFor(model=>model.estilo, new {placeholder="Estilo",  value="#"})
-    
-
-                        @Html.HiddenFor(model=>model.id)
+                        <button class="button_boton carousel-control-prev" style="background-color: @Model.estilo;" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon"  aria-hidden="false"></span>
+                            <span class="visually-hidden">Previous</span>
+                        </button>
+                        <button class="button_boton carousel-control-next" type="button" style="background-color: @Model.estilo;" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="next">
+                            <span class="carousel-control-next-icon"  aria-hidden="false"></span>
+                            <span class="visually-hidden">Next</span>
+                        </button>
                     </div>
-                    <div id="seccion1-footer" class="modal-footer">
-                    <button type="submit" class="btn btn-primary">Guardar</button>
-                        <button type="button" class="btn btn-primary" onclick="mostrarSiguienteSeccion(2)">Siguiente</button>
-                    </div>
+                </div>
+            }
 
-                }
+        <div class="modal fade" id="ModalForm" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div id="seccion1" class="modal-header">
+                        <h5 class="modal-title">Información Personal - Parte 1</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Cerrar">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div id="seccion1-body" class="modal-body">
+                        @using(Html.BeginForm("InsertarInformacionPersonal1","Home",  FormMethod.Post, new {id="form-modal"}))
+                        {
+                            <div>
+                                NOMBRE COMPLETO
+                                @Html.TextBoxFor(model=>model.nombre_apellido, new {placeholder="Nombre y Apellido"})
+                                EMAIL
+                                @Html.TextBoxFor(model=>model.mail, new {placeholder="Correo electrónico",type="email"})
+                                TELÉFONO
+                                @Html.TextBoxFor(model=>model.telefono, new {placeholder="Teléfono"})
+                                COLOR GENERAL
+                                @Html.TextBoxFor(model=>model.estilo, new {placeholder="Estilo",  value="#"})
+                                @Html.HiddenFor(model=>model.id)
+                            </div>
+                            <div id="seccion1-footer" class="modal-footer">
+                            <button type="submit" class="btn btn-primary">Guardar</button>
+                                <button type="button" class="btn btn-primary" onclick="mostrarSiguienteSeccion(2)">Siguiente</button>
+                            </div>
+                        }
             </div>
             <div id="seccion2" class="modal-header" style="display: none;">
                 <h5 class="modal-title">Información Personal - Parte 2</h5>
@@ -88,9 +99,13 @@
             <div id="seccion2-body" class="modal-body" style="display: none;">
                 <form action='@Url.Action("InsertarInformacionPersonal2")' method="post" id="form-modal">
                     <div>
-                     @Html.TextBoxFor(model=>model.acerca_de_mi, new {placeholder="Acerca De Mi"})
+                    ACERCA DE MI
+                    @Html.TextBoxFor(model=>model.acerca_de_mi, new {placeholder="Acerca De Mi"})
+                    PROFESION
                     @Html.TextBoxFor(model=>model.profesion_actual, new {placeholder="Profesion"})
+                    UBICACION
                     @Html.TextBoxFor(model=>model.ubicacion, new {placeholder="Ubicacion"})
+                    FOTO DE PERFIL
                     @Html.TextBoxFor(model=>model.foto_perfil, new {placeholder="URL Foto de Perfil"})
                     @Html.HiddenFor(model=>model.id)
                     </div>
@@ -103,7 +118,9 @@
         </div>
     </div>
 </div>
-
+    @{
+        var modelId = Model.id;
+    }
 <script>
     function mostrarSiguienteSeccion(numeroSeccion) {
         if (numeroSeccion === 1) {
@@ -124,65 +141,46 @@
             $('#seccion1-footer').hide();
         }
     }
-    function handleFiles(files) {
-            const fileList = document.getElementById('fileList');
-            const items = document.getElementsByClassName("carousel-item");
 
-            for (let i = 0; i < files.length; i++) {
-                const file = files[i];
-                const listItem = document.createElement('div');
-                listItem.className = 'carousel-item';
+      function handleFiles(files) {
+        
+        console.log(id);
+    const fileList = document.getElementById('fileList');
 
-                const link = document.createElement('a');
-                link.href = URL.createObjectURL(file);
-                link.target = '_blank';
+    for (let i = 0; i < files.length; i++) {
+        const file = files[i];
+        
 
-                const deleteButton = document.createElement('button');
-                deleteButton.className = 'delete-button';
-                deleteButton.textContent = '×';
-                deleteButton.onclick = function() {
-                    listItem.remove();
-                    updateSlides();
-                };
-
-                if (file.type.startsWith('image/')) {
-                    const img = document.createElement('img');
-                    img.src = URL.createObjectURL(file);
-                    img.alt = file.name;
-                    img.className = 'd-block w-100';
-                    //img.style='box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);';
-                    link.appendChild(img);
-                } else if (file.type.startsWith('video/')) {
-                    const video = document.createElement('video');
-                    video.src = URL.createObjectURL(file);
-                    video.controls = true;
-                    video.className = 'file-preview';
-                    link.appendChild(video);
-                } else if (file.type === 'application/pdf' || file.type === 'text/plain') {
-                    const icon = document.createElement('img');
-                    icon.src = 'ruta/a/icono/pdf_o_txt.png';
-                    icon.alt = file.name;
-                    icon.className = 'file-preview';
-                    link.appendChild(icon);
-                } else if (file.type === 'audio/mpeg') {
-                    const audio = document.createElement('audio');
-                    audio.src = URL.createObjectURL(file);
-                    audio.controls = true;
-                    audio.className = 'file-preview';
-                    link.appendChild(audio);
+        const link = document.createElement('a');
+        link.href = URL.createObjectURL(file);
+        link.target = '_blank';
+        var modelId = '@modelId';
+        const fileURL = link.href;
+        if (fileURL) {
+            $.ajax({
+                url: '/Home/InsertarMultimedia',
+                method: "POST",
+                data: { URL: fileURL, Id_Empleado: modelId },
+                success: function(response) { //cuando queremos elimainar cada imagne que selecciona comparamos en el procedure la url de la imagen para ver cual es y que coincida.
+                    console.log('Enlace enviado correctamente');
+                    console.log(response);
+                    let text= "";
+                    for (let i = 0; i < response.data.length; i++) {
+                        text += "<div class='carousel-item "+ (i==0 ? "active" : "") +"'><div class='row'><div class='col-md-12'><img src='"+response.data[i] +"' class='d-block w-100'></div></div></div>"
+                    }
+                    $("#carousel-inner").html(text)
+                },
+                error: function(xhr, status, error) {
+                    console.error('Error al enviar el enlace:', status, error);
                 }
-
-                listItem.appendChild(link);
-                listItem.appendChild(deleteButton);
-                fileList.appendChild(listItem);
-            }
-            updateSlides();
-            const cantidadslides = document.getElementsByClassName('carousel-item');
-            console.log(cantidadslides.length);
-            // HACER UN FOREACH PARA BUSCAR SI HAY ACTIVE
-            if (cantidadslides.length == 1) cantidadslides[0].classList.add('active');
+            });
+        } else {
+            console.error('URL is null or empty');
         }
+    }
 
+    updateSlides();
+}
         function updateSlides() {
             const slides = document.getElementsByClassName('carousel-item');
             const carousel = document.getElementById('CarouseLArchivos');
@@ -197,9 +195,7 @@
                 document.querySelector('.carousel-control-next').style.display = 'none';
             }
         }
-    </script>
-
-    <script>
+        
     function getBrightness(hex) {
     hex = hex.replace('#', '');
     var r = parseInt(hex.substring(0, 2), 16);
@@ -231,17 +227,27 @@ document.addEventListener('DOMContentLoaded', adjustTextColorBasedOnBackground);
 </script>
 
 <style>
+
+.button_boton{
+    border-radius: 0px !important;
+
+}
+.carousel-item img {
+    width: 100%; /* Ajusta el ancho para que ocupe todo el contenedor */
+    height: 300px; /* Ajusta la altura que deseas para todas las imágenes */
+    object-fit: cover; /* Asegura que la imagen cubra el área del contenedor sin deformarse */
+}
+
 .delete-button {
     position: absolute;
     top: 10px;
-    right: 10px;
+    right: 170px;
     background-color: black;
     color: white;
     border: none;
-    border-radius: 50%;
     cursor: pointer;
-    width: 30px;
-    height: 30px;
+    width: 50px;
+    height: 20px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -306,11 +312,11 @@ document.addEventListener('DOMContentLoaded', adjustTextColorBasedOnBackground);
     margin-left: 520px;
      color: inherit;
 
-      background-color: inherit; /* Inherit the background color from the parent */
-    color: inherit; /* Inherit the text color from the parent */
-    display: inline-block; /* Ensure elements are inline */
-    white-space: nowrap; /* Prevent text from breaking into multiple lines */
-    overflow: hidden; /* Ensure text does not overflow */
+      background-color: inherit; 
+    color: inherit;
+    display: inline-block; 
+    white-space: nowrap; 
+    overflow: hidden; 
     text-overflow: ellipsis;
 }
 .acerca-de-mi{
@@ -352,6 +358,13 @@ button {
   align-items: center!important;
 }
 
+/*-----------------------------------------------*/
 
+
+.carousel-control-prev, .carousel-control-next {
+    background-color: rgba(0,0,0,0.5); /* Fondo semitransparente para los controles */
+   
+}
+.carou
 
 </style>

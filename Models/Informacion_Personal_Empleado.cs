@@ -11,4 +11,6 @@ public class Informacion_Personal_Empleado{
     public string foto_perfil {get;set;}
     public string encabezado {get;set;}
 
+    
+
 }

@@ -104,16 +104,32 @@ public  class BD
             db.Execute(sp, parameters, commandType: CommandType.StoredProcedure);
         }
     }
+
+   public static void InsertarMultimedia(string URL, int Id_Empleado)
+{
+    using (SqlConnection db = new SqlConnection(ConnectionString))
+    {
+        string sp = "InsertarMultimedia";
+        var parameters = new { url = URL, id_info_empleado= Id_Empleado};
+        db.Execute(sp, parameters, commandType: CommandType.StoredProcedure);
+    }
+}
+
+    public static List<string> SelectMultimedia(int Id_Info_Empleado)
+{
+    List<string> UrlMultimedia = new List<string>(); 
+
+    using (SqlConnection db = new SqlConnection(ConnectionString))
+    {
+        string sp = "SelectMultimedia";
+        UrlMultimedia = db.Query<string>(sp, new { id_info_empleado = Id_Info_Empleado }, commandType: CommandType.StoredProcedure).ToList();
     }
 
-    /*public static Usuario SelectUser(int id)
-    {
-        Usuario user = null;
-        using(SqlConnection db = new SqlConnection(ConnectionString))
-        {
-            string sp = "SelectUser";
-            user= db.QueryFirstOrDefault<Usuario>(sp, new {id=id}, commandType: CommandType.StoredProcedure);
-        }
-        return user;
-    }*/
+    return UrlMultimedia;
+}
 
+    }
+
+
+
+    

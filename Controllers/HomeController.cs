@@ -47,6 +47,7 @@ public class HomeController : Controller
     [HttpPost]
     public IActionResult Login(string Mail , string Contraseña)
     {
+        List<string> UrlMultimedia = new List<string>(); 
         Usuario usuario = Models.BD.Login(Mail,Contraseña); 
         if (usuario == null )
         {
@@ -56,6 +57,7 @@ public class HomeController : Controller
         else if (usuario.id_discapacidad == 1)
         {
             Informacion_Personal_Empleado perfil= Models.BD.CargarPerfilLogin(usuario.id);
+            ViewBag.UrlMultimedia=Models.BD.SelectMultimedia(usuario.id);
             return View("PerfilLee", perfil);
         }
         else  {
@@ -101,21 +103,46 @@ public class HomeController : Controller
         }
     }
  
- [HttpPost]
+    [HttpPost]
     public IActionResult InsertarInformacionPersonal1(Informacion_Personal_Empleado usuario)
     {
         Models.BD.InsertarInformacionPersonalEmpleado1(usuario);
         Informacion_Personal_Empleado perfil= Models.BD.CargarPerfilLogin(usuario.id);
+        List<string> UrlMultimedia = new List<string>(); 
+        ViewBag.UrlMultimedia=Models.BD.SelectMultimedia(usuario.id);
         return View("PerfilLee", perfil);
         }
 
 
     [HttpPost]
-    public IActionResult InsertarInformacionPersonal2( Informacion_Personal_Empleado usuario)
+    public IActionResult InsertarInformacionPersonal2(Informacion_Personal_Empleado usuario)
     {
         Models.BD.InsertarInformacionPersonalEmpleado2(usuario);
         Informacion_Personal_Empleado perfil= Models.BD.CargarPerfilLogin(usuario.id);
+        List<string> UrlMultimedia = new List<string>(); 
+        ViewBag.UrlMultimedia=Models.BD.SelectMultimedia(usuario.id);
         return View("PerfilLee", perfil);
     }
-    
+
+    [HttpPost]
+    public JsonResult InsertarMultimedia(string URL, int Id_Empleado)
+    {
+        
+        List<string> UrlMultimedia = new List<string>(); 
+        if (string.IsNullOrEmpty(URL))
+        {
+            return Json(new { success = false, message = "The URL parameter is null or empty." });
+        }
+        try
+        {
+            BD.InsertarMultimedia(URL, Id_Empleado);
+            UrlMultimedia= BD.SelectMultimedia(Id_Empleado);
+            return Json(new { success = true, data = UrlMultimedia });
+        }
+        catch (Exception ex)
+        {
+            // Manejo del error
+            return Json(new { success = false, message = ex.Message });
+        }
+    }   
 }
