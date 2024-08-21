@@ -1,74 +1,97 @@
 @using Hiring.Models
 @model Informacion_Personal_Empleado
-@{
-    ViewData["Title"] = "Lee";
-}
+
+@{ ViewData["Title"] = "Lee";}
 
 
 
- <div class="container">
-        <div class="card-container">
-            <a data-bs-toggle="modal" data-bs-target="#ModalForm">
-                <div class="rectangulo-encabezado" style="background-color: @Model.estilo;"></div>
-                <img class="foto-perfil" src="@Model.foto_perfil" alt="Foto de perfil">
-                <h3 class="nombre-apellido">@Model.nombre_apellido  | <p id= "profesion" style="color:@Model.estilo;">@Model.profesion_actual </p></h3>
-                
-                <hr style="color: @Model.estilo;"><hr/>
-                <div class="contact-info">
-                    <h5 class="telefono" style="background-color:@Model.estilo;"> @Model.telefono </h5><p class="mail" style="background-color:@Model.estilo;">@Model.mail</p> <p class="ubicacion" style="background-color:@Model.estilo;">@Model.ubicacion</p>
-                </div>    
-            </a>
-            <hr style="color: @Model.estilo;"><hr/>
+<div class="container">
+       <div class="card-container">
+    <a data-bs-toggle="modal" data-bs-target="#ModalForm">
+        <div class="rectangulo-encabezado" style="background-color: @Model.estilo;"></div>
+        <div class="perfil-container">
+            <img class="foto-perfil" src="@Model.foto_perfil" alt="Foto de perfil">
+            <div class="info-perfil">
+                <div class="perfil-header">
+                    <h3 class="nombre-apellido">@Model.nombre_apellido</h3>
+                    <img class="mini-foto" src="../img/logos/HirINg-app.gif" alt="Mini Foto">
+                </div>
+                <div class="profesion-container">
+                    <i class="fas fa-briefcase profesion-icon"></i>
+                    <p class="profesion" style="color: rgb(59, 59, 59) !important;">@Model.profesion_actual</p>
+                </div>
+            </div>
+        </div>
+        <hr style="color: @Model.estilo; margin-top: -35px; opacity: .5;">
+        <div class="contact-info">
+            <h5 class="telefono" style="background-color:@Model.estilo;">
+                <i class="fa-solid fa-phone"></i> @Model.telefono
+            </h5>
+            <h5 class="mail" style="background-color:@Model.estilo;">
+                <i class="fa-solid fa-envelope"></i> @Model.mail
+            </h5>
+            <h5 class="ubicacion" style="background-color:@Model.estilo;">
+                <i class="fa-solid fa-location-dot"></i> @Model.ubicacion
+            </h5>
+        </div>
+    </a>
+            
             <div class="acerca_de_mi_container">
+            <i  class="fa-solid fa-address-card"></i>
             <div class="acerca-de-mi"> 
             @Model.acerca_de_mi</div></div>
             <div class="upload-container">
                 <img class="img_upload_archivos" src="../img/componente/subir_archivo.png" alt="Subir Archivos" class="upload-image" onclick="document.getElementById('fileInput').click()">
                 <input type="file" id="fileInput" multiple style="display: none;" accept=".png, .jpg, .jpeg, .pdf, .txt, .mp3, .mp4" onchange="handleFiles(this.files)">
             </div>
+            <div class="educacion-container">
+                 <a data-bs-toggle="modal" data-bs-target="#ModalEducacion">
+                <img class="img_upload_archivos" src="../img/componente/educacion.png" alt="Educacion">
+                </a>
+            </div>
+            
+            
             
 
 
-        @if (ViewBag.UrlMultimedia != null)
-        {
-        
-            <div class="container carousel-container">
-                <div id="carouselExampleAutoplaying" class="carousel slide carousel-fotos" data-bs-ride="carousel">
-                    <div class="carousel-inner" style="text-align: center; width: 100%;" id="carousel-inner">
-                        @{
-                            bool Activo = true;
-                        @foreach (string item in ViewBag.UrlMultimedia)
-            {
-                <div class='carousel-item @(Activo == true ? "active" : "")'>
-                    <div class="row">
-                        <div class="col-md-12">
-                            <img src="@item" class="d-block w-100" >
-                        </div>
-                        </div>
-                    </div>
-                Activo = false;
-            }}
-                </div>
-                        <button class="button_boton carousel-control-prev" style="background-color: @Model.estilo;" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="prev">
-                            <span class="carousel-control-prev-icon"  aria-hidden="false"></span>
-                            <span class="visually-hidden">Previous</span>
-                        </button>
-                        <button class="button_boton carousel-control-next" type="button" style="background-color: @Model.estilo;" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="next">
-                            <span class="carousel-control-next-icon"  aria-hidden="false"></span>
-                            <span class="visually-hidden">Next</span>
-                        </button>
-                    </div>
-                </div>
-            }
+     @if (ViewBag.UrlMultimedia != null){
 
+    <div class="container carousel-container">
+        <div id="carouselExampleAutoplaying" class="carousel slide carousel-fotos" data-bs-ride="carousel">
+            <div class="carousel-inner" style="text-align: center; width: 100%;" id="carousel-inner">
+                @{
+                    bool Activo = true;
+                    @foreach (string item in ViewBag.UrlMultimedia)
+                    {
+                        <div class='carousel-item @(Activo ? "active" : "")'>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <img src="@item" class="d-block w-100">
+                                </div>
+                            </div>
+                        </div>
+                        Activo = false;
+                    }
+                }
+            </div>
+            <button class="button_boton carousel-control-prev" style="background-color: @Model.estilo;" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="button_boton carousel-control-next" type="button" style="background-color: @Model.estilo;" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+        </div>
+    </div>
+}
+
+        <!-- MODAL INFO PERSONAL -->
         <div class="modal fade" id="ModalForm" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div id="seccion1" class="modal-header">
-                        <h5 class="modal-title">Información Personal - Parte 1</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Cerrar">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
+                        <h5 class="modal-title">Información Personal </h5>
                     </div>
                     <div id="seccion1-body" class="modal-body">
                         @using(Html.BeginForm("InsertarInformacionPersonal1","Home",  FormMethod.Post, new {id="form-modal"}))
@@ -81,20 +104,17 @@
                                 TELÉFONO
                                 @Html.TextBoxFor(model=>model.telefono, new {placeholder="Teléfono"})
                                 COLOR GENERAL
-                                @Html.TextBoxFor(model=>model.estilo, new {placeholder="Estilo",  value="#"})
-                                @Html.HiddenFor(model=>model.id)
+                                <input type="color" id="colorPicker" name="estilo" class="form-control mb-2" value="@Model.estilo" />
+                                @Html.HiddenFor(model => model.id, new { placeholder = "Estilo" })
                             </div>
                             <div id="seccion1-footer" class="modal-footer">
-                            <button type="submit" class="btn btn-primary">Guardar</button>
-                                <button type="button" class="btn btn-primary" onclick="mostrarSiguienteSeccion(2)">Siguiente</button>
+                            <button type="submit" style="background-color: @Model.estilo; border-color: @Model.estilo" class="btn btn-primary">Guardar</button>
+                            <button type="button" style="background-color: @Model.estilo ; border-color: @Model.estilo" class="btn btn-primary" onclick="mostrarSiguienteSeccion(2)">Siguiente</button>
                             </div>
                         }
             </div>
             <div id="seccion2" class="modal-header" style="display: none;">
-                <h5 class="modal-title">Información Personal - Parte 2</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Cerrar">
-                    <span aria-hidden="true">&times;</span>
-                </button>
+                <h5 class="modal-title">Información Personal </h5>
             </div>
             <div id="seccion2-body" class="modal-body" style="display: none;">
                 <form action='@Url.Action("InsertarInformacionPersonal2")' method="post" id="form-modal">
@@ -110,261 +130,139 @@
                     @Html.HiddenFor(model=>model.id)
                     </div>
             <div id="seccion2-footer" class="modal-footer" style="display: none;">
-                <button type="button" class="btn btn-secondary" onclick="mostrarSiguienteSeccion(1)">Anterior</button>
-                <button type="submit" class="btn btn-primary">Guardar</button>
+                <button type="button" style="background-color: @Model.estilo ; border-color: @Model.estilo" class="btn btn-secondary" onclick="mostrarSiguienteSeccion(1)">Anterior</button>
+                <button type="submit" style="background-color: @Model.estilo ;border-color: @Model.estilo" class="btn btn-primary">Guardar</button>
             </div>
             </form>
             </div>
         </div>
     </div>
 </div>
+
+
+    <!--MODAL EDUCACION -->
+    <div class="modal fade" id="ModalEducacion" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div id="seccion1" class="modal-header">
+                <h5 class="modal-title">Educación</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Cerrar">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div id="seccion1-body" class="modal-body">
+                <form>
+                    <input type="text" name="titulo" placeholder="Título">
+                    <input type="text" name="NombreInstitucion" placeholder="Nombre Institución">
+                    <input type="text" name="DisciplinaAcademica" placeholder="Disciplina Académica">
+                    <input type="text" name="ActividadesGrupo" placeholder="Actividades de Grupo">
+                    <input type="text" name="Descripcion" placeholder="Descripción">
+                    <input type="date" name="FechaExpedicion" placeholder="Fecha Expedición">
+                    <input type="date" name="FechaCaducidad" placeholder="Fecha Caducidad">
+                </form>
+
+                @if (ViewBag.Lista_educacion != null)
+                {
+                    foreach (var item in ViewBag.Lista_educacion)
+                    {
+                        <div class="card_educacion">
+                            <div class="container3__text">
+                                <h1>@item.Titulo</h1>
+                                <div class="container3__text__star">
+                                    <span class="fa fa-star checked"></span>
+                                    <span class="fa fa-star checked"></span>
+                                    <span class="fa fa-star checked"></span>
+                                    <span class="fa fa-star checked"></span>
+                                    <span class="fa fa-star checked"></span>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                }
+            </div>
+                    <div id="seccion1-footer" class="modal-footer">
+                        <button type="submit" class="btn btn-primary">Guardar</button>
+                        <button type="button" class="btn btn-primary" onclick="mostrarSiguienteSeccion(2)">Siguiente</button>
+                    </div>      
+            </div>
+
+
+
+                               <!-- Aca hago un form vacio con la info de educacion a completar
+
+                                //Abajo de eso hago un foreach recorriengo el viewbag de la educcacion ya cargada, 
+                                //COn un link de modificar (este debería cargar el form) y de eliminar-->
+                            
+
+
+
     @{
         var modelId = Model.id;
     }
 <script>
-    function mostrarSiguienteSeccion(numeroSeccion) {
-        if (numeroSeccion === 1) {
-            $('#seccion1').show();
-            $('#seccion1-body').show();
-            $('#seccion1-footer').show();
-
-            $('#seccion2').hide();
-            $('#seccion2-body').hide();
-            $('#seccion2-footer').hide();
-        } else if (numeroSeccion === 2) {
-            $('#seccion2').show();
-            $('#seccion2-body').show();
-            $('#seccion2-footer').show();
-
-            $('#seccion1').hide();
-            $('#seccion1-body').hide();
-            $('#seccion1-footer').hide();
-        }
-    }
-
-      function handleFiles(files) {
-        
-        console.log(id);
+    function handleFiles(files) {
     const fileList = document.getElementById('fileList');
+    var modelId = '@modelId';
 
     for (let i = 0; i < files.length; i++) {
         const file = files[i];
-        
+        const formData = new FormData();
+        formData.append('file', file);
+        formData.append('Id_Empleado', modelId);
 
-        const link = document.createElement('a');
-        link.href = URL.createObjectURL(file);
-        link.target = '_blank';
-        var modelId = '@modelId';
-        const fileURL = link.href;
-        if (fileURL) {
-            $.ajax({
-                url: '/Home/InsertarMultimedia',
-                method: "POST",
-                data: { URL: fileURL, Id_Empleado: modelId },
-                success: function(response) { //cuando queremos elimainar cada imagne que selecciona comparamos en el procedure la url de la imagen para ver cual es y que coincida.
-                    console.log('Enlace enviado correctamente');
-                    console.log(response);
-                    let text= "";
-                    for (let i = 0; i < response.data.length; i++) {
-                        text += "<div class='carousel-item "+ (i==0 ? "active" : "") +"'><div class='row'><div class='col-md-12'><img src='"+response.data[i] +"' class='d-block w-100'></div></div></div>"
-                    }
-                    $("#carousel-inner").html(text)
-                },
-                error: function(xhr, status, error) {
-                    console.error('Error al enviar el enlace:', status, error);
+        // Enviar el archivo al servidor
+        $.ajax({
+            url: '/Home/UploadFile',
+            method: "POST",
+            data: formData,
+            contentType: false,
+            processData: false,
+            success: function(response) {
+                console.log('Archivo subido correctamente');
+                console.log(response);
+
+                // Actualiza el carrusel con la nueva imagen
+                let text = "";
+                for (let i = 0; i < response.data.length; i++) {
+                    text += "<div class='carousel-item " + (i == 0 ? "active" : "") + "'><div class='row'><div class='col-md-12'><img src='" + response.data[i] + "' class='d-block w-100'></div></div></div>";
                 }
-            });
-        } else {
-            console.error('URL is null or empty');
-        }
+                $("#carousel-inner").html(text);
+            },
+            error: function(xhr, status, error) {
+                console.error('Error al subir el archivo:', status, error);
+            }
+        });
     }
-
     updateSlides();
 }
-        function updateSlides() {
-            const slides = document.getElementsByClassName('carousel-item');
-            const carousel = document.getElementById('CarouseLArchivos');
-            if (slides.length > 0) {
-                carousel.style.display = 'block'; // Muestra el carrusel
-                const bootstrapCarousel = new bootstrap.Carousel(carousel);
-                document.querySelector('.carousel-control-prev').style.display = 'block';
-                document.querySelector('.carousel-control-next').style.display = 'block';
-            } else {
-                carousel.style.display = 'none'; // Oculta el carrusel
-                document.querySelector('.carousel-control-prev').style.display = 'none';
-                document.querySelector('.carousel-control-next').style.display = 'none';
-            }
-        }
+
+       
         
-    function getBrightness(hex) {
-    hex = hex.replace('#', '');
-    var r = parseInt(hex.substring(0, 2), 16);
-    var g = parseInt(hex.substring(2, 4), 16);
-    var b = parseInt(hex.substring(4, 6), 16);
-    return (r * 299 + g * 587 + b * 114) / 1000;
-}
+   
 
-function adjustTextColorBasedOnBackground() {
-    var card = document.querySelector('.card-container');
-    var bgColor = window.getComputedStyle(card.querySelector('.rectangulo-encabezado')).backgroundColor;
 
-    var rgb = bgColor.match(/\d+/g);
-    var hex = rgb.map(x => {
-        var hexPart = parseInt(x).toString(16);
-        return hexPart.length === 1 ? '0' + hexPart : hexPart;
-    }).join('');
 
-    var brightness = getBrightness(hex);
-
-    var textColor = brightness > 128 ? 'black' : 'white';
-    card.style.color = textColor;
-    card.querySelectorAll('.telefono, .mail, .ubicacion, .acerca_de_mi_container, #profesion').forEach(el => {
-        el.style.color = textColor;
-    });
-}
-
-document.addEventListener('DOMContentLoaded', adjustTextColorBasedOnBackground);
 </script>
 
 <style>
-
-.button_boton{
-    border-radius: 0px !important;
-
-}
-.carousel-item img {
-    width: 100%; /* Ajusta el ancho para que ocupe todo el contenedor */
-    height: 300px; /* Ajusta la altura que deseas para todas las imágenes */
-    object-fit: cover; /* Asegura que la imagen cubra el área del contenedor sin deformarse */
+/*profesion */
+.profesion-container {
+    display: flex; 
+    align-items: center; 
+    margin-top: 10px; 
+    color:black;
 }
 
-.delete-button {
-    position: absolute;
-    top: 10px;
-    right: 170px;
-    background-color: black;
-    color: white;
-    border: none;
-    cursor: pointer;
-    width: 50px;
-    height: 20px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.profesion-icon {
+    font-size: 20px; 
+    margin-right: 8px; 
+    color: @Model.estilo; 
 }
 
-.upload-container {
-    text-align: center;
-    margin: 20px;
+.profesion {
+    margin: 0; 
+    color: rgb(59, 59, 59) !important;
+    font-family: 'Sura', sans-serif;
 }
-
-.img_upload_archivos {
-    cursor: pointer;
-    max-width: 100%;
-}
-
-/*-------------------*/
-
-
-
-.telefono {
-    border-radius: 25px;
-    margin-left: 160px;
-    margin-right: 1px !important;
-    font-size: 0.9em;
-    color: inherit;
-    width: 120px;
-    position: absolute;
-    margin-top: 35px;
-    text-align: center;
-    font-size: 17px;
-
-     background-color: inherit; /* Inherit the background color from the parent */
-    color: inherit; /* Inherit the text color from the parent */
-    display: inline-block; /* Ensure elements are inline */
-    white-space: nowrap; /* Prevent text from breaking into multiple lines */
-    overflow: hidden; /* Ensure text does not overflow */
-    text-overflow: ellipsis;
-    
-}
-.mail{
-    position: absolute;
-    width: 200px;
-    border-radius: 25px;
-    text-align: center;
-    margin-top: 35px;
-    margin-left: 300px;
-     color: inherit;
-
-      background-color: inherit; /* Inherit the background color from the parent */
-    color: inherit; /* Inherit the text color from the parent */
-    display: inline-block; /* Ensure elements are inline */
-    white-space: nowrap; /* Prevent text from breaking into multiple lines */
-    overflow: hidden; /* Ensure text does not overflow */
-    text-overflow: ellipsis;
-}
-.ubicacion{
-    position: absolute;
-    width: 100px;
-    border-radius: 25px;
-    text-align: center;
-    margin-top: 35px;
-    margin-left: 520px;
-     color: inherit;
-
-      background-color: inherit; 
-    color: inherit;
-    display: inline-block; 
-    white-space: nowrap; 
-    overflow: hidden; 
-    text-overflow: ellipsis;
-}
-.acerca-de-mi{
-    width: 100%;
-    text-align: justify;
-    margin-top: 5%;
-    align-items: center;
-    padding: 10px;
-}
-.acerca_de_mi_container{
-     
-    background-color: #FEFEFE;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); 
-    height: 20%;
-    margin-top: 10%;
-}
-h5 {
-    margin: 5px 0;
-    font-size: 0.9em;
-    color: #555;
-}
-
-button {
-    border-radius: 50px !important;
-}
-
-#profesion {
-    margin-left: 46%;
-    border-radius: 35%;
-    width: 100px;
-    text-align: center;
-    display: contents;
-  
-}
-.img_upload_archivos {
-  vertical-align: middle!important;
-  width: 40%!important;
-  border-style: none!important;
-  align-items: center!important;
-}
-
-/*-----------------------------------------------*/
-
-
-.carousel-control-prev, .carousel-control-next {
-    background-color: rgba(0,0,0,0.5); /* Fondo semitransparente para los controles */
-   
-}
-.carou
 
 </style>

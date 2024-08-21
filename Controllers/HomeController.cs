@@ -72,12 +72,14 @@ public class HomeController : Controller
 
         if(userr == null)
         {
-            BD.Registro(user.mail, user.contraseña, user.id_discapacidad);
-            userr = BD.Registro_VerificarExistencia(user.mail);
+            Models.BD.Registro(user.mail, user.contraseña, user.id_discapacidad);
+            userr = Models.BD.Registro_VerificarExistencia(user.mail);
 
             if(user.id_discapacidad==1) {
                 Models.BD.CargaPerfilDefault(userr,estilo, foto_perfil, encabezado, nombre_apellido, telefono, mail);
                 Informacion_Personal_Empleado perfil= Models.BD.CargarPerfilLogin(userr.id);
+                //ViewBag.Lista_educacion = Models.BD.SelectEducacion(userr.id);
+                // Cargo aca un ViewBag con el listado de Educacion
                 return View("PerfilLee", perfil);
             }
             else return View("PerfilNoLee");
@@ -125,24 +127,51 @@ public class HomeController : Controller
     }
 
     [HttpPost]
-    public JsonResult InsertarMultimedia(string URL, int Id_Empleado)
+    public IActionResult InsertarEducacion( Educacion educacion, Informacion_Personal_Empleado usuario){
+        Models.BD.InsertarEducacion(educacion);
+        Informacion_Personal_Empleado perfil= Models.BD.CargarPerfilLogin(usuario.id);
+        List<Educacion> Lista_educacion = new List<Educacion>(); 
+        ViewBag.Lista_educacion =Models.BD.SelectEducacion(usuario.id);
+        return View("PerfilLee", perfil);
+    }
+
+
+   [HttpPost]
+public async Task<IActionResult> UploadFile(IFormFile file, int Id_Empleado)
+{
+    if (file == null || file.Length == 0)
     {
+        return Json(new { success = false, message = "No file uploaded." });
+    }
+
+    try
+    {
+       
+        var uploads = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/uploads");
         
-        List<string> UrlMultimedia = new List<string>(); 
-        if (string.IsNullOrEmpty(URL))
+        string extension = Path.GetExtension(file.FileName).ToLower();
+        string timeStamp =DateTimeOffset.UtcNow.ToUnixTimeSeconds().ToString() + extension;
+        var filePath = Path.Combine(uploads, timeStamp);
+       
+        using (var stream = new FileStream(filePath, FileMode.Create))
         {
-            return Json(new { success = false, message = "The URL parameter is null or empty." });
+            await file.CopyToAsync(stream);
         }
-        try
-        {
-            BD.InsertarMultimedia(URL, Id_Empleado);
-            UrlMultimedia= BD.SelectMultimedia(Id_Empleado);
-            return Json(new { success = true, data = UrlMultimedia });
-        }
-        catch (Exception ex)
-        {
-            // Manejo del error
-            return Json(new { success = false, message = ex.Message });
-        }
-    }   
+
+        // Guarda la URL del archivo en la base de datos
+        var fileUrl = Url.Content($"/uploads/{timeStamp}"); // Convertir a URL absoluta
+        BD.InsertarMultimedia(fileUrl, Id_Empleado);
+
+        //  todas las URLs de multimedia
+        var UrlMultimedia = BD.SelectMultimedia(Id_Empleado);
+
+        return Json(new { success = true, data = UrlMultimedia });
+    }
+    catch (Exception ex)
+    {
+        return Json(new { success = false, message = ex.Message });
+    }
+}
+
+    
 }

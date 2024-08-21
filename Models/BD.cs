@@ -6,7 +6,7 @@ namespace Hiring.Models;
 
 public  class BD
 {
-     private static string ConnectionString { get; set; } = @"Server=.;DataBase=Hiring;Trusted_Connection=True;";   
+     private static string ConnectionString { get; set; } = @"Server=LEO-LENOVO\SQLEXPRESS;DataBase=Hiring;Trusted_Connection=True;";   
      public static Usuario user; //agarra el usuario loggeado
 
 
@@ -105,7 +105,33 @@ public  class BD
         }
     }
 
-   public static void InsertarMultimedia(string URL, int Id_Empleado)
+  
+public static void InsertarEducacion(Educacion educacion)
+{
+    using (SqlConnection db = new SqlConnection(ConnectionString))
+    {
+        string sp = "InsertarEducacion";
+        var parameters = new { titulo = educacion.titulo, nombre_institucion= educacion.nombre_institucion, disciplina_academica = educacion.disciplina_academica, actividades_grupo=educacion.actividades_grupo,descripcion=educacion.descripcion, fecha_expedicion= educacion.fecha_expedicion, fecha_caducidad= educacion.fecha_caducidad  };
+        db.Execute(sp, parameters, commandType: CommandType.StoredProcedure);
+    }
+}
+
+public static List<Educacion> SelectEducacion(int Id_Info_Empleado)
+{
+    List<Educacion> Lista_educacion = new List<Educacion>(); 
+
+    using (SqlConnection db = new SqlConnection(ConnectionString))
+    {
+        string sp = "SelectEducacion";
+        Lista_educacion = db.Query<Educacion>(sp, new { id_info_empleado = Id_Info_Empleado}, commandType: CommandType.StoredProcedure).ToList();
+    }
+
+    return Lista_educacion;
+}
+
+
+
+public static void InsertarMultimedia(string URL, int Id_Empleado)
 {
     using (SqlConnection db = new SqlConnection(ConnectionString))
     {
@@ -128,7 +154,8 @@ public  class BD
     return UrlMultimedia;
 }
 
-    }
+
+}
 
 
 

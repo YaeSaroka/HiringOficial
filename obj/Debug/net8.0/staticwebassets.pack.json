@@ -1,280 +1,296 @@
 {
   "Files": [
     {
-      "Id": "Z:\\ORT 2024\\PF\\Hiring\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\Hiring.bundle.scp.css",
+      "Id": "C:\\Users\\Yael\\OneDrive\\Escritorio\\ORT 2024\\PF\\HiringOficial\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\Hiring.bundle.scp.css",
       "PackagePath": "staticwebassets\\Hiring.bundle.scp.css"
     },
     {
-      "Id": "Z:\\ORT 2024\\PF\\Hiring\\wwwroot\\css\\site.css",
+      "Id": "C:\\Users\\Yael\\OneDrive\\Escritorio\\ORT 2024\\PF\\HiringOficial\\wwwroot\\css\\site.css",
       "PackagePath": "staticwebassets\\css\\site.css"
     },
     {
-      "Id": "Z:\\ORT 2024\\PF\\Hiring\\wwwroot\\favicon.ico",
+      "Id": "C:\\Users\\Yael\\OneDrive\\Escritorio\\ORT 2024\\PF\\HiringOficial\\wwwroot\\favicon.ico",
       "PackagePath": "staticwebassets\\favicon.ico"
     },
     {
-      "Id": "Z:\\ORT 2024\\PF\\Hiring\\wwwroot\\img\\banner\\Thumbs.db",
+      "Id": "C:\\Users\\Yael\\OneDrive\\Escritorio\\ORT 2024\\PF\\HiringOficial\\wwwroot\\img\\banner\\Thumbs.db",
       "PackagePath": "staticwebassets\\img\\banner\\Thumbs.db"
     },
     {
-      "Id": "Z:\\ORT 2024\\PF\\Hiring\\wwwroot\\img\\banner\\banner_pedro.png",
+      "Id": "C:\\Users\\Yael\\OneDrive\\Escritorio\\ORT 2024\\PF\\HiringOficial\\wwwroot\\img\\banner\\banner_pedro.png",
       "PackagePath": "staticwebassets\\img\\banner\\banner_pedro.png"
     },
     {
-      "Id": "Z:\\ORT 2024\\PF\\Hiring\\wwwroot\\img\\banner\\banner_sarah.png",
+      "Id": "C:\\Users\\Yael\\OneDrive\\Escritorio\\ORT 2024\\PF\\HiringOficial\\wwwroot\\img\\banner\\banner_sarah.png",
       "PackagePath": "staticwebassets\\img\\banner\\banner_sarah.png"
     },
     {
-      "Id": "Z:\\ORT 2024\\PF\\Hiring\\wwwroot\\img\\componente\\subir_archivo.png",
+      "Id": "C:\\Users\\Yael\\OneDrive\\Escritorio\\ORT 2024\\PF\\HiringOficial\\wwwroot\\img\\componente\\educacion.png",
+      "PackagePath": "staticwebassets\\img\\componente\\educacion.png"
+    },
+    {
+      "Id": "C:\\Users\\Yael\\OneDrive\\Escritorio\\ORT 2024\\PF\\HiringOficial\\wwwroot\\img\\componente\\subir_archivo.png",
       "PackagePath": "staticwebassets\\img\\componente\\subir_archivo.png"
     },
     {
-      "Id": "Z:\\ORT 2024\\PF\\Hiring\\wwwroot\\img\\default\\encabezado.png",
+      "Id": "C:\\Users\\Yael\\OneDrive\\Escritorio\\ORT 2024\\PF\\HiringOficial\\wwwroot\\img\\default\\encabezado.png",
       "PackagePath": "staticwebassets\\img\\default\\encabezado.png"
     },
     {
-      "Id": "Z:\\ORT 2024\\PF\\Hiring\\wwwroot\\img\\default\\foto_Default.png",
+      "Id": "C:\\Users\\Yael\\OneDrive\\Escritorio\\ORT 2024\\PF\\HiringOficial\\wwwroot\\img\\default\\foto_Default.png",
       "PackagePath": "staticwebassets\\img\\default\\foto_Default.png"
     },
     {
-      "Id": "Z:\\ORT 2024\\PF\\Hiring\\wwwroot\\img\\perfiles\\Thumbs.db",
+      "Id": "C:\\Users\\Yael\\OneDrive\\Escritorio\\ORT 2024\\PF\\HiringOficial\\wwwroot\\img\\logos\\HirINg-app.gif",
+      "PackagePath": "staticwebassets\\img\\logos\\HirINg-app.gif"
+    },
+    {
+      "Id": "C:\\Users\\Yael\\OneDrive\\Escritorio\\ORT 2024\\PF\\HiringOficial\\wwwroot\\img\\perfiles\\Thumbs.db",
       "PackagePath": "staticwebassets\\img\\perfiles\\Thumbs.db"
     },
     {
-      "Id": "Z:\\ORT 2024\\PF\\Hiring\\wwwroot\\img\\perfiles\\sarah.png",
+      "Id": "C:\\Users\\Yael\\OneDrive\\Escritorio\\ORT 2024\\PF\\HiringOficial\\wwwroot\\img\\perfiles\\sarah.png",
       "PackagePath": "staticwebassets\\img\\perfiles\\sarah.png"
     },
     {
-      "Id": "Z:\\ORT 2024\\PF\\Hiring\\wwwroot\\js\\site.js",
+      "Id": "C:\\Users\\Yael\\OneDrive\\Escritorio\\ORT 2024\\PF\\HiringOficial\\wwwroot\\js\\site.js",
       "PackagePath": "staticwebassets\\js\\site.js"
     },
     {
-      "Id": "Z:\\ORT 2024\\PF\\Hiring\\wwwroot\\lib\\bootstrap\\LICENSE",
+      "Id": "C:\\Users\\Yael\\OneDrive\\Escritorio\\ORT 2024\\PF\\HiringOficial\\wwwroot\\lib\\bootstrap\\LICENSE",
       "PackagePath": "staticwebassets\\lib\\bootstrap"
     },
     {
-      "Id": "Z:\\ORT 2024\\PF\\Hiring\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css",
+      "Id": "C:\\Users\\Yael\\OneDrive\\Escritorio\\ORT 2024\\PF\\HiringOficial\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css"
     },
     {
-      "Id": "Z:\\ORT 2024\\PF\\Hiring\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css.map",
+      "Id": "C:\\Users\\Yael\\OneDrive\\Escritorio\\ORT 2024\\PF\\HiringOficial\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css.map"
     },
     {
-      "Id": "Z:\\ORT 2024\\PF\\Hiring\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css",
+      "Id": "C:\\Users\\Yael\\OneDrive\\Escritorio\\ORT 2024\\PF\\HiringOficial\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css"
     },
     {
-      "Id": "Z:\\ORT 2024\\PF\\Hiring\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css.map",
+      "Id": "C:\\Users\\Yael\\OneDrive\\Escritorio\\ORT 2024\\PF\\HiringOficial\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css.map"
     },
     {
-      "Id": "Z:\\ORT 2024\\PF\\Hiring\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css",
+      "Id": "C:\\Users\\Yael\\OneDrive\\Escritorio\\ORT 2024\\PF\\HiringOficial\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css"
     },
     {
-      "Id": "Z:\\ORT 2024\\PF\\Hiring\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css.map",
+      "Id": "C:\\Users\\Yael\\OneDrive\\Escritorio\\ORT 2024\\PF\\HiringOficial\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css.map"
     },
     {
-      "Id": "Z:\\ORT 2024\\PF\\Hiring\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css",
+      "Id": "C:\\Users\\Yael\\OneDrive\\Escritorio\\ORT 2024\\PF\\HiringOficial\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css"
     },
     {
-      "Id": "Z:\\ORT 2024\\PF\\Hiring\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css.map",
+      "Id": "C:\\Users\\Yael\\OneDrive\\Escritorio\\ORT 2024\\PF\\HiringOficial\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css.map"
     },
     {
-      "Id": "Z:\\ORT 2024\\PF\\Hiring\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css",
+      "Id": "C:\\Users\\Yael\\OneDrive\\Escritorio\\ORT 2024\\PF\\HiringOficial\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css"
     },
     {
-      "Id": "Z:\\ORT 2024\\PF\\Hiring\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css.map",
+      "Id": "C:\\Users\\Yael\\OneDrive\\Escritorio\\ORT 2024\\PF\\HiringOficial\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css.map"
     },
     {
-      "Id": "Z:\\ORT 2024\\PF\\Hiring\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css",
+      "Id": "C:\\Users\\Yael\\OneDrive\\Escritorio\\ORT 2024\\PF\\HiringOficial\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css"
     },
     {
-      "Id": "Z:\\ORT 2024\\PF\\Hiring\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css.map",
+      "Id": "C:\\Users\\Yael\\OneDrive\\Escritorio\\ORT 2024\\PF\\HiringOficial\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css.map"
     },
     {
-      "Id": "Z:\\ORT 2024\\PF\\Hiring\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css",
+      "Id": "C:\\Users\\Yael\\OneDrive\\Escritorio\\ORT 2024\\PF\\HiringOficial\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css"
     },
     {
-      "Id": "Z:\\ORT 2024\\PF\\Hiring\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css.map",
+      "Id": "C:\\Users\\Yael\\OneDrive\\Escritorio\\ORT 2024\\PF\\HiringOficial\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css.map"
     },
     {
-      "Id": "Z:\\ORT 2024\\PF\\Hiring\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css",
+      "Id": "C:\\Users\\Yael\\OneDrive\\Escritorio\\ORT 2024\\PF\\HiringOficial\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css"
     },
     {
-      "Id": "Z:\\ORT 2024\\PF\\Hiring\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css.map",
+      "Id": "C:\\Users\\Yael\\OneDrive\\Escritorio\\ORT 2024\\PF\\HiringOficial\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css.map"
     },
     {
-      "Id": "Z:\\ORT 2024\\PF\\Hiring\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css",
+      "Id": "C:\\Users\\Yael\\OneDrive\\Escritorio\\ORT 2024\\PF\\HiringOficial\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css"
     },
     {
-      "Id": "Z:\\ORT 2024\\PF\\Hiring\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css.map",
+      "Id": "C:\\Users\\Yael\\OneDrive\\Escritorio\\ORT 2024\\PF\\HiringOficial\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css.map"
     },
     {
-      "Id": "Z:\\ORT 2024\\PF\\Hiring\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css",
+      "Id": "C:\\Users\\Yael\\OneDrive\\Escritorio\\ORT 2024\\PF\\HiringOficial\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css"
     },
     {
-      "Id": "Z:\\ORT 2024\\PF\\Hiring\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css.map",
+      "Id": "C:\\Users\\Yael\\OneDrive\\Escritorio\\ORT 2024\\PF\\HiringOficial\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css.map"
     },
     {
-      "Id": "Z:\\ORT 2024\\PF\\Hiring\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css",
+      "Id": "C:\\Users\\Yael\\OneDrive\\Escritorio\\ORT 2024\\PF\\HiringOficial\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css"
     },
     {
-      "Id": "Z:\\ORT 2024\\PF\\Hiring\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css.map",
+      "Id": "C:\\Users\\Yael\\OneDrive\\Escritorio\\ORT 2024\\PF\\HiringOficial\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css.map"
     },
     {
-      "Id": "Z:\\ORT 2024\\PF\\Hiring\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css",
+      "Id": "C:\\Users\\Yael\\OneDrive\\Escritorio\\ORT 2024\\PF\\HiringOficial\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css"
     },
     {
-      "Id": "Z:\\ORT 2024\\PF\\Hiring\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css.map",
+      "Id": "C:\\Users\\Yael\\OneDrive\\Escritorio\\ORT 2024\\PF\\HiringOficial\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css.map"
     },
     {
-      "Id": "Z:\\ORT 2024\\PF\\Hiring\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css",
+      "Id": "C:\\Users\\Yael\\OneDrive\\Escritorio\\ORT 2024\\PF\\HiringOficial\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.css"
     },
     {
-      "Id": "Z:\\ORT 2024\\PF\\Hiring\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css.map",
+      "Id": "C:\\Users\\Yael\\OneDrive\\Escritorio\\ORT 2024\\PF\\HiringOficial\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.css.map"
     },
     {
-      "Id": "Z:\\ORT 2024\\PF\\Hiring\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css",
+      "Id": "C:\\Users\\Yael\\OneDrive\\Escritorio\\ORT 2024\\PF\\HiringOficial\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.min.css"
     },
     {
-      "Id": "Z:\\ORT 2024\\PF\\Hiring\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css.map",
+      "Id": "C:\\Users\\Yael\\OneDrive\\Escritorio\\ORT 2024\\PF\\HiringOficial\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.min.css.map"
     },
     {
-      "Id": "Z:\\ORT 2024\\PF\\Hiring\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css",
+      "Id": "C:\\Users\\Yael\\OneDrive\\Escritorio\\ORT 2024\\PF\\HiringOficial\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css"
     },
     {
-      "Id": "Z:\\ORT 2024\\PF\\Hiring\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css.map",
+      "Id": "C:\\Users\\Yael\\OneDrive\\Escritorio\\ORT 2024\\PF\\HiringOficial\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css.map"
     },
     {
-      "Id": "Z:\\ORT 2024\\PF\\Hiring\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css",
+      "Id": "C:\\Users\\Yael\\OneDrive\\Escritorio\\ORT 2024\\PF\\HiringOficial\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css"
     },
     {
-      "Id": "Z:\\ORT 2024\\PF\\Hiring\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css.map",
+      "Id": "C:\\Users\\Yael\\OneDrive\\Escritorio\\ORT 2024\\PF\\HiringOficial\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css.map"
     },
     {
-      "Id": "Z:\\ORT 2024\\PF\\Hiring\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js",
+      "Id": "C:\\Users\\Yael\\OneDrive\\Escritorio\\ORT 2024\\PF\\HiringOficial\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js"
     },
     {
-      "Id": "Z:\\ORT 2024\\PF\\Hiring\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js.map",
+      "Id": "C:\\Users\\Yael\\OneDrive\\Escritorio\\ORT 2024\\PF\\HiringOficial\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js.map"
     },
     {
-      "Id": "Z:\\ORT 2024\\PF\\Hiring\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js",
+      "Id": "C:\\Users\\Yael\\OneDrive\\Escritorio\\ORT 2024\\PF\\HiringOficial\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js"
     },
     {
-      "Id": "Z:\\ORT 2024\\PF\\Hiring\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js.map",
+      "Id": "C:\\Users\\Yael\\OneDrive\\Escritorio\\ORT 2024\\PF\\HiringOficial\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js.map"
     },
     {
-      "Id": "Z:\\ORT 2024\\PF\\Hiring\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js",
+      "Id": "C:\\Users\\Yael\\OneDrive\\Escritorio\\ORT 2024\\PF\\HiringOficial\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js"
     },
     {
-      "Id": "Z:\\ORT 2024\\PF\\Hiring\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js.map",
+      "Id": "C:\\Users\\Yael\\OneDrive\\Escritorio\\ORT 2024\\PF\\HiringOficial\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js.map"
     },
     {
-      "Id": "Z:\\ORT 2024\\PF\\Hiring\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js",
+      "Id": "C:\\Users\\Yael\\OneDrive\\Escritorio\\ORT 2024\\PF\\HiringOficial\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js"
     },
     {
-      "Id": "Z:\\ORT 2024\\PF\\Hiring\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js.map",
+      "Id": "C:\\Users\\Yael\\OneDrive\\Escritorio\\ORT 2024\\PF\\HiringOficial\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js.map"
     },
     {
-      "Id": "Z:\\ORT 2024\\PF\\Hiring\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.js",
+      "Id": "C:\\Users\\Yael\\OneDrive\\Escritorio\\ORT 2024\\PF\\HiringOficial\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.js",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.js"
     },
     {
-      "Id": "Z:\\ORT 2024\\PF\\Hiring\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.js.map",
+      "Id": "C:\\Users\\Yael\\OneDrive\\Escritorio\\ORT 2024\\PF\\HiringOficial\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.js.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.js.map"
     },
     {
-      "Id": "Z:\\ORT 2024\\PF\\Hiring\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.min.js",
+      "Id": "C:\\Users\\Yael\\OneDrive\\Escritorio\\ORT 2024\\PF\\HiringOficial\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.min.js",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.min.js"
     },
     {
-      "Id": "Z:\\ORT 2024\\PF\\Hiring\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.min.js.map",
+      "Id": "C:\\Users\\Yael\\OneDrive\\Escritorio\\ORT 2024\\PF\\HiringOficial\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.min.js.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.min.js.map"
     },
     {
-      "Id": "Z:\\ORT 2024\\PF\\Hiring\\wwwroot\\lib\\jquery-validation-unobtrusive\\LICENSE.txt",
+      "Id": "C:\\Users\\Yael\\OneDrive\\Escritorio\\ORT 2024\\PF\\HiringOficial\\wwwroot\\lib\\jquery-validation-unobtrusive\\LICENSE.txt",
       "PackagePath": "staticwebassets\\lib\\jquery-validation-unobtrusive\\LICENSE.txt"
     },
     {
-      "Id": "Z:\\ORT 2024\\PF\\Hiring\\wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.js",
+      "Id": "C:\\Users\\Yael\\OneDrive\\Escritorio\\ORT 2024\\PF\\HiringOficial\\wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.js",
       "PackagePath": "staticwebassets\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.js"
     },
     {
-      "Id": "Z:\\ORT 2024\\PF\\Hiring\\wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.min.js",
+      "Id": "C:\\Users\\Yael\\OneDrive\\Escritorio\\ORT 2024\\PF\\HiringOficial\\wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.min.js",
       "PackagePath": "staticwebassets\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.min.js"
     },
     {
-      "Id": "Z:\\ORT 2024\\PF\\Hiring\\wwwroot\\lib\\jquery-validation\\LICENSE.md",
+      "Id": "C:\\Users\\Yael\\OneDrive\\Escritorio\\ORT 2024\\PF\\HiringOficial\\wwwroot\\lib\\jquery-validation\\LICENSE.md",
       "PackagePath": "staticwebassets\\lib\\jquery-validation\\LICENSE.md"
     },
     {
-      "Id": "Z:\\ORT 2024\\PF\\Hiring\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.js",
+      "Id": "C:\\Users\\Yael\\OneDrive\\Escritorio\\ORT 2024\\PF\\HiringOficial\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.js",
       "PackagePath": "staticwebassets\\lib\\jquery-validation\\dist\\additional-methods.js"
     },
     {
-      "Id": "Z:\\ORT 2024\\PF\\Hiring\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.min.js",
+      "Id": "C:\\Users\\Yael\\OneDrive\\Escritorio\\ORT 2024\\PF\\HiringOficial\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.min.js",
       "PackagePath": "staticwebassets\\lib\\jquery-validation\\dist\\additional-methods.min.js"
     },
     {
-      "Id": "Z:\\ORT 2024\\PF\\Hiring\\wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.js",
+      "Id": "C:\\Users\\Yael\\OneDrive\\Escritorio\\ORT 2024\\PF\\HiringOficial\\wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.js",
       "PackagePath": "staticwebassets\\lib\\jquery-validation\\dist\\jquery.validate.js"
     },
     {
-      "Id": "Z:\\ORT 2024\\PF\\Hiring\\wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.min.js",
+      "Id": "C:\\Users\\Yael\\OneDrive\\Escritorio\\ORT 2024\\PF\\HiringOficial\\wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.min.js",
       "PackagePath": "staticwebassets\\lib\\jquery-validation\\dist\\jquery.validate.min.js"
     },
     {
-      "Id": "Z:\\ORT 2024\\PF\\Hiring\\wwwroot\\lib\\jquery\\LICENSE.txt",
+      "Id": "C:\\Users\\Yael\\OneDrive\\Escritorio\\ORT 2024\\PF\\HiringOficial\\wwwroot\\lib\\jquery\\LICENSE.txt",
       "PackagePath": "staticwebassets\\lib\\jquery\\LICENSE.txt"
     },
     {
-      "Id": "Z:\\ORT 2024\\PF\\Hiring\\wwwroot\\lib\\jquery\\dist\\jquery.js",
+      "Id": "C:\\Users\\Yael\\OneDrive\\Escritorio\\ORT 2024\\PF\\HiringOficial\\wwwroot\\lib\\jquery\\dist\\jquery.js",
       "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.js"
     },
     {
-      "Id": "Z:\\ORT 2024\\PF\\Hiring\\wwwroot\\lib\\jquery\\dist\\jquery.min.js",
+      "Id": "C:\\Users\\Yael\\OneDrive\\Escritorio\\ORT 2024\\PF\\HiringOficial\\wwwroot\\lib\\jquery\\dist\\jquery.min.js",
       "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.min.js"
     },
     {
-      "Id": "Z:\\ORT 2024\\PF\\Hiring\\wwwroot\\lib\\jquery\\dist\\jquery.min.map",
+      "Id": "C:\\Users\\Yael\\OneDrive\\Escritorio\\ORT 2024\\PF\\HiringOficial\\wwwroot\\lib\\jquery\\dist\\jquery.min.map",
       "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.min.map"
+    },
+    {
+      "Id": "C:\\Users\\Yael\\OneDrive\\Escritorio\\ORT 2024\\PF\\HiringOficial\\wwwroot\\uploads\\1724212060.jpg",
+      "PackagePath": "staticwebassets\\uploads\\1724212060.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Yael\\OneDrive\\Escritorio\\ORT 2024\\PF\\HiringOficial\\wwwroot\\uploads\\1724212071.jpg",
+      "PackagePath": "staticwebassets\\uploads\\1724212071.jpg"
     },
     {
       "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.Hiring.Microsoft.AspNetCore.StaticWebAssets.props",

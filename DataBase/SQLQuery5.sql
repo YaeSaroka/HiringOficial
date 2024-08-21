@@ -18,7 +18,7 @@ GO
 -- Create date: <Create Date,,>
 -- Description:	<Description,,>
 -- =============================================
-CREATE PROCEDURE CargarPerfilLogin
+ALTER PROCEDURE CargarPerfilLogin
 	-- Add the parameters for the stored procedure here
 	@id int
 AS

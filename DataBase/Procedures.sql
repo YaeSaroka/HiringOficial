@@ -19,7 +19,7 @@ GO
 -- Description:	<Description,,>
 -- =============================================
 <<<<<<< HEAD
-CREATE PROCEDURE [dbo].[LoginUsuario]
+alter PROCEDURE [dbo].[LoginUsuario]
 	-- Add the parameters for the stored procedure here
 	@pMail varchar(150), @pContraseña varchar(150)
 AS
@@ -109,14 +109,7 @@ BEGIN
 END
 GO
 
-CREATE PROCEDURE InsertarInformacionEmpleadoEducacion
-	@fecha_expedicion DATE, @fecha_caducidad DATE, @id_info_empleado int
-AS 
-BEGIN
-	INSERT INTO Informacion_Empleado_Educacion(fecha_expedicion,fecha_caducidad, id_info_empleado)
-	VALUES (@fecha_expedicion, @fecha_caducidad,@id_info_empleado)
-END 
-GO
+
 
 CREATE PROCEDURE InsertarMultimedia
 	@URL varchar(MAX), @Id_Info_Empleado int
@@ -130,9 +123,16 @@ GO
 
 
 CREATE PROCEDURE InsertarEducacion
-	@titulo varchar (max), @nombre_institucion varchar (max), @disciplina_academica varchar(max), @actividades_grupo varchar(max), @descripcion varchar(max), @id_info_empleado int
+	@titulo varchar (max), @nombre_institucion varchar (max), @disciplina_academica varchar(max), @actividades_grupo varchar(max), @descripcion varchar(max), @fecha_expedicion DATE, @fecha_caducidad DATE
 AS
 BEGIN
-	INSERT INTO Educacion (titulo, nombre_institucion,disciplina_academica,actividades_grupo,descripcion
 
-	
+	INSERT INTO Educacion (titulo, nombre_institucion, disciplina_academica, actividades_grupo, descripcion, fecha_expedicion, fecha_caducidad )
+    VALUES (@titulo, @nombre_institucion, @disciplina_academica, @actividades_grupo, @descripcion, @fecha_expedicion, @fecha_caducidad);
+end
+
+CREATE PROCEDURE SelectEducacion
+	@id_info_educacion int
+AS BEGIN
+	SELECT * FROM Educacion WHERE id_info_educacion= @id_info_educacion;
+END
