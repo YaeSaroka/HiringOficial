@@ -1,0 +1,25 @@
+@using Hiring.Models
+@model List<Educacion>
+
+@foreach (var item in Model)
+{
+    <div class="educacion1_container" data-id="@item.id">
+        <div class="header_educacion">
+            <i class="fa-solid fa-graduation-cap"></i>
+            <div class="titulo_educacion">@item.titulo - @item.nombre_institucion</div> 
+            <i class="fa-solid fa-edit editar-icono" data-id="@item.id"></i>
+            <i class="fa-solid fa-trash eliminar-icono" data-id="@item.id"></i>
+        </div>
+        <div class="fecha_educacion">( @item.fecha_expedicion - @item.fecha_caducidad )</div>
+        <div class="descripcion_educacion">@item.descripcion</div>
+        <div class="detalles_educacion">
+            <div><i class="fa-solid fa-user-graduate"></i> <strong>Disciplina:</strong> @item.disciplina_academica</div>
+            <div><i class="fa-solid fa-users"></i> <strong>Actividades de Grupo:</strong> @item.actividades_grupo</div>
+        </div>
+        <div class="iconos_educacion">
+            <a data-bs-toggle="modal" data-bs-target="#ModalEducacion">
+                <i class="fa-solid fa-circle-plus mas-icono" style="color: black"></i>
+            </a>
+        </div>
+    </div>
+}

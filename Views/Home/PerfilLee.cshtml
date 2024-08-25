@@ -1,7 +1,9 @@
 @using Hiring.Models
 @model Informacion_Personal_Empleado
 
-@{ ViewData["Title"] = "Lee";}
+@{ 
+    ViewData["Title"] = "Lee";
+}
 
 
 
@@ -15,6 +17,7 @@
                 <div class="perfil-header">
                     <h3 class="nombre-apellido">@Model.nombre_apellido</h3>
                     <img class="mini-foto" src="../img/logos/HirINg-app.gif" alt="Mini Foto">
+                    <i id="edit-icono" class="fa-solid fa-pen"></i>
                 </div>
                 <div class="profesion-container">
                     <i class="fas fa-briefcase profesion-icon"></i>
@@ -34,28 +37,56 @@
                 <i class="fa-solid fa-location-dot"></i> @Model.ubicacion
             </h5>
         </div>
-    </a>
-            
             <div class="acerca_de_mi_container">
             <i  class="fa-solid fa-address-card"></i>
             <div class="acerca-de-mi"> 
-            @Model.acerca_de_mi</div></div>
-            <div class="upload-container">
-                <img class="img_upload_archivos" src="../img/componente/subir_archivo.png" alt="Subir Archivos" class="upload-image" onclick="document.getElementById('fileInput').click()">
-                <input type="file" id="fileInput" multiple style="display: none;" accept=".png, .jpg, .jpeg, .pdf, .txt, .mp3, .mp4" onchange="handleFiles(this.files)">
+            @Model.acerca_de_mi</div></div>  </a>
+             <div class="upload-container" id="fileList">
+            <img class="img_upload_archivos" src="../img/componente/subir_archivo.png" alt="Subir Archivos" class="upload-image" onclick="document.getElementById('fileInput').click()">
+            <input type="file" id="fileInput" multiple style="display: none;" accept=".png, .jpg, .jpeg, .pdf, .txt, .mp3, .mp4" onchange="handleFiles(this.files)">
             </div>
-            <div class="educacion-container">
-                 <a data-bs-toggle="modal" data-bs-target="#ModalEducacion">
-                <img class="img_upload_archivos" src="../img/componente/educacion.png" alt="Educacion">
-                </a>
-            </div>
-            
-            
-            
+        
+            <div id="listaEducacionContainer">
+            @if (ViewBag.Lista_educacion != null && ((List<Educacion>)ViewBag.Lista_educacion).Any())
+            {
+                foreach (var item in (List<Educacion>)ViewBag.Lista_educacion)
+                {
+                    <div class="educacion1_container" data-id="@item.id">
+                        <div class="header_educacion">
+                            <i class="fa-solid fa-graduation-cap"></i>
+                            <div class="titulo_educacion">@item.titulo - @item.nombre_institucion</div> 
+                            <i class="fa-solid fa-edit editar-icono" data-id="@item.id"></i>
+                            <i class="fa-solid fa-trash eliminar-icono" data-id="@item.id"></i>
+                        </div>
+                        <div class="fecha_educacion">( @item.fecha_expedicion - @item.fecha_caducidad )</div>
+                        <div class="descripcion_educacion">@item.descripcion</div>
+                        <div class="detalles_educacion">
+                            <div><i class="fa-solid fa-user-graduate"></i> <strong>Disciplina:</strong> @item.disciplina_academica</div>
+                            <div><i class="fa-solid fa-users"></i> <strong>Actividades de Grupo:</strong> @item.actividades_grupo</div>
+                        </div>
+                        <div class="iconos_educacion">
+                            <a data-bs-toggle="modal" data-bs-target="#ModalEducacion">
+                                <i class="fa-solid fa-circle-plus mas-icono" style="color: @Model.estilo"></i>
+                            </a>
+                        </div>
+                    </div>
+                }
+            }
+                    else
+                    {
+                        <div class="educacion-container">
+                            <div class="icon-container">
+                                <i style="margin-left:20%;" class="fa-solid fa-graduation-cap icon-educacion"></i>
+                                <a data-bs-toggle="modal" data-bs-target="#ModalEducacion">
+                                    <img class="img_educacion" src="../img/componente/educacion.png" alt="Educación">
+                                </a>
+                            </div>
+                        </div>
+                    }</div>
+        <!-- CAROUSEL MULTIMEDIA*/ -->
 
-
-     @if (ViewBag.UrlMultimedia != null){
-
+    @if (ViewBag.UrlMultimedia != null)
+{
     <div class="container carousel-container">
         <div id="carouselExampleAutoplaying" class="carousel slide carousel-fotos" data-bs-ride="carousel">
             <div class="carousel-inner" style="text-align: center; width: 100%;" id="carousel-inner">
@@ -66,7 +97,22 @@
                         <div class='carousel-item @(Activo ? "active" : "")'>
                             <div class="row">
                                 <div class="col-md-12">
-                                    <img src="@item" class="d-block w-100">
+                                    @if (item.EndsWith(".jpg") || item.EndsWith(".jpeg") || item.EndsWith(".png"))
+                                    {
+                                        <img src="@item" class="d-block w-100">
+                                    }
+                                    else if (item.EndsWith(".mp4"))
+                                    {
+                                        <video controls class="d-block w-100">
+                                            <source src="@item" type="video/mp4">
+                                        </video>
+                                    }
+                                    else
+                                    {
+                                        <div class="download-button-container">
+                                            <a href="@item" download class="btn btn-primary download-button ">Descargar archivo</a>
+                                        </div>
+                                    }
                                 </div>
                             </div>
                         </div>
@@ -90,20 +136,23 @@
         <div class="modal fade" id="ModalForm" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
+                    <i id="usuario-header-modal" class="fa-solid fa-user-pen"></i>
                     <div id="seccion1" class="modal-header">
+                        
                         <h5 class="modal-title">Información Personal </h5>
                     </div>
                     <div id="seccion1-body" class="modal-body">
                         @using(Html.BeginForm("InsertarInformacionPersonal1","Home",  FormMethod.Post, new {id="form-modal"}))
                         {
                             <div>
-                                NOMBRE COMPLETO
+                                
+                                <h1 class="titulos-modal"> <i id="iconos-modal" class="fa-solid fa-id-card"></i> NOMBRE - APELLIDO </h1>
                                 @Html.TextBoxFor(model=>model.nombre_apellido, new {placeholder="Nombre y Apellido"})
-                                EMAIL
-                                @Html.TextBoxFor(model=>model.mail, new {placeholder="Correo electrónico",type="email"})
-                                TELÉFONO
+                                <h1 class="titulos-modal"><i id="iconos-modal" class="fa-solid fa-envelope"></i> EMAIL</h1>
+                                @Html.TextBoxFor(model=>model.mail, new {placeholder="Correo electrónico",type="email" })
+                                <h1 class="titulos-modal"><i id="iconos-modal" class="fa-solid fa-phone"></i> NÚMERO CELULAR</h1>
                                 @Html.TextBoxFor(model=>model.telefono, new {placeholder="Teléfono"})
-                                COLOR GENERAL
+                                <h1 class="titulos-modal"><i id="iconos-modal" class="fa-solid fa-palette"></i> ESTILO</h1>
                                 <input type="color" id="colorPicker" name="estilo" class="form-control mb-2" value="@Model.estilo" />
                                 @Html.HiddenFor(model => model.id, new { placeholder = "Estilo" })
                             </div>
@@ -119,13 +168,13 @@
             <div id="seccion2-body" class="modal-body" style="display: none;">
                 <form action='@Url.Action("InsertarInformacionPersonal2")' method="post" id="form-modal">
                     <div>
-                    ACERCA DE MI
+                    <h1 class="titulos-modal"><i id="iconos-modal" class="fa-solid fa-user-pen"></i> ACERCA DE MI</h1>
                     @Html.TextBoxFor(model=>model.acerca_de_mi, new {placeholder="Acerca De Mi"})
-                    PROFESION
+                    <h1 class="titulos-modal"><i id="iconos-modal" class="fa-solid fa-briefcase"></i> PROFESION</h1>
                     @Html.TextBoxFor(model=>model.profesion_actual, new {placeholder="Profesion"})
-                    UBICACION
+                    <h1 class="titulos-modal"> <i id="iconos-modal" class="fa-solid fa-map-location-dot"></i> UBICACION</h1>
                     @Html.TextBoxFor(model=>model.ubicacion, new {placeholder="Ubicacion"})
-                    FOTO DE PERFIL
+                    <h1 class="titulos-modal"><i id="iconos-modal" class="fa-solid fa-circle-user"></i> FOTO DE PERFIL</h1>
                     @Html.TextBoxFor(model=>model.foto_perfil, new {placeholder="URL Foto de Perfil"})
                     @Html.HiddenFor(model=>model.id)
                     </div>
@@ -140,67 +189,119 @@
 </div>
 
 
-    <!--MODAL EDUCACION -->
-    <div class="modal fade" id="ModalEducacion" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+     <!--MODAL EDUCACION -->
+   <div class="modal fade" id="ModalEducacion" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
-            <div id="seccion1" class="modal-header">
+            <div class="modal-header-educacion">
                 <h5 class="modal-title">Educación</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Cerrar">
-                    <span aria-hidden="true">&times;</span>
-                </button>
             </div>
-            <div id="seccion1-body" class="modal-body">
-                <form>
-                    <input type="text" name="titulo" placeholder="Título">
-                    <input type="text" name="NombreInstitucion" placeholder="Nombre Institución">
-                    <input type="text" name="DisciplinaAcademica" placeholder="Disciplina Académica">
-                    <input type="text" name="ActividadesGrupo" placeholder="Actividades de Grupo">
-                    <input type="text" name="Descripcion" placeholder="Descripción">
-                    <input type="date" name="FechaExpedicion" placeholder="Fecha Expedición">
-                    <input type="date" name="FechaCaducidad" placeholder="Fecha Caducidad">
-                </form>
+            <div class="modal-body">
+                
+                <form action='@Url.Action("InsertarEducacion")' method="post" id="ModalEducacionForm" >
+                
+                <input type="hidden" name="id" id="id" value="">
+                <input type="hidden" name="id_info_empleado" id="id_info_empleado" value="@Model.id">
 
-                @if (ViewBag.Lista_educacion != null)
-                {
-                    foreach (var item in ViewBag.Lista_educacion)
-                    {
-                        <div class="card_educacion">
-                            <div class="container3__text">
-                                <h1>@item.Titulo</h1>
-                                <div class="container3__text__star">
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star checked"></span>
-                                </div>
+                    <h1 class="titulos-modal">
+                        <i id="iconos-modal" class="fa-solid fa-id-card"></i> NOMBRE
+                    </h1>
+                    <input type="text" name="titulo">
+                    <h1 class="titulos-modal">
+                        <i id="iconos-modal" class="fa-solid fa-school"></i> INSTITUCIÓN EDUCATIVA
+                    </h1>
+                    <input type="text" name="nombre_institucion">
+                    <div class="modal-separador-educacion">
+                        <h5 class="modal-title-separador">++ INFORMACIÓN</h5>
+                    </div>
+
+                    <!-- FECHAS -->
+                    <div class="fecha-contenedor">
+                        <div class="fecha-header">
+                            <h3>FECHAS</h3>
+                        </div>
+                        <div class="fecha-campo">
+                            <div class="fecha-titulo">
+                                <i class="fa fa-calendar"></i> 
+                                <label for="fecha-inicio">FECHA DE INICIO</label>
+                            </div>
+                            <div class="fecha-selectores">
+                                <select id="mes-inicio" name="mes_expedicion">
+                                    <option value="">MES</option>
+                                </select>
+                                <select id="ano-inicio" name="fecha_expedicion">
+                                    <option value="">AÑO</option>
+                                </select>
                             </div>
                         </div>
-                    }
-                }
+
+                        <div class="fecha-campo">
+                            <div class="fecha-titulo">
+                                <i class="fa fa-calendar"></i>
+                                <label for="fecha-fin">FECHA DE FINALIZACIÓN</label>
+                            </div>
+                            <div class="fecha-selectores">
+                                <select id="mes-fin" name="mes_caducidad">
+                                    <option value="">MES</option>
+                                </select>
+                                <select id="ano-fin" name="fecha_caducidad">
+                                    <option value="">AÑO</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- DETALLES -->
+                    <div class="fecha-contenedor">
+                        <div class="fecha-header">
+                            <h3>DETALLES</h3>
+                        </div>
+                        <div class="fecha-campo">
+                            <div class="fecha-titulo">
+                                <i class="fa-solid fa-user-graduate"></i> 
+                                <label for="disciplina-academica">DISCIPLINA ACADÉMICA</label>
+                            </div>
+                            <div class="fecha-selectores">
+                                <input id="disciplina-academica" type="text" name="disciplina_academica">
+                            </div>
+                        </div>
+
+                        <div class="fecha-campo">
+                            <div class="fecha-titulo">
+                                <i class="fa-solid fa-users"></i>
+                                <label for="actividades_grupo">ACTIVIDADES DE GRUPO</label>
+                            </div>
+                            <div class="fecha-selectores">
+                                <input id="actividades-grupo" type="text" name="actividades_grupo">
+                            </div>
+                        </div>
+                    </div>
+
+                    <h1 class="titulos-modal">
+                        <i id="iconos-modal" class="fa-solid fa-pen-nib"></i> DESCRIPCIÓN
+                    </h1>
+                    <input type="text" name="Descripcion">
+
+                    <input type="hidden" name="id_info_empleado" value="@Model.id" />
+                    <div class="modal-footer">
+                        <button type="submit" style="background-color: @Model.estilo; border-color: @Model.estilo" class="btn btn-primary">Guardar</button>
+                    </div>
+                </form>
             </div>
-                    <div id="seccion1-footer" class="modal-footer">
-                        <button type="submit" class="btn btn-primary">Guardar</button>
-                        <button type="button" class="btn btn-primary" onclick="mostrarSiguienteSeccion(2)">Siguiente</button>
-                    </div>      
-            </div>
+        </div>
+    </div>
+</div>
 
 
 
-                               <!-- Aca hago un form vacio con la info de educacion a completar
 
-                                //Abajo de eso hago un foreach recorriengo el viewbag de la educcacion ya cargada, 
-                                //COn un link de modificar (este debería cargar el form) y de eliminar-->
-                            
-
-
-
+<!-- FUNCIONES JAVA LOCALES -->
     @{
         var modelId = Model.id;
     }
-<script>
+    <script>
     function handleFiles(files) {
+    console.log('handleFiles function called');
     const fileList = document.getElementById('fileList');
     var modelId = '@modelId';
 
@@ -220,28 +321,60 @@
             success: function(response) {
                 console.log('Archivo subido correctamente');
                 console.log(response);
-
-                // Actualiza el carrusel con la nueva imagen
+                
+                // Actualiza el carrusel con la nueva imagen o video
                 let text = "";
                 for (let i = 0; i < response.data.length; i++) {
-                    text += "<div class='carousel-item " + (i == 0 ? "active" : "") + "'><div class='row'><div class='col-md-12'><img src='" + response.data[i] + "' class='d-block w-100'></div></div></div>";
+                    if (response.data[i].endsWith('.mp4')) {
+                        text += "<div class='carousel-item " + (i == 0 ? "active" : "") + "'><div class='row'><div class='col-md-12'><div class='carousel-content'><video controls class='d-block w-100'><source src='" + response.data[i] + "' type='video/mp4'></video><a href='" + response.data[i] + "' download class='btn btn-primary'>Descargar</a></div></div></div>";
+                    } else if (response.data[i].endsWith('.jpg') || response.data[i].endsWith('.jpeg') || response.data[i].endsWith('.png')) {
+                        text += "<div class='carousel-item " + (i == 0 ? "active" : "") + "'><div class='row'><div class='col-md-12'><div class='carousel-content'><img src='" + response.data[i] + "' class='d-block w-100'><a href='" + response.data[i] + "' download class='btn btn-primary'>Descargar</a></div></div></div>";
+                    } else {
+                        text += "<div class='carousel-item " + (i == 0 ? "active" : "") + "'><div class='row'><div class='col-md-12'><div class='carousel-content'><div class='file-placeholder'><a href='" + response.data[i] + "' download class='btn btn-primary'>Descargar archivo</a></div></div></div></div>";
+                    }
                 }
                 $("#carousel-inner").html(text);
             },
             error: function(xhr, status, error) {
                 console.error('Error al subir el archivo:', status, error);
+                console.log(xhr.responseText);
             }
         });
     }
-    updateSlides();
 }
 
-       
-        
-   
 
+$('#ModalEducacionForm').submit(function(e) {
+    e.preventDefault(); 
+    console.log($(this).serialize()); 
+    
+    var id = $('input[name="id"]').val();
+    var idInfoEmpleado = '@Model.id'; // Asigna el valor manualmente
+    $('input[name="id_info_empleado"]').val(idInfoEmpleado);
+    console.log("ID Info Empleado: ", idInfoEmpleado);
 
+    $.ajax({
+        type: 'POST',
+        url: '/Home/InsertarEducacion/' + id, 
+        data: $(this).serialize(),
+        success: function(response) {
+            console.log("Respuesta recibida: ", response);
+            var nuevaListaEducacion = $(response).find('#listaEducacionContainer').html();
+            if (nuevaListaEducacion) {
+                $('#listaEducacionContainer').html(nuevaListaEducacion); 
+                $('#ModalEducacion').modal('hide'); 
+                console.log("Modal cerrado y lista actualizada.");
+            } else {
+                console.log("No se encontró la lista de educación en la respuesta.");
+            }
+        },
+        error: function(error) {
+            console.log("Error: ", error);
+        }
+    });
+});
 
+  
 </script>
 
 <style>
@@ -264,5 +397,21 @@
     color: rgb(59, 59, 59) !important;
     font-family: 'Sura', sans-serif;
 }
+.rectangulo-encabezado {
+  height: 150px;
+  display: flex;
+  align-items: center;
+  padding: 20px;
+  margin: 0;
+  background-color: var(--user-selected-color); /* Color elegido por el usuario */
+  background-image: repeating-linear-gradient(
+    45deg,
+    rgba(255, 255, 255, 0.1),
+    rgba(255, 255, 255, 0.1) 10px,
+    transparent 10px,
+    transparent 20px
+  );
+}
+
 
 </style>

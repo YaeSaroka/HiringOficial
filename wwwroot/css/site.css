@@ -35,166 +35,196 @@ body {
 /*************************     PAGINA REGISTRO / INICIAR     ************************/
 
 *,
-    *:before,
-    *:after {
-      padding: 0;
-      margin: 0;
-      box-sizing: border-box;
-    }
+*:before,
+*:after {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
 
-    #fondo_fondo{
-        background: linear-gradient(#569c92, #b5e2db);
-    }
+#fondo_fondo {
+    background: linear-gradient(#569c92, #b5e2db);
+}
 
-    .background {
-      width: 430px;
-      height: 520px;
-      position: absolute;
-      transform: translate(-50%, -50%);
-      left: 50%;
-      top: 45%;
-    }
+.background {
+    width: 430px;
+    height: 520px;
+    position: absolute;
+    transform: translate(-50%, -50%);
+    left: 50%;
+    top: 45%;
+}
+#fondo_fondo {
+  display: flex;
+  justify-content: center; /* Centra horizontalmente */
+  align-items: center; /* Centra verticalmente */
+  flex-grow: 1; /* Permite que el fondo crezca */
+}
+#form_login {
+    background-color: #ffffff;
+    height: auto; /* Ajusta la altura automáticamente */
+    width: 500px;
+    position: relative; /* Cambiado a relative */
+    border-radius: 10px;
+    backdrop-filter: blur(10px);
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 0 40px rgba(8, 7, 16, 0.6);
+    padding: 50px 35px;
+    margin: 30px auto ; 
+    max-width: 500px; 
+}
 
-    .background .shape {
-      height: 100px;
-      width: 100px;
-      position: absolute;
-      border-radius: 50%;
-    }
+form * {
+    font-family: 'Signika Negative', sans-serif;
+    color: #000000;
+    letter-spacing: 0.5px;
+    outline: none;
+    border: none;
+}
 
-    .shape:first-child {
-      background: linear-gradient(#B3E0D9,
-          #3e857a);
-      left: -90px;
-      top: -20px;
-    }
-    .shape:last-child {
-      background: linear-gradient(to right,
-          #438b81,
-          #7da8a2);
-      right: -80px;
-      bottom: -20px;
-    }
+.header {
+    display: flex;
+    justify-content: space-between; /* Espacio entre el título y el logo */
+    align-items: center; /* Centra verticalmente */
+    margin-bottom: 20px; /* Aumenta el espacio entre el título y el formulario */
+}
 
+.titulo_login {
+    font-size: 26px;
+    font-weight: bold;
+    color: #000000;
+}
 
-    #form_login   {
-      background-color: #ffffff;
-      height: 520px;
-      width: 500px;
-      position: absolute;
-      transform: translate(-50%, -50%);
-      top: 45%;
-      left: 50%;
-      border-radius: 10px;
-      backdrop-filter: blur(10px);
-      border: 2px solid rgba(255, 255, 255, 0.1);
-      box-shadow: 0 0 40px rgba(8, 7, 16, 0.6);
-      padding: 50px 35px;
+.logo_hiring {
+    width: 120px; /* Tamaño del logo */
+    height: 120px;
+}
 
+.label {
+    font-size: 14px;
+    margin-bottom: 5px;
+    color: #000000;
+    font-weight: bold;
+}
 
-    }
+.input-container {
+    position: relative;
+    margin-bottom: 20px;
+}
 
-    form * {
-      font-family: 'Poppins', sans-serif;
-      color: #000000;
-      letter-spacing: 0.5px;
-      outline: none;
-      border: none;
-    }
+input {
+    display: block;
+    height: 50px;
+    width: 100%;
+    background-color: rgba(255, 255, 255, 0.07);
+    border-radius: 15px;
+    border: 1px solid #ccc; /* Cambiar a un borde más suave */
+    padding: 0 15px;
+    font-size: 14px;
+    font-weight: 300;
+    margin-top: 10px;
+    transition: border 0.3s; /* Transición para el borde */
+}
 
-    form h3 {
-      font-size: 32px;
-      font-weight: 500;
-      line-height: 42px;
-      text-align: center;
-      
-      font-weight: 900px;
-    }
+input:focus {
+    border: 1px solid #7ECCC0; /* Cambio de color en el foco */
+}
 
-    label {
-      display: block;
-      margin-top: 30px;
-      font-size: 16px;
-      font-weight: 500;
-    }
+::placeholder {
+    color: #e5e5e5;
+}
 
-    input {
-      display: block;
-      height: 50px;
-      width: 100%;
-      background-color: rgba(255, 255, 255, 0.07);
-      border-radius: 15px;
-      border: 1px solid black;
-      padding: 0 10px;
-      margin-top: 8px;
-      font-size: 14px;
-      font-weight: 300;
-      margin-top: 10px !important;
-    }
+#butttt {
+    margin-top: 10px;
+    width: 100%;
+    background-color: #7ECCC0;
+    color: white;
+    padding: 10px;
+    font-size: 18px;
+    font-weight: 600;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: background-color 0.3s; /* Transición al pasar el mouse */
+}
 
-    ::placeholder {
-      color: #e5e5e5;
-    }
-
-    button {
-      margin-top: 50px;
-      width: 100%;
-      background-color: #ffffff;
-      color: #080710;
-      padding: 15px 0;
-      font-size: 18px;
-      font-weight: 600;
-      border-radius: 5px;
-      cursor: pointer;
-    }
-
-    .social {
-      margin-top: 30px;
-      display: flex;
-      margin-left: 50px;
-      color:#080710;
-    }
-
-    .social div {
-      background: red;
-      width: 150px;
-      border-radius: 3px;
-      padding: 5px 10px 10px 5px;
-      background-color: rgba(255, 255, 255, 0.27);
-      color: #eaf0fb;
-      text-align: center;
-    }
-
-    .social div:hover {
-      background-color: rgba(255, 255, 255, 0.47);
-    }
-
-    .social .fb {
-      margin-left: 25px;
-    }
-
-    .social i {
-      margin-right: 4px;
-    }
+#butttt:hover {
+    background-color: #5CA0A0; /* Cambio de color al pasar el mouse */
+}
 
 
-    #sign-up-box{
-      top: 750px;
-      z-index: 200px;
-      box-shadow: 0px 10px 50px #00000026;
-      background-color: #437E75;
-      position: relative;
-      height: 5rem;
-    }
+
+.forgot-password {
+    margin-top: 10px;
+    font-size: 14px;
+    color: #007bff; /* Color del enlace */
+    text-align: left; /* Alinea el texto a la derecha */
+}
+
+.forgot-password a {
+    text-decoration: none; /* Elimina el subrayado */
+    transition: color 0.3s; /* Transición para el color */
+}
+
+.forgot-password a:hover {
+    color: #0056b3; /* Cambio de color al pasar el mouse */
+}
+
+.password-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.password-container input {
+    width: 100%;
+    padding-right: 40px; /* Espacio para el icono */
+}
+
+.password-toggle {
+    position: absolute;
+    right: 10px;
+    cursor: pointer;
+    color: #333;
+}
+
+.mostrar_login {
+    font-size: 16px;
+    font-weight: bold;
+    color: #5CA0A0 !important;
+    margin-top: 15px;
+}
 
 
-    .alert
-    {
-      width: 300px;
-      left:42%;
-    }
+#sign-up-box {
+  text-align: center; 
+  padding: 20px; 
+  margin-top: 20px; 
+  width: 100%; 
+  
+}
 
-    
+#sign-up-box p {
+  margin: 0; /* Elimina márgenes del párrafo */
+  font-size: 16px; /* Tamaño de texto */
+}
+
+.sign-up-link {
+  color: #317E73; /* Color del enlace */
+  text-decoration: underline; /* Subrayado del enlace */
+  font-weight: bold; 
+  font-size: 16px;/* Texto en negrita */
+}
+
+.sign-up-link:hover {
+  color: #21554d; /* Color del enlace al pasar el mouse */
+}
+
+.cuenta {
+  color: rgb(7, 7, 7);
+}
+
+
     
 /*************************************************************************/
 #form-modal
@@ -205,24 +235,35 @@ body {
 .card-container {
   width: 100%;
   max-width: 1000px; 
-  margin: 20px auto; /* Centra la tarjeta y agrega margen superior e inferior */
+  margin: 20px auto; 
   border-radius: 10px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   overflow: hidden;
   font-family: Arial, sans-serif;
-  background-color: #fff;
+  background-color: #ffffffec;
   padding: 20px;
   position: relative;
-  box-sizing: border-box; /* Asegúrate de que el padding se incluya en el ancho total */
+  box-sizing: border-box; 
+}
+@media (min-width: 3840px) {
+  .card-container {
+    max-width: 9000px; 
+    width: 100%;/* Aumenta el ancho máximo de la tarjeta */
+    padding: 30px; /* Aumenta el padding para mayor espacio */
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2); /* Ajusta la sombra para un efecto más pronunciado */
+  }
 }
 
+
+/*
 .rectangulo-encabezado {
   height: 150px;
   display: flex;
   align-items: center;
   padding: 20px;
   margin: 0;
-}
+}*/
+
 
 .perfil-container {
   display: flex;
@@ -240,11 +281,13 @@ body {
   margin-right: 20px;
   position: relative;
   top: -35px;
+  cursor:pointer;
 }
 
 /* Información del perfil */
 .info-perfil {
   flex: 1;
+  position: relative;
 }
 
 /* Nombre y profesión */
@@ -253,6 +296,8 @@ body {
   font-weight: bold;
   margin: 0;
   color: #333; 
+  cursor:pointer;
+  text-transform: capitalize;
 }
 
 .profesion {
@@ -262,13 +307,20 @@ body {
   color: rgb(59, 59, 59) !important;
   text-transform: capitalize;
   font-weight: bold;
+  cursor:pointer;
 }
 .perfil-container .info-perfil {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  cursor:pointer;
 }
-
+#edit-icono{ font-size: 26px;
+  position: absolute;
+  top: 50px; /* Ajusta según sea necesario para posicionarlo verticalmente */
+  right: 50px; /* Lo posiciona en la esquina derecha */
+  cursor: pointer;
+}
 
 /* Responsive ajustes */
 @media (max-width: 768px) {
@@ -279,6 +331,7 @@ body {
 
   .nombre-apellido {
     font-size: 24px;
+    text-transform: capitalize;
   }
 
   
@@ -297,6 +350,7 @@ body {
 
   .nombre-apellido {
     font-size: 20px;
+    text-transform: capitalize;
   }
 
   
@@ -313,7 +367,7 @@ body {
   display: flex;
   justify-content: space-between;
   padding: 10px 0;
-  flex-wrap: wrap; /* Permite que los elementos se envuelvan si no caben en una línea */
+  flex-wrap: wrap; 
 }
 
 .contact-info h5 {
@@ -323,26 +377,25 @@ body {
   padding: 8px;
   border-radius: 8px;
   display: flex;
-  align-items: center; /* Centra verticalmente el icono y el texto */
-  justify-content: center; /* Centra horizontalmente el icono y el texto */
+  align-items: center; 
+  justify-content: center; 
 }
 
 .contact-info i {
-  margin-right: 8px; /* Espacio entre el icono y el texto */
+  margin-right: 8px; 
 }
 
 /*fotito al lado del nombre*/
 .perfil-header {
   display: flex;
-  align-items: flex-start; /* Alinea los elementos al inicio del contenedor flex */
+  align-items: flex-start; 
 }
 
 .mini-foto {
-  width: 40px; /* Tamaño de la mini foto */
+  width: 40px; 
   height: 40px;
-  border-radius: 50%; /* Hacerla circular */
-  margin-right: 10px; /* Espacio entre la mini foto y el nombre */
-  /* Puedes ajustar `margin-top` si es necesario, pero puede que no sea necesario con flexbox */
+  margin-right: 10px; 
+  
 }
 /* Sección "Acerca de mí" */
 .acerca-de-mi{
@@ -351,12 +404,15 @@ body {
     line-height: 1.6;
     color: #000000;
     margin: 0;
+    cursor:pointer;
+    text-transform: initial;
 }
 
 .acerca_de_mi_container i{
   font-size: 25px;
   line-height: 1.6;
   color: #000000;
+ 
 }
 .acerca_de_mi_container{
      
@@ -371,6 +427,16 @@ hr{
   height: 10px !important;
   margin-top: -30px !important; 
 }
+@media (max-width: 480px) {
+  hr {
+    margin-top: -10px !important; 
+  }
+}
+@media (max-width: 768px) {
+  hr {
+    margin-top: -10px !important; 
+  }
+}
 /*Mail */
 
 .mail {
@@ -380,6 +446,7 @@ hr{
   border-radius: 4px;
   font-family: 'Sura', sans-serif;
   font-size:15.5px;
+  cursor:pointer;
 }
 
 .mail i {
@@ -395,6 +462,7 @@ hr{
   border-radius: 4px;
   font-family: 'Sura', sans-serif;
   font-size:15.5px;
+  cursor:pointer;
 }
 
 .telefono i {
@@ -408,8 +476,10 @@ hr{
   align-items: center;
   padding: 5px;
   border-radius: 4px;
- font-family: 'Sura', sans-serif;
- font-size:15.5px;
+  font-family: 'Sura', sans-serif;
+  font-size:15.5px;
+  text-transform: capitalize;
+  cursor:pointer;
 }
 
 .ubicacion i {
@@ -424,22 +494,25 @@ hr{
 }
 
 .img_upload_archivos {
-  width: 60px;
-  height: 60px;
-  margin: 0 15px;
+  width: 42%;
+  height: 42%;
+  margin: 35px 15px ;
   cursor: pointer;
 }
 
-/* Sección de educación */
-.educacion-container {
-  text-align: center;
-  margin-top: 20px;
+@media (max-width: 768px) {
+  .img_upload_archivos {
+    width: 85%;
+    height: auto; 
+  }
 }
 
-.educacion-container img {
-  width: 60px;
-  height: 60px;
-  cursor: pointer;
+/* Propiedades para pantallas pequeñas */
+@media (max-width: 480px) {
+  .img_upload_archivos {
+    width: 90%;
+    height: auto; 
+  }
 }
 
 /* Carrusel */
@@ -449,15 +522,114 @@ hr{
 
 .carousel-fotos {
   width: 100%;
-  max-height: 500px;
 }
 
-.carousel-control-prev, .carousel-control-next {
-  background-color: rgba(0, 0, 0, 0.3);
-  border-radius: 50%;
-  width: 40px;
-  height: 40px;
+.carousel-inner {
+  width: 100%;
 }
+
+.carousel-item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 80vh; /* Aumenta la altura para que las imágenes se vean completas */
+  position: relative;
+  background-color: #DEECEC; /* Fondo para todas las diapositivas */
+}
+
+.carousel-item img, 
+.carousel-item video {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain; /* Asegura que las imágenes y videos se muestren completos */
+  width: auto; /* Permite que la imagen se ajuste al ancho del contenedor */
+  height: auto; /* Permite que la imagen se ajuste a la altura del contenedor */
+}
+
+.file-placeholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.carousel-control-prev, 
+.carousel-control-next {
+  background-color: rgba(0, 0, 0, 0.3) !important;
+  border-radius: 50% !important;
+  width: 40px !important;
+  height: 40px !important;
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  position: absolute !important;
+  top: 50% !important;
+  transform: translateY(-50%) !important;
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  background-size: 100%, 100% !important;
+  width: 20px !important;
+  height: 20px !important;
+}
+
+.carousel-control-prev:hover,
+.carousel-control-next:hover {
+  background-color: rgba(0, 0, 0, 0.5) !important;
+}
+
+.carousel-control-prev {
+  left: 10px !important;
+}
+
+.carousel-control-next {
+  right: 10px !important;
+}
+
+.carousel-control-prev-icon {
+  background-image: url('data:image/svg+xml;charset=utf8,%3Csvg xmlns%3D"http://www.w3.org/2000/svg" fill%3D"%23fff" viewBox%3D"0 0 8 8"%3E%3Cpath d%3D"M4.5 0L0 4l4.5 4V0z"/%3E%3C/svg%3E') !important;
+}
+
+.carousel-control-next-icon {
+  background-image: url('data:image/svg+xml;charset=utf8,%3Csvg xmlns%3D"http://www.w3.org/2000/svg" fill%3D"%23fff" viewBox%3D"0 0 8 8"%3E%3Cpath d%3D"M3.5 0L8 4l-4.5 4V0z"/%3E%3C/svg%3E') !important;
+}
+
+.download-button-container {
+  position: absolute; /* Centra el botón en la diapositiva */
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+.download-button {
+  background-color: #9dbebe !important;
+  border-color: #9dbebe !important; /* Cambia el color del borde */
+  color: white;
+  padding: 10px 20px;
+  border-radius: 5px;
+  text-decoration: none;
+}
+
+.download-button:hover {
+  background-color: rgb(55, 66, 78); 
+}
+
+/* Media Queries para Responsividad */
+@media (max-width: 768px) {
+  .carousel-item {
+    height: 60vh; /* Altura menor para pantallas medianas */
+  }
+}
+
+@media (max-width: 480px) {
+  .carousel-item {
+    height: 50vh; /* Altura aún menor para pantallas pequeñas */
+  }
+}
+
 @media (max-width: 768px) {
   .contact-info {
     flex-direction: column;
@@ -495,6 +667,16 @@ hr{
 
 
 /*MODAL*/
+#iconos-modal{
+  font-size: 18px;
+}
+.titulos-modal{
+  font-family: 'Rubik', sans-serif;
+  font-size: 15px;
+  letter-spacing: 0.21rem;
+  color: #000000;
+  opacity: 100% !important;
+}
 .modal {
   display: none; /* Oculto por defecto */
   position: fixed; /* Fijo en la pantalla */
@@ -521,20 +703,36 @@ hr{
   padding: 1.5rem;
 }
 
-/* Cabecera del modal */
+/* Header del modal */
 .modal-header {
   display: flex;
-  justify-content: center; /* Centra el título */
-  padding-bottom: 1rem;
+  justify-content: center; 
+  align-items: center; 
   border-bottom: 1px solid #e0e0e0;
+  height: 90px;
+  position: relative;
+}
+
+.modal-title-separador{
+  font-size: 1.25rem;
+  font-weight: 500;
+  color: #000000;
+  margin: 0; /* Elimina el margen para centrarlo correctamente */
+  font-family: 'Sura', sans-serif;
+  font-weight: bolder;
+  text-align: center; /* Asegura que el texto esté centrado horizontalmente */
+  align-items: center;
+  justify-content: center;
 }
 
 /* Estilo del título */
 .modal-title {
-  font-size: 1.25rem;
+  font-size: 1.85rem;
   font-weight: 500;
-  color: #333;
-  margin: 0; /* Elimina márgenes para centrado exacto */
+  color: #000000;
+  margin: 0; 
+  font-family: 'Sura', sans-serif;
+  font-weight: bolder;
 }
 
 /* Cuerpo del modal */
@@ -564,6 +762,14 @@ hr{
 
 .modal-footer .btn {
   margin-left: 0.5rem;
+}
+#usuario-header-modal{
+  font-size: 21.5px;
+  position: absolute;
+  top: 5%; 
+  left: 50%; 
+  transform: translate(-50%, -50%);
+  margin-top: 10px;
 }
 
 /* Botones del modal */
@@ -674,3 +880,219 @@ hr{
   border-radius: 8px;
   background: transparent;
 }
+
+/*MODAL EDUCACIÓN*/
+
+/*educacion header*/
+.modal-header-educacion {
+  display: flex;
+  justify-content: center; 
+  align-items: center; 
+  height: 80px;
+  position: relative;
+  background-color: rgba(92, 160, 160, 0.29);
+}
+/*SEPARADORES*/
+.modal-separador-educacion{
+  display: flex;
+  justify-content: center; 
+  align-items: center; 
+  height: 50px;
+  position: relative;
+  background-color: #D6E7E7;
+  margin-bottom: 20px;
+}
+
+.form-section {
+  background-color: #D6E7E7;
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #D6E7E7;
+}
+
+.fecha-contenedor {
+  border: 2px solid #D6E7E7; 
+  border-radius: 8px;
+  background-color: #fff; 
+  overflow: hidden; 
+}
+
+.fecha-header {
+  background-color: #D6E7E7; 
+  padding: 5px 15px; 
+  border-bottom: 2px solid #D6E7E7; 
+  text-align: center; 
+  border-radius: 8px 8px 0 0; 
+}
+
+.fecha-header h3 {
+  margin: 0;
+  font-size: 1.25rem;
+  font-weight: bold;
+  color: #0f0f0f; 
+  font-family: 'Sura', sans-serif;
+}
+
+.fecha-campo {
+  padding: 15px;
+  margin-bottom: 0; 
+}
+
+.fecha-titulo {
+  display: flex;
+  align-items: center; 
+  margin-bottom: 10px;
+}
+
+.fecha-titulo i {
+  background-color: #d1e7e7;
+  padding: 6px;
+  border-radius: 50%;
+  margin-right: 10px;
+  color: #333;
+  font-size: 1rem; 
+  line-height: 1; 
+}
+
+.fecha-titulo label {
+  font-size: 1rem;
+  font-weight: bold;
+  color: #333;
+  margin: 0; 
+  line-height: 1; 
+}
+
+.fecha-selectores {
+  display: flex;
+  gap: 10px; 
+}
+
+.fecha-selectores select {
+  padding: 8px;
+  border-radius: 4px;
+  border: 1px solid #D6E7E7; 
+  background-color: #fff;
+  font-size: 0.9rem;
+  flex: 1;
+}
+.educacion-container {
+  display: flex; 
+  margin-top: 20px;
+  text-align: center;
+}
+
+.icon-container {
+  display: flex; 
+  flex-direction: column; 
+  align-items: flex-start; }
+
+/* Estilo para el ícono */
+.icon-educacion {
+  font-size: 2rem; 
+  margin-bottom: 5px; 
+  cursor: pointer; 
+}
+
+/* Estilo para la imagen */
+.img_educacion {
+  width: 65%; 
+  height: auto; 
+  cursor: pointer; 
+  border: 2px solid #000000; 
+}
+.mas-icono{
+  cursor: pointer;
+  font-size: 20px;
+  margin-top: 5px;
+}
+@media (max-width: 768px) {
+  .icon-educacion {
+      font-size: 1.5rem; 
+      margin-bottom: 8px; 
+  }
+
+  .img_educacion {
+      width: 80%; 
+  }
+}
+
+
+@media (max-width: 480px) {
+  .icon-educacion {
+      font-size: 1.2rem; 
+      margin-bottom: 5px; 
+  }
+
+  .img_educacion {
+      width: 90%;
+  }
+}
+
+/*EDUCACION CONTAINER*/
+  .educacion1_container {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); 
+    border-radius: 8px;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    height: 100%; 
+    position: relative; 
+}
+
+.header_educacion {
+    display: flex;
+    align-items: center;
+    justify-content: space-between; 
+}
+
+.titulo_educacion {
+    margin-left: 10px; 
+    font-weight: bold;
+    font-size: 1.2rem; 
+    flex-grow: 1; 
+}
+
+.fecha_educacion {
+    font-size: 0.9rem; 
+    color: #555; 
+    margin: 5px 0; 
+}
+
+.institucion_educacion {
+    font-size: 1rem; 
+    font-weight: bold; 
+    color: #333; 
+}
+
+.descripcion_educacion {
+    font-size: 0.9rem; 
+    color: #333; 
+    margin: 10px 0; 
+}
+
+.detalles_educacion {
+    font-size: 0.9rem; 
+    color: #555; 
+    margin-top: 10px; 
+    display: flex;
+    flex-direction: column;
+}
+
+.detalles_educacion div {
+    margin: 5px 0;
+}
+
+.iconos_educacion {
+    display: flex;
+    margin-top: 10px; 
+}
+
+.editar-icono {
+    margin-left: 10px; 
+    font-size: 18px;
+}
+.eliminar-icono{
+  margin-left: 8px;
+  font-size: 18px;
+}
+

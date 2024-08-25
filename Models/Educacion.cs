@@ -5,7 +5,9 @@ public class Educacion{
     public string disciplina_academica{get;set;}
     public string actividades_grupo {get;set;}
     public string descripcion {get;set;}
-    public DateTime fecha_expedicion { get; set; }
-    public DateTime fecha_caducidad { get; set; }
+    public string mes_expedicion {get;set;}
+     public string mes_caducidad {get;set;}
+    public string fecha_expedicion { get; set; }
+    public string fecha_caducidad { get; set; }
     public int id_info_empleado {get;set;}
 }

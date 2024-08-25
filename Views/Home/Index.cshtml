@@ -4,34 +4,44 @@
 
 
 <body id="fondo_fondo">
-  <div class="background">
-    <div class="shape"></div>
-    <div class="shape"></div>
-  </div>
-<section id="Box">
-  <form action='@Url.Action("Login")' method="post" id="form_login">
-    <div class="form-config">
-    <h3>Login Here</h3>
+    <section id="Box">
+        <form action='@Url.Action("Login")' method="post" id="form_login">
+            <div class="form-config">
+                <div class="header">
+                    <h3 class="titulo_login">¡Te damos la bienvenida a Hiring!</h3>
+                    <img src="./img/logos/HirINg-app.gif" alt="Logo" class="logo_hiring">
+                </div>
+                <div class="input-container">
+                    <i class="fas fa-envelope"></i>
+                    <label for="email">Email</label>
+                    <input type="email" name="Mail" id="email" placeholder="Mail" required />
+                </div>
 
-    <input type="email" name="Mail" placeholder="Mail" value="sarah_maqui@gmail.com" required />
-        <input type="password" name="Contraseña" placeholder="Contraseña" value="123645" required />
- 
-    <button id="butttt">Log In</button>
-    <div class="social">
-      <div class="go"><i class="fab fa-google"></i> Google</div>
-    </div>
-    </div>
-  </form>
-</section>
-</div>
+                <div class="input-container">
+                    <i class="fas fa-lock"></i>
+                    <label for="password">Contraseña</label>
+                    <div class="password-container">
+                        <input type="password" name="Contraseña" id="password" placeholder="Contraseña" required />
+                        <span id="toggle-password" class="password-toggle">
+                            <p class="mostrar_login"> Mostrar </p>
+                        </span>
+                    </div>
+                    <p class="forgot-password">
+                        <a href='@Url.Action("OlvieMiContraseña")' onclick="toggleForm();">¿Olvidaste la contraseña?</a>
+                    </p>
+                </div>
 
-<section id="sign-up-box">
-  <div> 
-     <a href='@Url.Action("Registro")' onclick="toggleForm();" <button class="round-button">¿Estás empezando a usar LinkedIn? Únete ahora.</button></a>
-  </div>
+                <button id="butttt">Inicia sesión</button>
+               <div id="sign-up-box">
+                  <p class="cuenta">¿No tienes cuenta? <a href='@Url.Action("Registro")' onclick="toggleForm();" class="sign-up-link">Regístrate aquí</a></p>
+                </div>
+            </div>
+        </form>
+    </section>
 
-</section>
+    
 </body>
+
 
 @if (ViewBag.MensajeError != null)
                 {

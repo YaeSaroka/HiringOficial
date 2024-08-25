@@ -293,6 +293,34 @@
       "PackagePath": "staticwebassets\\uploads\\1724212071.jpg"
     },
     {
+      "Id": "C:\\Users\\Yael\\OneDrive\\Escritorio\\ORT 2024\\PF\\HiringOficial\\wwwroot\\uploads\\1724368762.jpg",
+      "PackagePath": "staticwebassets\\uploads\\1724368762.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Yael\\OneDrive\\Escritorio\\ORT 2024\\PF\\HiringOficial\\wwwroot\\uploads\\1724545288.pdf",
+      "PackagePath": "staticwebassets\\uploads\\1724545288.pdf"
+    },
+    {
+      "Id": "C:\\Users\\Yael\\OneDrive\\Escritorio\\ORT 2024\\PF\\HiringOficial\\wwwroot\\uploads\\1724549649.pdf",
+      "PackagePath": "staticwebassets\\uploads\\1724549649.pdf"
+    },
+    {
+      "Id": "C:\\Users\\Yael\\OneDrive\\Escritorio\\ORT 2024\\PF\\HiringOficial\\wwwroot\\uploads\\1724549770.pdf",
+      "PackagePath": "staticwebassets\\uploads\\1724549770.pdf"
+    },
+    {
+      "Id": "C:\\Users\\Yael\\OneDrive\\Escritorio\\ORT 2024\\PF\\HiringOficial\\wwwroot\\uploads\\1724551311.pdf",
+      "PackagePath": "staticwebassets\\uploads\\1724551311.pdf"
+    },
+    {
+      "Id": "C:\\Users\\Yael\\OneDrive\\Escritorio\\ORT 2024\\PF\\HiringOficial\\wwwroot\\uploads\\1724551520.mp4",
+      "PackagePath": "staticwebassets\\uploads\\1724551520.mp4"
+    },
+    {
+      "Id": "C:\\Users\\Yael\\OneDrive\\Escritorio\\ORT 2024\\PF\\HiringOficial\\wwwroot\\uploads\\1724551588.mp4",
+      "PackagePath": "staticwebassets\\uploads\\1724551588.mp4"
+    },
+    {
       "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.Hiring.Microsoft.AspNetCore.StaticWebAssets.props",
       "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
     },
