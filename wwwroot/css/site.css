@@ -56,15 +56,15 @@ body {
 }
 #fondo_fondo {
   display: flex;
-  justify-content: center; /* Centra horizontalmente */
-  align-items: center; /* Centra verticalmente */
-  flex-grow: 1; /* Permite que el fondo crezca */
+  justify-content: center; 
+  align-items: center; 
+  flex-grow: 1; 
 }
-#form_login {
+#form_login, #form_register, #form_olvidarcontraseña {
     background-color: #ffffff;
-    height: auto; /* Ajusta la altura automáticamente */
+    height: auto; 
     width: 500px;
-    position: relative; /* Cambiado a relative */
+    position: relative;
     border-radius: 10px;
     backdrop-filter: blur(10px);
     border: 2px solid rgba(255, 255, 255, 0.1);
@@ -73,20 +73,23 @@ body {
     margin: 30px auto ; 
     max-width: 500px; 
 }
-
+.form-config{
+  font-weight: bold;
+}
 form * {
     font-family: 'Signika Negative', sans-serif;
     color: #000000;
     letter-spacing: 0.5px;
     outline: none;
     border: none;
+   
+    font-size: 18px;
 }
 
 .header {
     display: flex;
-    justify-content: space-between; /* Espacio entre el título y el logo */
-    align-items: center; /* Centra verticalmente */
-    margin-bottom: 20px; /* Aumenta el espacio entre el título y el formulario */
+    justify-content: space-between; 
+    align-items: center; 
 }
 
 .titulo_login {
@@ -96,7 +99,7 @@ form * {
 }
 
 .logo_hiring {
-    width: 120px; /* Tamaño del logo */
+    width: 120px;
     height: 120px;
 }
 
@@ -118,16 +121,16 @@ input {
     width: 100%;
     background-color: rgba(255, 255, 255, 0.07);
     border-radius: 15px;
-    border: 1px solid #ccc; /* Cambiar a un borde más suave */
+    border: 1px solid #ccc; 
     padding: 0 15px;
     font-size: 14px;
     font-weight: 300;
     margin-top: 10px;
-    transition: border 0.3s; /* Transición para el borde */
+    transition: border 0.3s; 
 }
 
 input:focus {
-    border: 1px solid #7ECCC0; /* Cambio de color en el foco */
+    border: 1px solid #7ECCC0; 
 }
 
 ::placeholder {
@@ -135,9 +138,9 @@ input:focus {
 }
 
 #butttt {
-    margin-top: 10px;
+    margin-top: 25px;
     width: 100%;
-    background-color: #7ECCC0;
+    background-color: #97c0ba;
     color: white;
     padding: 10px;
     font-size: 18px;
@@ -145,40 +148,38 @@ input:focus {
     border: none;
     border-radius: 30px;
     cursor: pointer;
-    transition: background-color 0.3s; /* Transición al pasar el mouse */
+    transition: background-color 0.3s; 
 }
 
 #butttt:hover {
-    background-color: #5CA0A0; /* Cambio de color al pasar el mouse */
+    background-color: #5CA0A0; 
 }
-
-
 
 .forgot-password {
     margin-top: 10px;
     font-size: 14px;
-    color: #007bff; /* Color del enlace */
-    text-align: left; /* Alinea el texto a la derecha */
+    color: #5CA0A0; 
+    text-align: left; 
 }
 
 .forgot-password a {
-    text-decoration: none; /* Elimina el subrayado */
-    transition: color 0.3s; /* Transición para el color */
+    text-decoration: none; 
+    transition: color 0.5s;
+    color: #5CA0A0 !important;
+    cursor: pointer;
 }
 
-.forgot-password a:hover {
-    color: #0056b3; /* Cambio de color al pasar el mouse */
-}
 
 .password-container {
     position: relative;
     display: flex;
     align-items: center;
+    margin-bottom: 20px;
 }
 
 .password-container input {
     width: 100%;
-    padding-right: 40px; /* Espacio para el icono */
+    padding-right: 40px;
 }
 
 .password-toggle {
@@ -194,6 +195,14 @@ input:focus {
     color: #5CA0A0 !important;
     margin-top: 15px;
 }
+.mostrar_login2 {
+  font-size: 16px;
+  font-weight: bold;
+  color: #5CA0A0 !important;
+  margin-top: -37px;
+  right: 34px;
+  position: absolute !important;
+}
 
 
 #sign-up-box {
@@ -205,25 +214,75 @@ input:focus {
 }
 
 #sign-up-box p {
-  margin: 0; /* Elimina márgenes del párrafo */
-  font-size: 16px; /* Tamaño de texto */
+  margin: 0; 
+  font-size: 16px; 
 }
 
 .sign-up-link {
-  color: #317E73; /* Color del enlace */
-  text-decoration: underline; /* Subrayado del enlace */
+  color: #317E73; 
+  text-decoration: underline; 
   font-weight: bold; 
-  font-size: 16px;/* Texto en negrita */
+  font-size: 16px;
 }
 
 .sign-up-link:hover {
-  color: #21554d; /* Color del enlace al pasar el mouse */
+  color: #21554d; 
 }
 
 .cuenta {
   color: rgb(7, 7, 7);
 }
 
+.error {
+  font-size: 14px;
+  margin-top: 5px;
+  display: block;
+  color: rgb(189, 53, 53);
+}
+
+/* Estilos para los botones de opciones */
+.opciones {
+  display: flex;
+  justify-content: center; 
+  margin-top: 20px;
+  
+}
+
+.radio-option {
+  display: inline-block;
+  cursor: pointer;
+  margin: 0 10px; 
+  background-color: #B3E0D9;
+  border-color: #B3E0D9;
+  border-radius: 5px;
+}
+
+.radio-option input[type="radio"] {
+  display: none;
+}
+
+.radio-option span {
+  display: inline-block;
+  padding: 10px 20px; 
+  border-radius: 4px;
+  text-align: center;
+  color: #333;
+  transition: background-color 0.3s, color 0.3s, border-color 0.3s; 
+}
+
+.radio-option input[type="radio"]:checked + span {
+  background-color: #79AAA3;
+  color: #fff;
+  border-color: #79AAA3;
+}
+
+.radio-option span:hover {
+  background-color: #5e8680;
+  color: #fff;
+  border-color: #5e8680;
+}
+
+    
 
     
 /*************************************************************************/
@@ -239,7 +298,7 @@ input:focus {
   border-radius: 10px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   overflow: hidden;
-  font-family: Arial, sans-serif;
+  font-family: 'Signika Negative', sans-serif;
   background-color: #ffffffec;
   padding: 20px;
   position: relative;
@@ -248,22 +307,11 @@ input:focus {
 @media (min-width: 3840px) {
   .card-container {
     max-width: 9000px; 
-    width: 100%;/* Aumenta el ancho máximo de la tarjeta */
-    padding: 30px; /* Aumenta el padding para mayor espacio */
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2); /* Ajusta la sombra para un efecto más pronunciado */
+    width: 100%;
+    padding: 30px; 
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2); 
   }
 }
-
-
-/*
-.rectangulo-encabezado {
-  height: 150px;
-  display: flex;
-  align-items: center;
-  padding: 20px;
-  margin: 0;
-}*/
-
 
 .perfil-container {
   display: flex;
@@ -317,9 +365,10 @@ input:focus {
 }
 #edit-icono{ font-size: 26px;
   position: absolute;
-  top: 50px; /* Ajusta según sea necesario para posicionarlo verticalmente */
-  right: 50px; /* Lo posiciona en la esquina derecha */
+  top: 50px; 
+  right: 50px; 
   cursor: pointer;
+  color: #000000;
 }
 
 /* Responsive ajustes */
@@ -337,8 +386,8 @@ input:focus {
   
 
   .perfil-container {
-    flex-direction: row; /* Asegura que la foto y la información estén en la misma fila */
-    align-items: center; /* Alinea verticalmente la foto y el texto */
+    flex-direction: row; 
+    align-items: center; 
   }
 }
 
@@ -355,12 +404,10 @@ input:focus {
 
   
   .perfil-container {
-    flex-direction: row; /* Asegura que la foto y la información estén en la misma fila */
-    align-items: center; /* Alinea verticalmente la foto y el texto */
+    flex-direction: row; 
+    align-items: center; 
   }
 }
-
-
 
 /* Información de contacto */
 .contact-info {
@@ -532,18 +579,18 @@ hr{
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 80vh; /* Aumenta la altura para que las imágenes se vean completas */
+  height: 80vh; 
   position: relative;
-  background-color: #DEECEC; /* Fondo para todas las diapositivas */
+  background-color: #DEECEC; 
 }
 
 .carousel-item img, 
 .carousel-item video {
   max-width: 100%;
   max-height: 100%;
-  object-fit: contain; /* Asegura que las imágenes y videos se muestren completos */
-  width: auto; /* Permite que la imagen se ajuste al ancho del contenedor */
-  height: auto; /* Permite que la imagen se ajuste a la altura del contenedor */
+  object-fit: contain;
+  width: auto; 
+  height: auto; 
 }
 
 .file-placeholder {
@@ -597,7 +644,7 @@ hr{
 }
 
 .download-button-container {
-  position: absolute; /* Centra el botón en la diapositiva */
+  position: absolute; 
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
@@ -606,7 +653,7 @@ hr{
 
 .download-button {
   background-color: #9dbebe !important;
-  border-color: #9dbebe !important; /* Cambia el color del borde */
+  border-color: #9dbebe !important; 
   color: white;
   padding: 10px 20px;
   border-radius: 5px;
@@ -620,13 +667,13 @@ hr{
 /* Media Queries para Responsividad */
 @media (max-width: 768px) {
   .carousel-item {
-    height: 60vh; /* Altura menor para pantallas medianas */
+    height: 60vh; 
   }
 }
 
 @media (max-width: 480px) {
   .carousel-item {
-    height: 50vh; /* Altura aún menor para pantallas pequeñas */
+    height: 50vh; 
   }
 }
 
@@ -638,15 +685,15 @@ hr{
 
   .contact-info h5, .contact-info p {
     margin: 5px 0;
-    padding: 10px; /* Ajusta el padding para un mejor diseño en dispositivos móviles */
-    width: 90%; /* Asegura que los elementos no se desborden */
-    max-width: 300px; /* Limita el ancho máximo para que no sean demasiado anchos */
+    padding: 10px; 
+    width: 90%; 
+    max-width: 300px; 
   }
 }
 
 @media (max-width: 480px) {
   .contact-info h5, .contact-info p {
-    font-size: 14px; /* Ajusta el tamaño de fuente para dispositivos más pequeños */
+    font-size: 14px; 
   }
 }
 @media (max-width: 768px) {
@@ -676,18 +723,22 @@ hr{
   letter-spacing: 0.21rem;
   color: #000000;
   opacity: 100% !important;
+  margin-top: 10px;
 }
 .modal {
-  display: none; /* Oculto por defecto */
-  position: fixed; /* Fijo en la pantalla */
-  z-index: 1050; /* Encima de todo */
+  display: none; 
+  position: fixed; 
+  z-index: 1050; 
   left: 0;
   top: 0;
-  width: 100%; /* Ancho completo */
-  height: 100%; /* Alto completo */
-  background-color: rgba(0, 0, 0, 0.5); /* Fondo oscuro semitransparente */
+  width: 100%; 
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
 }
-
+#modal-adaptacion {
+  
+  height: 400px;
+}
 /* Contenedor del modal */
 .modal-dialog {
   max-width: 90%;
@@ -717,10 +768,10 @@ hr{
   font-size: 1.25rem;
   font-weight: 500;
   color: #000000;
-  margin: 0; /* Elimina el margen para centrarlo correctamente */
+  margin: 0; 
   font-family: 'Sura', sans-serif;
   font-weight: bolder;
-  text-align: center; /* Asegura que el texto esté centrado horizontalmente */
+  text-align: center;
   align-items: center;
   justify-content: center;
 }
@@ -748,6 +799,7 @@ hr{
   border: 1px solid #ccc;
   border-radius: 0.25rem;
   box-sizing: border-box;
+  margin-top: 20px;
 }
 
 
@@ -758,6 +810,12 @@ hr{
   justify-content: flex-end;
   padding-top: 1rem;
   border-top: 1px solid #e0e0e0;
+}
+.modal-footer-adaptacion {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding-top: 13rem;
 }
 
 .modal-footer .btn {
@@ -915,6 +973,7 @@ hr{
   border-radius: 8px;
   background-color: #fff; 
   overflow: hidden; 
+  margin-top: 20px;
 }
 
 .fecha-header {
@@ -958,7 +1017,7 @@ hr{
   font-size: 1rem;
   font-weight: bold;
   color: #333;
-  margin: 0; 
+  margin: 0 !important; 
   line-height: 1; 
 }
 
@@ -975,31 +1034,73 @@ hr{
   font-size: 0.9rem;
   flex: 1;
 }
-.educacion-container {
+.educacion-container, .adaptacion-container {
   display: flex; 
+  flex-direction: column; 
+  align-items: center; /* Centra la imagen horizontalmente */
   margin-top: 20px;
-  text-align: center;
+  text-align: center; /* Alinea el texto al centro */
+  position: relative; /* Necesario para posicionar los íconos correctamente */
 }
 
 .icon-container {
-  display: flex; 
-  flex-direction: column; 
-  align-items: flex-start; }
+  display: flex;
+  align-items: center;
+  position: absolute; /* Posiciona el icono */
+  top: -20px; /* Ajusta según sea necesario para separar los íconos de la imagen */
+  left: 45%; /* Centra horizontalmente */
+  transform: translateX(-50%); /* Ajusta para centrar */
+  width: 65%; /* Asegura que ocupe el mismo ancho que la imagen */
+  justify-content: flex-start; /* Alinea los íconos a la izquierda dentro del contenedor */
+  padding-bottom: 20px; /* Espacio entre los íconos y la imagen */
+}
 
-/* Estilo para el ícono */
 .icon-educacion {
   font-size: 2rem; 
-  margin-bottom: 5px; 
-  cursor: pointer; 
+  margin-right: 10px; /* Espacio entre los íconos */
+  cursor: pointer;  
+  color: black;
 }
 
-/* Estilo para la imagen */
-.img_educacion {
-  width: 65%; 
-  height: auto; 
+.img_educacion, .img_adaptacion {
+  width: 80%; 
   cursor: pointer; 
   border: 2px solid #000000; 
+  margin-top: 30px; 
+  margin-bottom: 30px;/* Espacio entre la imagen y el borde superior del contenedor */
 }
+
+/* Media Queries para diseño responsive */
+@media (max-width: 768px) {
+  .icon-container {
+    top: -10px; /* Ajusta la posición para pantallas más pequeñas */
+    width: 80%; /* Ajusta el ancho para pantallas más pequeñas */
+  }
+
+  .img_educacion, .img_adaptacion {
+    width: 80%; 
+    margin-bottom: 5px;/* Ajusta el ancho de la imagen para pantallas más pequeñas */
+  }
+}
+
+@media (max-width: 480px) {
+  .icon-container {
+    top: -1px; /* Ajusta la posición para pantallas muy pequeñas */
+    width: 90%; /* Ajusta el ancho para pantallas muy pequeñas */
+  }
+
+  .img_educacion, .img_adaptacion {
+    width: 90%; 
+    margin-bottom: 5px;
+  }
+}
+
+
+
+
+
+/* Estilo para la imagen */
+
 .mas-icono{
   cursor: pointer;
   font-size: 20px;
@@ -1011,7 +1112,7 @@ hr{
       margin-bottom: 8px; 
   }
 
-  .img_educacion {
+  .img_educacion, .img_adaptacion {
       width: 80%; 
   }
 }
@@ -1023,13 +1124,13 @@ hr{
       margin-bottom: 5px; 
   }
 
-  .img_educacion {
+  .img_educacion, .img_adaptacion {
       width: 90%;
   }
 }
 
 /*EDUCACION CONTAINER*/
-  .educacion1_container {
+  .educacion1_container, .adaptacion1_container {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); 
     border-radius: 8px;
     padding: 15px;
@@ -1037,15 +1138,20 @@ hr{
     flex-direction: column;
     height: 100%; 
     position: relative; 
+    margin-bottom: 40px;
+    color: black;
 }
 
-.header_educacion {
+.header_educacion, .header_adaptacion {
     display: flex;
     align-items: center;
     justify-content: space-between; 
 }
+.icono-adaptacion-img{
+  width: 5%;
+}
 
-.titulo_educacion {
+.titulo_educacion, .titulo_adaptacion {
     margin-left: 10px; 
     font-weight: bold;
     font-size: 1.2rem; 
@@ -1064,11 +1170,7 @@ hr{
     color: #333; 
 }
 
-.descripcion_educacion {
-    font-size: 0.9rem; 
-    color: #333; 
-    margin: 10px 0; 
-}
+
 
 .detalles_educacion {
     font-size: 0.9rem; 
@@ -1087,12 +1189,36 @@ hr{
     margin-top: 10px; 
 }
 
-.editar-icono {
+.editar-icono, .editar-icono-adaptacion {
     margin-left: 10px; 
     font-size: 18px;
 }
-.eliminar-icono{
+.eliminar-icono, .eliminar-icono-adaptacion{
   margin-left: 8px;
   font-size: 18px;
 }
 
+/*ADAPTACION*/
+#sugerencias-container {
+  max-height: 150px;
+  overflow-y: auto;
+  position: absolute;
+  background-color: white;
+  z-index: 1000;
+  width: calc(100% - 20px);
+}
+
+.sugerencia {
+  padding: 10px;
+  cursor: pointer;
+}
+
+.sugerencia:hover {
+  background-color: #f0f0f0;
+}
+.descripcion_adaptacion{
+  font-weight: initial;
+  font-family: 'Signika Negative', sans-serif;
+  font-size: 16px;
+  color: black;
+}

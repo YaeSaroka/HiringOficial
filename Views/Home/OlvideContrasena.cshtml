@@ -1,9 +1,9 @@
 @{
-    ViewData["Title"] = "Registro";
+    ViewData["Title"] = "OlvideMiContraseña";
 }
 <body id="fondo_fondo">
     <section id="Box">
-        <form action='@Url.Action("RegistrarUsuario")' method="post" id="form_register">
+        <form action='@Url.Action("OlvideContrasena")' method="post" id="form_olvidarcontraseña">
             <div class="form-config">
                 <div class="header">
                     <h3 class="titulo_login">¡Te damos la bienvenida a Hiring!</h3>
@@ -18,9 +18,9 @@
 
                 <div class="input-container">
                     <i class="fas fa-lock"></i>
-                    <label for="password">Contraseña</label>
+                    <label for="password">Nueva Contraseña</label>
                     <div class="password-container">
-                        <input type="password" name="Contraseña" id="password" placeholder="Contraseña" value="123645" required />
+                        <input type="password" name="Contraseña" id="password" placeholder=" NuevaContraseña " value="123645" required />
                         <span class="password-toggle" data-toggle-target="password">
                             <p class="mostrar_login">Mostrar</p>
                         </span>
@@ -30,31 +30,18 @@
 
                 <div class="input-container2">
                     <i class="fas fa-lock"></i>
-                    <label for="confirm-password">Confirmar Contraseña</label>
+                    <label for="confirm-password">Confirmar Nueva Contraseña</label>
                     <div class="password-container2">
-                        <input type="password" name="ConfirmarContraseña" id="confirm-password" placeholder="Confirmar Contraseña" required />
+                        <input type="password" name="ConfirmarContraseña" id="confirm-password" placeholder="Confirmar Nueva Contraseña" required />
                         <span class="password-toggle" data-toggle-target="confirm-password">
                             <p class="mostrar_login2">Mostrar</p>
                         </span>
                         <span id="confirmPasswordError" class="error"></span>
                     </div>
                 </div>
-                <button type="submit" id="butttt">Registrate</button>
+                <button type="submit" id="butttt">Modificar</button>
             </div>
 
-            <div class="opciones">
-                <label class="radio-option">
-                    <input type="radio" name="id_discapacidad" value="1" required>
-                    <span>LEE Y ESCRIBE</span>
-                </label>
-                <label class="radio-option">
-                    <input type="radio" name="id_discapacidad" value="2" required>
-                    <span>NO LEE</span>
-                </label>
-            </div>
-            <div id="sign-up-box">
-                <p class="cuenta">Ya tenés cuenta? <a href='@Url.Action("Index")' onclick="toggleForm();" class="sign-up-link">Inicia Sesión Aquí</a></p>
-            </div>
         </form>
     </section>
     @if (ViewBag.MensajeError != null)

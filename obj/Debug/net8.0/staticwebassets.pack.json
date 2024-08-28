@@ -25,8 +25,16 @@
       "PackagePath": "staticwebassets\\img\\banner\\banner_sarah.png"
     },
     {
+      "Id": "C:\\Users\\Yael\\OneDrive\\Escritorio\\ORT 2024\\PF\\HiringOficial\\wwwroot\\img\\componente\\adaptacion.jpg",
+      "PackagePath": "staticwebassets\\img\\componente\\adaptacion.jpg"
+    },
+    {
       "Id": "C:\\Users\\Yael\\OneDrive\\Escritorio\\ORT 2024\\PF\\HiringOficial\\wwwroot\\img\\componente\\educacion.png",
       "PackagePath": "staticwebassets\\img\\componente\\educacion.png"
+    },
+    {
+      "Id": "C:\\Users\\Yael\\OneDrive\\Escritorio\\ORT 2024\\PF\\HiringOficial\\wwwroot\\img\\componente\\experiencia.png",
+      "PackagePath": "staticwebassets\\img\\componente\\experiencia.png"
     },
     {
       "Id": "C:\\Users\\Yael\\OneDrive\\Escritorio\\ORT 2024\\PF\\HiringOficial\\wwwroot\\img\\componente\\subir_archivo.png",

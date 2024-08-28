@@ -62,6 +62,7 @@ public class HomeController : Controller
             Informacion_Personal_Empleado perfil= Models.BD.CargarPerfilLogin(usuario.id);
             ViewBag.UrlMultimedia=Models.BD.SelectMultimedia(usuario.id);
             ViewBag.Lista_educacion = Models.BD.SelectEducacion(usuario.id);
+            ViewBag.Adaptacion = Models.BD.SelectAdaptacion(usuario.id);
             return View("PerfilLee", perfil);
         }
         else  {
@@ -93,17 +94,17 @@ public class HomeController : Controller
         }
     }
 
-    public IActionResult OlvidarContraseña(string Mail)
+    public IActionResult OlvideContrasena(string Mail)
     {
         string contraseña = BD.OlvideMiContraseña(Mail);
         if(contraseña == null || contraseña == "") {
             ViewBag.MensajeInexistente = "No existe el mail ingresado anteriormente";
-            return View("OlvideContraseña");
+            return View("OlvideContrasena");
         }
         else
         {
             ViewBag.ContraseñaRecordada = contraseña;
-            return View("OlvideContraseña");
+            return View("OlvideContrasena");
         }
     }
  
@@ -223,5 +224,48 @@ public async Task<IActionResult> UploadFile(IFormFile file, int Id_Empleado)
         return Json(new { success = false, message = ex.Message });
     }
 }
+[HttpPost]
+public IActionResult InsertarAdaptacion(Necesidad adaptacion, int Id_Info_Empleado, int id)
+{
+    if (id != 0 || id==0)
+    {
+        Models.BD.InsertarAdaptacion(adaptacion, Id_Info_Empleado);
+    }
+    Necesidad adaptacion_ = Models.BD.SelectAdaptacion(Id_Info_Empleado);
+    ViewBag.Adaptacion = adaptacion_;
+    Informacion_Personal_Empleado perfilActualizado = Models.BD.CargarPerfilLogin(Id_Info_Empleado);
+    return View("PerfilLee", perfilActualizado);
+}
+public IActionResult EliminarAdaptacion(int Id_Info_Empleado, int id)
+{
+    try
+    {
+        Models.BD.EliminarAdaptacion(id);
+       Necesidad Adaptacion = Models.BD.SelectAdaptacion(Id_Info_Empleado);
+        ViewBag.Adaptacion = Adaptacion;
+        return Json(new { success = true });
+    }
+    catch (Exception ex)
+    {
+        return Json(new { success = false, message = "No se pudo eliminar la Adaptacion." });
+    }
+}
+public JsonResult ObtenerDatosAdaptacion(int id)
+{
+    // Llama al método SelectAdaptacion con el parámetro id
+    var necesidad = Models.BD.SelectAdaptacionIdCard(id);
+
+    if (necesidad == null)
+    {
+        return Json(new { success = false, message = "Adpatacion no encontrada." });
+    }
+    return Json(new
+    {
+        success = true,
+        id = necesidad.id,
+        nombre = necesidad.nombre
+    });
+}
+
 
 }

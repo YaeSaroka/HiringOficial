@@ -75,14 +75,46 @@
                     else
                     {
                         <div class="educacion-container">
-                            <div class="icon-container">
-                                <i style="margin-left:20%;" class="fa-solid fa-graduation-cap icon-educacion"></i>
-                                <a data-bs-toggle="modal" data-bs-target="#ModalEducacion">
-                                    <img class="img_educacion" src="../img/componente/educacion.png" alt="Educación">
-                                </a>
-                            </div>
+                        <div class="icon-container">
+                            <i class="fa-solid fa-graduation-cap icon-educacion"></i>
                         </div>
+                        <a data-bs-toggle="modal" data-bs-target="#ModalEducacion">
+                            <img class="img_educacion" src="../img/componente/educacion.png" alt="Educación">
+                        </a>
+                        </div>
+                    }
+
+        <!--NECESIDADES DE ADAPTACIÓN -->
+        <div id="AdaptacionContainer">
+            @if (ViewBag.Adaptacion != null)
+            {
+                    <div class="adaptacion1_container" data-id="@ViewBag.Adaptacion.id">
+                        <div class="header_adaptacion">
+                            <img src="../img/componente/icono.png" alt="icono" class="icono-adaptacion-img">
+                            <div class="titulo_adaptacion">NECESIDADES DE ADAPTACIÓN 
+                            <div class="descripcion_adaptacion">@ViewBag.Adaptacion.nombre</div></div>
+                            <i class="fa-solid fa-edit editar-icono-adaptacion" data-id="@ViewBag.Adaptacion.id"></i>
+                            <i class="fa-solid fa-trash eliminar-icono-adaptacion" data-id="@ViewBag.Adaptacion.id"></i>
+                        </div>
+                    </div>
+                
+            }
+                    else
+                    {
+                        <div class="adaptacion-container">
+                        <div class="icon-container">
+                            <i class="fa-solid fa-person-walking-with-cane icon-educacion"></i>
+                            <i class="fa-solid fa-wheelchair icon-educacion" style="margin-left: 10px;"></i>
+                        </div>
+                        <a data-bs-toggle="modal" data-bs-target="#ModalAdaptacion">
+                                <img class="img_adaptacion" src="../img/componente/adaptacion.jpg" alt="Adaptación">
+                            </a>
+                    </div>
+
                     }</div>
+                    
+</div>
+
         <!-- CAROUSEL MULTIMEDIA*/ -->
 
     @if (ViewBag.UrlMultimedia != null)
@@ -96,7 +128,7 @@
                     {
                         <div class='carousel-item @(Activo ? "active" : "")'>
                             <div class="row">
-                                <div class="col-md-12">
+                                <div class="col-md-12 position-relative">
                                     @if (item.EndsWith(".jpg") || item.EndsWith(".jpeg") || item.EndsWith(".png"))
                                     {
                                         <img src="@item" class="d-block w-100">
@@ -110,9 +142,10 @@
                                     else
                                     {
                                         <div class="download-button-container">
-                                            <a href="@item" download class="btn btn-primary download-button ">Descargar archivo</a>
+                                            <a href="@item" download class="btn btn-primary download-button">Descargar archivo</a>
                                         </div>
                                     }
+                                    <button class="btn btn-danger btn-sm position-absolute top-0 end-0" onclick="eliminarArchivo(this, '@item')">Eliminar</button>
                                 </div>
                             </div>
                         </div>
@@ -131,6 +164,7 @@
         </div>
     </div>
 }
+
 
         <!-- MODAL INFO PERSONAL -->
         <div class="modal fade" id="ModalForm" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -293,6 +327,30 @@
 </div>
 
 
+<!-- MODAL ADAPTACION -->
+   <div class="modal fade" id="ModalAdaptacion" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header-educacion">
+                <h5 class="modal-title">Necesidades De Adaptación</h5>
+            </div>
+            <div class="modal-body" id="modal-adaptacion">
+                <form action='@Url.Action("InsertarAdaptacion")' method="post" id="ModalAdaptacionForm">
+                    <input type="hidden" name="id" id="id" value="">
+                    <input type="hidden" name="id_info_empleado" id="id_info_empleado" value="@Model.id">
+                    <h1 class="titulos-modal">
+                        <i id="iconos-modal" class="fa-solid fa-pen-nib"></i> ESCRIBÍ UN PÁRRAFO ENUMERANDO TUS NECESIDADES DE ADAPTACION
+                    </h1>
+                    <input type="text" name="nombre" id="nombre" oninput="mostrarSugerencias()" placeholder="TUS NECESIDADES">
+                    <div id="sugerencias-container"></div>
+                    <div class="modal-footer-adaptacion">
+                        <button type="submit" style="background-color: @Model.estilo; border-color: @Model.estilo" class="btn btn-primary">Guardar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
 
 
 <!-- FUNCIONES JAVA LOCALES -->
@@ -373,6 +431,90 @@ $('#ModalEducacionForm').submit(function(e) {
         }
     });
 });
+$('#ModalAdaptacionForm').submit(function(e) {
+    e.preventDefault(); 
+    console.log($(this).serialize()); 
+    
+    var id = $('input[name="id"]').val();
+    var idInfoEmpleado = '@Model.id'; // Asigna el valor manualmente
+    $('input[name="id_info_empleado"]').val(idInfoEmpleado);
+    console.log("ID Info Empleado: ", idInfoEmpleado);
+
+    $.ajax({
+        type: 'POST',
+        url: '/Home/InsertarAdaptacion/' + id, 
+        data: $(this).serialize(),
+        success: function(response) {
+            console.log("Respuesta recibida: ", response);
+            var nuevaListaEducacion = $(response).find('#AdaptacionContainer').html();
+            if (nuevaListaEducacion) {
+                $('#AdaptacionContainer').html(nuevaListaEducacion); 
+                $('#ModalAdaptacion').modal('hide'); 
+                console.log("Modal cerrado y lista actualizada.");
+            } else {
+                console.log("No se encontró la lista de educación en la respuesta.");
+            }
+        },
+        error: function(error) {
+            console.log("Error: ", error);
+        }
+    });
+});
+
+const sugerencias = [
+    "Acceso a rampas",
+    "Material en braille",
+    "Intérprete de lenguaje de señas",
+    "Software de lectura de pantalla",
+    "Asistencia personal",
+    "Rampa",
+    "Baño adaptado a sillas de ruedas"
+];
+
+function mostrarSugerencias() {
+    const input = document.getElementById('nombre');
+    const sugerenciasContainer = document.getElementById('sugerencias-container');
+    sugerenciasContainer.innerHTML = '';
+    
+    const valor = input.value.toLowerCase();
+    if (valor) {
+        const sugerenciasFiltradas = sugerencias.filter(sugerencia => 
+            sugerencia.toLowerCase().includes(valor)
+        );
+        
+        sugerenciasFiltradas.forEach(sugerencia => {
+            const div = document.createElement('div');
+            div.classList.add('sugerencia');
+            div.textContent = sugerencia;
+            div.onclick = () => {
+                input.value = sugerencia;
+                sugerenciasContainer.innerHTML = '';
+            };
+            sugerenciasContainer.appendChild(div);
+        });
+    }
+}
+
+function eliminarArchivo(button, itemUrl) {
+    // Encuentra el elemento del carrusel que contiene el botón
+    const carouselItem = button.closest('.carousel-item');
+    
+    // Elimina el elemento del carrusel
+    carouselItem.remove();
+    
+    // Opcional: Realiza una llamada AJAX para eliminar el archivo del servidor si es necesario
+    // $.ajax({
+    //     url: '/ruta/para/eliminar/archivo',
+    //     type: 'POST',
+    //     data: { url: itemUrl },
+    //     success: function(response) {
+    //         console.log('Archivo eliminado del servidor');
+    //     },
+    //     error: function(error) {
+    //         console.error('Error al eliminar el archivo del servidor', error);
+    //     }
+    // });
+}
 
   
 </script>

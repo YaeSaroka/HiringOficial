@@ -62,10 +62,18 @@ function adjustTextColorBasedOnBackground() {
 document.addEventListener('DOMContentLoaded', adjustTextColorBasedOnBackground);
 
 function getBrightness(hex) {
+    // Asegúrate de que el valor hexadecimal tenga el formato correcto
     hex = hex.replace('#', '');
+    if (hex.length !== 6) {
+        throw new Error('Formato hexadecimal inválido');
+    }
+
+    // Convierte los componentes hexadecimales a valores RGB
     var r = parseInt(hex.substring(0, 2), 16);
     var g = parseInt(hex.substring(2, 4), 16);
     var b = parseInt(hex.substring(4, 6), 16);
+
+    // Calcula el brillo utilizando la fórmula de luminancia relativa
     return (r * 299 + g * 587 + b * 114) / 1000;
 }
 
@@ -189,7 +197,7 @@ $(document).on('click', '.eliminar-icono', function () {
     
         $.ajax({
             url: '/Home/EliminarEducacion/' + id,
-            type: 'POST',  // Si decides usar DELETE, cambia a 'DELETE'
+            type: 'POST',  
             success: function (response) {
                 if (!response.success) {
                     alert(response.message);
@@ -201,15 +209,13 @@ $(document).on('click', '.eliminar-icono', function () {
                     if ($('.educacion1_container').length === 0) {
                         var noEducacionHtml = `
                             <div class="educacion-container">
-                                <div class="icon-container">
-                                    <i style="margin-left:20%;" class="fa-solid fa-graduation-cap icon-educacion"></i>
-                                    <a data-bs-toggle="modal" data-bs-target="#ModalEducacion">
-                                        <img class="img_educacion" src="../img/componente/educacion.png" alt="Educación">
-                                    </a>
-                                </div>
-                            </div>`;
-                        
-                        // Añade el contenido alternativo al DOM
+                        <div class="icon-container">
+                            <i class="fa-solid fa-graduation-cap icon-educacion"></i>
+                        </div>
+                        <a data-bs-toggle="modal" data-bs-target="#ModalEducacion">
+                            <img class="img_educacion" src="../img/componente/educacion.png" alt="Educación">
+                        </a>
+                        </div>`;
                         $('#listaEducacionContainer').html(noEducacionHtml);
                     }
                 }
@@ -222,33 +228,71 @@ $(document).on('click', '.eliminar-icono', function () {
 });
 
 $(document).on('click', '.mas-icono', function () {
-    // Limpia los campos del formulario
     $('#ModalEducacionForm').find('input[type="text"], input[type="hidden"], select').val('');
     $('#ModalEducacionForm').find('textarea').val('');
-    
-    // Muestra el modal
     $('#ModalEducacion').modal('show');
 });
 
 
-/*FUNCION MOSTRAR CONTRASEÑA LOGIN*/
-document.getElementById('toggle-password').addEventListener('click', function () {
-    const passwordField = document.getElementById('password');
-    const passwordToggle = document.getElementById('toggle-password').querySelector('i');
+//ADAPTACION
+$(document).on('click', '.editar-icono-adaptacion', function () {
+    var id = $(this).data('id');
 
-    if (passwordField.type === 'password') {
-        passwordField.type = 'text';
-        passwordToggle.classList.remove('fa-eye');
-        passwordToggle.classList.add('fa-eye-slash');
-    } else {
-        passwordField.type = 'password';
-        passwordToggle.classList.remove('fa-eye-slash');
-        passwordToggle.classList.add('fa-eye');
-    }
+    $.ajax({
+        url: '/Home/ObtenerDatosAdaptacion/' + id,
+        type: 'GET',
+        success: function (response) {
+            if (response.success === false) {
+                alert(response.message);
+            } else {
+                console.log("ID obtenido: ", response.id); 
+                $('input[name="id"]').val(response.id); 
+                $('input[name="nombre"]').val(response.nombre);
+                $('#ModalAdaptacion').modal('show');
+            }
+        },
+        error: function (xhr, status, error) {
+            console.error("Error al obtener los datos: ", error);
+        }
+    });
 });
 
+$(document).on('click', '.eliminar-icono-adaptacion', function () {
+    var id = $(this).data('id');
 
-
-
-
-
+    $(document).on('click', '.eliminar-icono-adaptacion', function () {
+        var id = $(this).data('id');
+    
+        $.ajax({
+            url: '/Home/EliminarAdaptacion/' + id,
+            type: 'POST',  
+            success: function (response) {
+                if (!response.success) {
+                    alert(response.message);
+                } else {
+                    // Elimina el contenedor de la educación del DOM
+                    $('.adaptacion1_container[data-id="' + id + '"]').remove();
+    
+                    // Verifica si quedan elementos de educación
+                    if ($('.adaptacion1_container').length === 0) {
+                        var noEducacionHtml = `
+                            <div class="adaptacion-container">
+                        <div class="icon-container">
+                            <i class="fa-solid fa-person-walking-with-cane icon-educacion"></i>
+                            <i class="fa-solid fa-wheelchair icon-educacion" style="margin-left: 10px;"></i>
+                        </div>
+                        <a data-bs-toggle="modal" data-bs-target="#ModalAdaptacion">
+                                <img class="img_adaptacion" src="../img/componente/adaptacion.jpg" alt="Adaptación">
+                            </a>
+                    </div>
+`;
+                        $('#AdaptacionContainer').html(noEducacionHtml);
+                    }
+                }
+            },
+            error: function (xhr, status, error) {
+                console.error("Error al eliminar la educación: ", error);
+            }
+        });
+    });
+});

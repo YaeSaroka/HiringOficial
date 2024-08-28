@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "A3DTFuKWJq2IIaYFl3KwO89dp544bglirx/wbDGhJ4I=",
+  "Hash": "WEZk15TyG7CymcILlHuOYKzhWS/us4ot9DrykNy19Gc=",
   "Source": "Hiring",
   "BasePath": "_content/Hiring",
   "Mode": "Default",
@@ -150,6 +150,25 @@
       "OriginalItemSpec": "wwwroot\\img\\banner\\Thumbs.db"
     },
     {
+      "Identity": "C:\\Users\\Yael\\OneDrive\\Escritorio\\ORT 2024\\PF\\HiringOficial\\wwwroot\\img\\componente\\adaptacion.jpg",
+      "SourceId": "Hiring",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Yael\\OneDrive\\Escritorio\\ORT 2024\\PF\\HiringOficial\\wwwroot\\",
+      "BasePath": "_content/Hiring",
+      "RelativePath": "img/componente/adaptacion.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\img\\componente\\adaptacion.jpg"
+    },
+    {
       "Identity": "C:\\Users\\Yael\\OneDrive\\Escritorio\\ORT 2024\\PF\\HiringOficial\\wwwroot\\img\\componente\\educacion.png",
       "SourceId": "Hiring",
       "SourceType": "Discovered",
@@ -167,6 +186,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\img\\componente\\educacion.png"
+    },
+    {
+      "Identity": "C:\\Users\\Yael\\OneDrive\\Escritorio\\ORT 2024\\PF\\HiringOficial\\wwwroot\\img\\componente\\experiencia.png",
+      "SourceId": "Hiring",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Yael\\OneDrive\\Escritorio\\ORT 2024\\PF\\HiringOficial\\wwwroot\\",
+      "BasePath": "_content/Hiring",
+      "RelativePath": "img/componente/experiencia.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\img\\componente\\experiencia.png"
     },
     {
       "Identity": "C:\\Users\\Yael\\OneDrive\\Escritorio\\ORT 2024\\PF\\HiringOficial\\wwwroot\\img\\componente\\subir_archivo.png",

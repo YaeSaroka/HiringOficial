@@ -193,7 +193,61 @@ public  class BD
         }
     }
 
- 
+//ADAPTACION
+public static void InsertarAdaptacion(Necesidad Necesidad, int id_info_empleado)
+{
+    try
+    {
+        using (SqlConnection db = new SqlConnection(ConnectionString))
+        {
+            string sp = "InsertarAdaptacion";
+            var parameters = new 
+            { 
+                id = Necesidad.id == 0 ? 0 : Necesidad.id, 
+                nombre = Necesidad.nombre, 
+                id_info_empleado= Necesidad.id_info_empleado
+            };
+            db.Execute(sp, parameters, commandType: CommandType.StoredProcedure);
+        }
+    }
+    catch (Exception ex)
+    {
+        throw new Exception("Error al insertar la necesidad de adaptacion en la base de datos.", ex);
+    }
+}
+
+   public static Necesidad SelectAdaptacion(int Id_Info_Empleado)
+{
+    Necesidad Adaptacion = null; 
+
+    using (SqlConnection db = new SqlConnection(ConnectionString))
+    {
+        string sp = "SelectNecesidad";
+        Adaptacion = db.QueryFirstOrDefault<Necesidad>(sp, new { id_info_empleado = Id_Info_Empleado }, commandType: CommandType.StoredProcedure);
+    }
+
+    return Adaptacion;
+}
+public static Necesidad SelectAdaptacionIdCard(int id)
+    {
+        Necesidad Adaptacion = null;
+        using (SqlConnection db = new SqlConnection(ConnectionString))
+        {
+            string sp = "SelectAdaptacionIdCard";
+            Adaptacion = db.QueryFirstOrDefault<Necesidad>(sp, new { id = id}, commandType: CommandType.StoredProcedure);
+        }
+
+        return Adaptacion;
+    }
+    public static void EliminarAdaptacion(int id)
+        {
+            using (SqlConnection db = new SqlConnection(ConnectionString))
+            {
+                string sp = "EliminarAdaptacion";
+                var parameters = new { id = id};
+                db.Execute(sp, parameters, commandType: CommandType.StoredProcedure);
+            }
+        }
 
 
 }
