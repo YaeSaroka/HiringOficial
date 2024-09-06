@@ -113,7 +113,7 @@
 
                     }</div>
                     
-</div>
+        </div>
 
         <!-- CAROUSEL MULTIMEDIA*/ -->
 
@@ -230,7 +230,7 @@
             <div class="modal-header-educacion">
                 <h5 class="modal-title">Educación</h5>
             </div>
-            <div class="modal-body">
+            <div class="modal-body" id="modal-educacion">
                 
                 <form action='@Url.Action("InsertarEducacion")' method="post" id="ModalEducacionForm" >
                 
@@ -240,17 +240,18 @@
                     <h1 class="titulos-modal">
                         <i id="iconos-modal" class="fa-solid fa-id-card"></i> NOMBRE
                     </h1>
-                    <input type="text" name="titulo">
+                    <input type="text" name="titulo" placeholder="NOMBRE" id="NOMBRE">
+                    <button id="ingreso">ups</button>
                     <h1 class="titulos-modal">
                         <i id="iconos-modal" class="fa-solid fa-school"></i> INSTITUCIÓN EDUCATIVA
                     </h1>
-                    <input type="text" name="nombre_institucion">
+                    <input type="text" name="nombre_institucion" placeholder="INSTITUCIÓN EDUCATIVA">
                     <div class="modal-separador-educacion">
                         <h5 class="modal-title-separador">++ INFORMACIÓN</h5>
                     </div>
 
                     <!-- FECHAS -->
-                    <div class="fecha-contenedor">
+                    <div class="fecha-contenedor" id=>
                         <div class="fecha-header">
                             <h3>FECHAS</h3>
                         </div>
@@ -263,7 +264,7 @@
                                 <select id="mes-inicio" name="mes_expedicion">
                                     <option value="">MES</option>
                                 </select>
-                                <select id="ano-inicio" name="fecha_expedicion">
+                                <select id="ano-inicio" name="fecha_expedicion" placeholder="Año de inicio">
                                     <option value="">AÑO</option>
                                 </select>
                             </div>
@@ -275,10 +276,10 @@
                                 <label for="fecha-fin">FECHA DE FINALIZACIÓN</label>
                             </div>
                             <div class="fecha-selectores">
-                                <select id="mes-fin" name="mes_caducidad">
+                                <select id="mes-fin" name="mes_caducidad" placeholder="Mes de finalizacion">
                                     <option value="">MES</option>
                                 </select>
-                                <select id="ano-fin" name="fecha_caducidad">
+                                <select id="ano-fin" name="fecha_caducidad" placeholder="Año de finalizacion">
                                     <option value="">AÑO</option>
                                 </select>
                             </div>
@@ -516,6 +517,101 @@ function eliminarArchivo(button, itemUrl) {
     // });
 }
 
+
+//api nativa web speech, text-to-speech y viceversa
+function text_to_speech(text) {
+    const speech = new SpeechSynthesisUtterance(text);
+    speech.lang = 'es-ES'; 
+    window.speechSynthesis.speak(speech);
+}
+function setupAdaptacionListeners() {
+    const modalAdaptacion = document.getElementById('ModalAdaptacion');
+
+    $(modalAdaptacion).on('shown.bs.modal', function () {
+        text_to_speech('Adaptación');
+
+        document.querySelectorAll('#modal-adaptacion input').forEach(input => {
+            input.removeEventListener('focus', handleInputFocus);
+            input.addEventListener('focus', handleInputFocus);
+        });
+        document.querySelectorAll('#modal-adaptacion select').forEach(input => {
+            select.removeEventListener('focus', handlesFechasFocus);
+            select.addEventListener('focus', handlesFechasFocus);
+        });
+    });
+}
+function setupEducacionListeners() {
+    const modalEducacion = document.getElementById('ModalEducacion');
+
+    $(modalEducacion).on('shown.bs.modal', function () {
+        text_to_speech('Educación');
+
+        document.querySelectorAll('#ModalEducacionForm input').forEach(input => {
+            input.removeEventListener('focus', handleInputFocus);
+            input.addEventListener('focus', handleInputFocus);
+        });
+         document.querySelectorAll('#modal-educacion select').forEach(input => {
+            select.removeEventListener('focus', handlesFechasFocus);
+            select.addEventListener('focus', handlesFechasFocus);
+        });
+    });
+}
+
+//GENERAL HANDLES, con los forms hechos se puede repetir, al ser todo igual. 
+function handleInputFocus(event) {   // ------>  inputs
+    const input = event.target;
+    const placeholder = input.getAttribute('id');
+    const message = `Ingresa. ${placeholder}. Si desea hablar, toque el micrófono`;
+    text_to_speech(message);
+}
+function handlesFechasFocus(event) {    //  ----> el form de fechas (id, x el nombre)
+    const select = event.target;
+    const placeholder = input.getAttribute('id');
+    const message = `Ingresa. ${placeholder}`;
+    text_to_speech(message);
+}
+
+//Speech to text
+function writeText() {
+    window.SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+    const recognition = new SpeechRecognition();
+    recognition.lang = 'es-ES';
+    recognition.interimResults = false;
+    recognition.maxAlternatives = 1;
+}
+function handleSpeechResultados(transcript){
+    const input = document.getElementById('NOMBRE');
+    input.value = transcript; // le asigna el valor al input, creo
+}
+function reconocimientoDeVoz(recognition){
+    recognition.start();
+}
+function setupRecognitionEvents(recognition){
+    recognition.addEventListener('result', function(event{
+        const transcript_resultado = event.results[0][0].transcript;
+        handleSpeechResultados(transcript_resultado);
+    }))
+}
+function actionButton(recognition){
+    const startButton = document.getElementById('ingreso');
+        startButton.addEventListener('click', function(){
+            reconocimientoDeVoz(recognition);
+    });
+    recognition.addEventListener('end', function(){
+        recognition.stop();
+    })
+}
+function inicializarReconocimiento(){
+    const recognition = writeText();
+    actionButton(recognition);
+    setupRecognitionEvents(recognition);
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+    setupAdaptacionListeners();
+    setupEducacionListeners();
+    inicializarReconocimiento();
+}));
   
 </script>
 
