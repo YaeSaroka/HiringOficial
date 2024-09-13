@@ -1,8 +1,4 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
-}
-
-
+﻿
 <body id="fondo_fondo">
     <section id="Box">
         <form action='@Url.Action("Login")' method="post" id="form_login">
@@ -28,42 +24,64 @@
                     <div class="password-container">
                         <input type="password" name="Contraseña" id="password" placeholder="Contraseña" value="123645" required />
                         <span id="toggle-password" class="password-toggle">
-                            <p class="mostrar_login"> Mostrar </p>
+                            <p class="mostrar_login">Mostrar</p>
                         </span>     
                     </div>
                     <p class="forgot-password">
-                        <a href='@Url.Action("OlvideContrasena")' onclick="toggleForm();">¿Olvidaste la contraseña?</a>
+                        <a href='@Url.Action("OlvideContrasena")' id="forgot-password">¿Olvidaste la contraseña?</a>
                     </p>
                 </div>
 
                 <button id="butttt">Inicia sesión</button>
-               <div id="sign-up-box">
-                  <p class="cuenta">¿No tienes cuenta? <a href='@Url.Action("Registro")' onclick="toggleForm();" class="sign-up-link">Regístrate aquí</a></p>
+                <div id="sign-up-box">
+                    <p class="cuenta">¿No tienes cuenta? <a href='@Url.Action("Registro")' id="sign-up">Regístrate aquí</a></p>
                 </div>
             </div>
         </form>
     </section>
-
     
+    <script>
+        function text_to_speech(text) {
+            const speech = new SpeechSynthesisUtterance(text);
+            speech.lang = 'es-ES'; 
+            window.speechSynthesis.speak(speech);
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            text_to_speech('Bienvenido a Hiring');
+
+            // Toggle password visibility
+            document.getElementById('toggle-password').addEventListener('click', function () {
+                const passwordField = document.getElementById('password');
+                const passwordToggle = document.getElementById('toggle-password').querySelector('p');
+
+                if (passwordField.type === 'password') {
+                    passwordField.type = 'text';
+                    passwordToggle.textContent = 'Ocultar';
+                } else {
+                    passwordField.type = 'password';
+                    passwordToggle.textContent = 'Mostrar';
+                }
+            });
+
+            document.querySelectorAll('#form_login input').forEach(input => { // dice cada que vex que tocas un inputt, a la hora de poenr algo
+                input.addEventListener('focus', function(event) {
+                    const placeholder = input.getAttribute('placeholder');
+                    if (placeholder) {
+                        text_to_speech(`Ingresa ${placeholder}`);
+                    }
+                });
+            });
+
+            document.getElementById('forgot-password').addEventListener('mouseover', function() {
+                text_to_speech('Recuperar contraseña? ');
+            });
+            document.getElementById('sign-up').addEventListener('mouseover', function() {
+                text_to_speech('Registro? ');
+            });
+             document.getElementById('butttt').addEventListener('mouseover', function() {
+                text_to_speech('¿Iniciar sesión?');
+            });
+        });
+    </script>
 </body>
-
-
- 
-<script>
-    document.getElementById('toggle-password').addEventListener('click', function () {
-    const passwordField = document.getElementById('password');
-    const passwordToggle = document.getElementById('toggle-password').querySelector('i');
-
-    if (passwordField.type === 'password') {
-        passwordField.type = 'text';
-        passwordToggle.classList.remove('fa-eye');
-        passwordToggle.classList.add('fa-eye-slash');
-    } else {
-        passwordField.type = 'password';
-        passwordToggle.classList.remove('fa-eye-slash');
-        passwordToggle.classList.add('fa-eye');
-    }
-});
-
-
-</script>

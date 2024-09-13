@@ -198,3 +198,44 @@ C:\Users\Yael\OneDrive\Escritorio\ORT 2024\PF\HiringOficial\obj\Debug\net8.0\ref
 C:\Users\Yael\OneDrive\Escritorio\ORT 2024\PF\HiringOficial\obj\Debug\net8.0\Hiring.pdb
 C:\Users\Yael\OneDrive\Escritorio\ORT 2024\PF\HiringOficial\obj\Debug\net8.0\Hiring.genruntimeconfig.cache
 C:\Users\Yael\OneDrive\Escritorio\ORT 2024\PF\HiringOficial\obj\Debug\net8.0\ref\Hiring.dll
+C:\HiringOficial\bin\Debug\net8.0\appsettings.Development.json
+C:\HiringOficial\bin\Debug\net8.0\appsettings.json
+C:\HiringOficial\bin\Debug\net8.0\Hiring.staticwebassets.runtime.json
+C:\HiringOficial\bin\Debug\net8.0\Hiring.exe
+C:\HiringOficial\bin\Debug\net8.0\Hiring.deps.json
+C:\HiringOficial\bin\Debug\net8.0\Hiring.runtimeconfig.json
+C:\HiringOficial\bin\Debug\net8.0\Hiring.dll
+C:\HiringOficial\bin\Debug\net8.0\Hiring.pdb
+C:\HiringOficial\bin\Debug\net8.0\Dapper.dll
+C:\HiringOficial\bin\Debug\net8.0\Newtonsoft.Json.dll
+C:\HiringOficial\bin\Debug\net8.0\System.Data.SqlClient.dll
+C:\HiringOficial\bin\Debug\net8.0\runtimes\win-arm64\native\sni.dll
+C:\HiringOficial\bin\Debug\net8.0\runtimes\win-x64\native\sni.dll
+C:\HiringOficial\bin\Debug\net8.0\runtimes\win-x86\native\sni.dll
+C:\HiringOficial\bin\Debug\net8.0\runtimes\unix\lib\netcoreapp2.1\System.Data.SqlClient.dll
+C:\HiringOficial\bin\Debug\net8.0\runtimes\win\lib\netcoreapp2.1\System.Data.SqlClient.dll
+C:\HiringOficial\obj\Debug\net8.0\Hiring.csproj.AssemblyReference.cache
+C:\HiringOficial\obj\Debug\net8.0\Hiring.GeneratedMSBuildEditorConfig.editorconfig
+C:\HiringOficial\obj\Debug\net8.0\Hiring.AssemblyInfoInputs.cache
+C:\HiringOficial\obj\Debug\net8.0\Hiring.AssemblyInfo.cs
+C:\HiringOficial\obj\Debug\net8.0\Hiring.csproj.CoreCompileInputs.cache
+C:\HiringOficial\obj\Debug\net8.0\Hiring.MvcApplicationPartsAssemblyInfo.cache
+C:\HiringOficial\obj\Debug\net8.0\Hiring.RazorAssemblyInfo.cache
+C:\HiringOficial\obj\Debug\net8.0\Hiring.RazorAssemblyInfo.cs
+C:\HiringOficial\obj\Debug\net8.0\Hiring.sourcelink.json
+C:\HiringOficial\obj\Debug\net8.0\staticwebassets.build.json
+C:\HiringOficial\obj\Debug\net8.0\staticwebassets.development.json
+C:\HiringOficial\obj\Debug\net8.0\staticwebassets\msbuild.Hiring.Microsoft.AspNetCore.StaticWebAssets.props
+C:\HiringOficial\obj\Debug\net8.0\staticwebassets\msbuild.build.Hiring.props
+C:\HiringOficial\obj\Debug\net8.0\staticwebassets\msbuild.buildMultiTargeting.Hiring.props
+C:\HiringOficial\obj\Debug\net8.0\staticwebassets\msbuild.buildTransitive.Hiring.props
+C:\HiringOficial\obj\Debug\net8.0\staticwebassets.pack.json
+C:\HiringOficial\obj\Debug\net8.0\scopedcss\Views\Shared\_Layout.cshtml.rz.scp.css
+C:\HiringOficial\obj\Debug\net8.0\scopedcss\bundle\Hiring.styles.css
+C:\HiringOficial\obj\Debug\net8.0\scopedcss\projectbundle\Hiring.bundle.scp.css
+C:\HiringOficial\obj\Debug\net8.0\Hiring.csproj.Up2Date
+C:\HiringOficial\obj\Debug\net8.0\Hiring.dll
+C:\HiringOficial\obj\Debug\net8.0\refint\Hiring.dll
+C:\HiringOficial\obj\Debug\net8.0\Hiring.pdb
+C:\HiringOficial\obj\Debug\net8.0\Hiring.genruntimeconfig.cache
+C:\HiringOficial\obj\Debug\net8.0\ref\Hiring.dll

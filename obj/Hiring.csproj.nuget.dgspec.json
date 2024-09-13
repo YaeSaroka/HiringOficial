@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Yael\\OneDrive\\Escritorio\\ORT 2024\\PF\\HiringOficial\\Hiring.csproj": {}
+    "C:\\HiringOficial\\Hiring.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Yael\\OneDrive\\Escritorio\\ORT 2024\\PF\\HiringOficial\\Hiring.csproj": {
+    "C:\\HiringOficial\\Hiring.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Yael\\OneDrive\\Escritorio\\ORT 2024\\PF\\HiringOficial\\Hiring.csproj",
+        "projectUniqueName": "C:\\HiringOficial\\Hiring.csproj",
         "projectName": "Hiring",
-        "projectPath": "C:\\Users\\Yael\\OneDrive\\Escritorio\\ORT 2024\\PF\\HiringOficial\\Hiring.csproj",
-        "packagesPath": "C:\\Users\\Yael\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Yael\\OneDrive\\Escritorio\\ORT 2024\\PF\\HiringOficial\\obj\\",
+        "projectPath": "C:\\HiringOficial\\Hiring.csproj",
+        "packagesPath": "C:\\Users\\camib\\.nuget\\packages\\",
+        "outputPath": "C:\\HiringOficial\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\Yael\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "C:\\Users\\camib\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net8.0"
@@ -75,7 +75,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.304/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.302/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

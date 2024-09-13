@@ -6,7 +6,7 @@ namespace Hiring.Models;
 
 public  class BD
 {
-     private static string ConnectionString { get; set; } = @"Server=LEO-LENOVO\SQLEXPRESS;DataBase=Hiring;Trusted_Connection=True;";   
+     private static string ConnectionString { get; set; } = @"Server=localhost\SQLEXPRESS01;DataBase=Hiring;Trusted_Connection=True;";   
      public static Usuario user; //agarra el usuario loggeado
 
 

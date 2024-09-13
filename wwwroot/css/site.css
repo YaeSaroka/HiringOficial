@@ -129,6 +129,10 @@ input {
     transition: border 0.3s; 
 }
 
+.bttttonn{
+  margin-top: -100px;
+}
+
 input:focus {
     border: 1px solid #7ECCC0; 
 }

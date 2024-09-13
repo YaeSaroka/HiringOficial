@@ -329,7 +329,7 @@
 
 
 <!-- MODAL ADAPTACION -->
-   <div class="modal fade" id="ModalAdaptacion" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="ModalAdaptacion" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header-educacion">
@@ -342,16 +342,20 @@
                     <h1 class="titulos-modal">
                         <i id="iconos-modal" class="fa-solid fa-pen-nib"></i> ESCRIBÍ UN PÁRRAFO ENUMERANDO TUS NECESIDADES DE ADAPTACION
                     </h1>
-                    <input type="text" name="nombre" id="nombre" oninput="mostrarSugerencias()" placeholder="TUS NECESIDADES">
+                    <div class="input-container">
+                        <input type="text" name="nombre" placeholder="TUS NECESIDADES">
+                        <i class="fas fa-microphone microphone-icon" id="record-icon"></i>
+                    </div>
                     <div id="sugerencias-container"></div>
                     <div class="modal-footer-adaptacion">
-                        <button type="submit" style="background-color: @Model.estilo; border-color: @Model.estilo" class="btn btn-primary">Guardar</button>
+                        <button type="submit" style="background-color: @Model.estilo; border-color: @Model.estilo" class="bttttonn btn btn-primary">Guardar</button>
                     </div>
                 </form>
             </div>
         </div>
     </div>
 </div>
+
 
 
 <!-- FUNCIONES JAVA LOCALES -->
@@ -524,22 +528,26 @@ function text_to_speech(text) {
     speech.lang = 'es-ES'; 
     window.speechSynthesis.speak(speech);
 }
+
 function setupAdaptacionListeners() {
     const modalAdaptacion = document.getElementById('ModalAdaptacion');
-
+    
     $(modalAdaptacion).on('shown.bs.modal', function () {
+        console.log('Modal Adaptacion shown');  
         text_to_speech('Adaptación');
 
         document.querySelectorAll('#modal-adaptacion input').forEach(input => {
             input.removeEventListener('focus', handleInputFocus);
             input.addEventListener('focus', handleInputFocus);
         });
-        document.querySelectorAll('#modal-adaptacion select').forEach(input => {
+
+        document.querySelectorAll('#modal-adaptacion select').forEach(select => {
             select.removeEventListener('focus', handlesFechasFocus);
             select.addEventListener('focus', handlesFechasFocus);
         });
     });
 }
+
 function setupEducacionListeners() {
     const modalEducacion = document.getElementById('ModalEducacion');
 
@@ -550,69 +558,115 @@ function setupEducacionListeners() {
             input.removeEventListener('focus', handleInputFocus);
             input.addEventListener('focus', handleInputFocus);
         });
-         document.querySelectorAll('#modal-educacion select').forEach(input => {
+
+        document.querySelectorAll('#modal-educacion select').forEach(select => {
             select.removeEventListener('focus', handlesFechasFocus);
             select.addEventListener('focus', handlesFechasFocus);
         });
     });
 }
 
-//GENERAL HANDLES, con los forms hechos se puede repetir, al ser todo igual. 
-function handleInputFocus(event) {   // ------>  inputs
+// GENERAL HANDLES
+function handleInputFocus(event) {
     const input = event.target;
-    const placeholder = input.getAttribute('id');
-    const message = `Ingresa. ${placeholder}. Si desea hablar, toque el micrófono`;
-    text_to_speech(message);
-}
-function handlesFechasFocus(event) {    //  ----> el form de fechas (id, x el nombre)
-    const select = event.target;
-    const placeholder = input.getAttribute('id');
-    const message = `Ingresa. ${placeholder}`;
-    text_to_speech(message);
+    const placeholder = input.getAttribute('placeholder');
+    console.log('Focus on input:', placeholder); 
+    if (placeholder) {
+        const message = `Ingresa. ${placeholder}. Si desea hablar, toque el micrófono`;
+        text_to_speech(message);
+    }
 }
 
-//Speech to text
-function writeText() {
-    window.SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
-    const recognition = new SpeechRecognition();
-    recognition.lang = 'es-ES';
-    recognition.interimResults = false;
-    recognition.maxAlternatives = 1;
-}
-function handleSpeechResultados(transcript){
-    const input = document.getElementById('NOMBRE');
-    input.value = transcript; // le asigna el valor al input, creo
-}
-function reconocimientoDeVoz(recognition){
-    recognition.start();
-}
-function setupRecognitionEvents(recognition){
-    recognition.addEventListener('result', function(event{
-        const transcript_resultado = event.results[0][0].transcript;
-        handleSpeechResultados(transcript_resultado);
-    }))
-}
-function actionButton(recognition){
-    const startButton = document.getElementById('ingreso');
-        startButton.addEventListener('click', function(){
-            reconocimientoDeVoz(recognition);
-    });
-    recognition.addEventListener('end', function(){
-        recognition.stop();
-    })
-}
-function inicializarReconocimiento(){
-    const recognition = writeText();
-    actionButton(recognition);
-    setupRecognitionEvents(recognition);
+function handlesFechasFocus(event) {
+    const select = event.target;
+    const placeholder = select.getAttribute('placeholder');
+    console.log('Focus on select:', placeholder); 
+    if (placeholder) {
+        const message = `Ingresa. ${placeholder}`;
+        text_to_speech(message);
+    }
 }
 
 document.addEventListener('DOMContentLoaded', function() {
+    text_to_speech('Bienvenido @Model.nombre_apellido');
     setupAdaptacionListeners();
     setupEducacionListeners();
-    inicializarReconocimiento();
-}));
-  
+
+    const hasSpeechRecognition = 'webkitSpeechRecognition' in window || 'SpeechRecognition' in window; // Verifica si la API está disponible
+
+    if (hasSpeechRecognition) {
+        const recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
+        recognition.lang = 'es-ES';
+        recognition.interimResults = false;
+
+        let isConfirming = false; 
+        let transcriptToConfirm = ''; 
+
+        document.getElementById('record-icon').addEventListener('click', function() {
+            if (!isConfirming) {
+                text_to_speech('¡Hable!'); 
+                setTimeout(function() {
+                    recognition.start(); 
+                }, 1000); 
+            }
+        });
+
+       recognition.onresult = function(event) {
+            const transcript = event.results[0][0].transcript.toLowerCase();
+
+            if (!isConfirming) {
+                const inputField = document.querySelector('#modal-adaptacion input[name="nombre"]');  
+                if (inputField) {
+                    inputField.value = transcript;
+                }
+                transcriptToConfirm = transcript; 
+                text_to_speech(`El texto transcrito es: ${transcript}. ¿Es correcto? Diga "sí" para confirmar o "no" para repetir.`);
+                
+                setTimeout(function() {
+                    recognition.start(); 
+                    isConfirming = true;
+                }, 9000); 
+
+            }
+// revisar, te odio
+                const correctResponses = ['sí', 'correcto'];
+                const incorrectResponses = ['no', 'incorrecto'];
+
+                if (correctResponses.includes(transcript)) {
+                    text_to_speech('Gracias. Continuamos.');
+                    isConfirming = false; 
+                } else if (incorrectResponses.includes(transcript)) {
+
+                    text_to_speech('Entendido, repita su respuesta.');
+                    setTimeout(() => {
+                        recognition.start(); 
+                    }, 2000); 
+                } else {
+                    
+                    text_to_speech('No entendí su respuesta. Por favor, repita.');
+                    setTimeout(() => {
+                        recognition.start(); 
+
+                    }, 2000);
+                }
+            }
+
+         recognition.onspeechend = function() {
+            recognition.stop(); 
+            
+        };
+
+        recognition.onerror = function(event) {
+            console.error('Error de reconocimiento:', event.error);
+            
+            text_to_speech('Error al reconocer la voz. Inténtelo de nuevo.');
+        };
+    } else {
+        console.log('La API de reconocimiento de voz no está soportada en este navegador.');
+    }
+});
+
+
 </script>
 
 <style>
@@ -650,7 +704,6 @@ document.addEventListener('DOMContentLoaded', function() {
     transparent 20px
   );
 }
-
 
 </style>
 
