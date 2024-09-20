@@ -1,4 +1,5 @@
 ﻿
+
 <body id="fondo_fondo">
     <section id="Box">
         <form action='@Url.Action("Login")' method="post" id="form_login">
@@ -50,7 +51,6 @@
         document.addEventListener('DOMContentLoaded', function() {
             text_to_speech('Bienvenido a Hiring');
 
-            // Toggle password visibility
             document.getElementById('toggle-password').addEventListener('click', function () {
                 const passwordField = document.getElementById('password');
                 const passwordToggle = document.getElementById('toggle-password').querySelector('p');

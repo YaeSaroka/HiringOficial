@@ -114,7 +114,24 @@ form * {
     position: relative;
     margin-bottom: 20px;
 }
+.Input_con_micro {
+  width: 85% !important; 
+  padding-right: 40px; 
+  box-sizing: border-box; 
+}
 
+.input-container-micro {
+  position: relative;
+  margin-bottom: 20px;
+  display: flex; 
+  align-items: center; }
+
+.microphone-icon {
+  position: absolute; 
+  right: 20px; 
+  cursor: pointer; 
+  font-size: 25px;
+}
 input {
     display: block;
     height: 50px;

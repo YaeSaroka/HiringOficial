@@ -6,7 +6,7 @@
 }
 
 
-
+<body>
 <div class="container">
        <div class="card-container">
     <a data-bs-toggle="modal" data-bs-target="#ModalForm">
@@ -175,11 +175,10 @@
                         
                         <h5 class="modal-title">Información Personal </h5>
                     </div>
-                    <div id="seccion1-body" class="modal-body">
-                        @using(Html.BeginForm("InsertarInformacionPersonal1","Home",  FormMethod.Post, new {id="form-modal"}))
+                    <div id="seccion1-body" class="modal-body" id="ModalPersonal">
+                        @using(Html.BeginForm("InsertarInformacionPersonal1","Home",  FormMethod.Post, new {id="form-modal-personal"}))
                         {
                             <div>
-                                
                                 <h1 class="titulos-modal"> <i id="iconos-modal" class="fa-solid fa-id-card"></i> NOMBRE - APELLIDO </h1>
                                 @Html.TextBoxFor(model=>model.nombre_apellido, new {placeholder="Nombre y Apellido"})
                                 <h1 class="titulos-modal"><i id="iconos-modal" class="fa-solid fa-envelope"></i> EMAIL</h1>
@@ -200,7 +199,7 @@
                 <h5 class="modal-title">Información Personal </h5>
             </div>
             <div id="seccion2-body" class="modal-body" style="display: none;">
-                <form action='@Url.Action("InsertarInformacionPersonal2")' method="post" id="form-modal">
+                <form action='@Url.Action("InsertarInformacionPersonal2")' method="post" id="form-modal-personal">
                     <div>
                     <h1 class="titulos-modal"><i id="iconos-modal" class="fa-solid fa-user-pen"></i> ACERCA DE MI</h1>
                     @Html.TextBoxFor(model=>model.acerca_de_mi, new {placeholder="Acerca De Mi"})
@@ -240,18 +239,23 @@
                     <h1 class="titulos-modal">
                         <i id="iconos-modal" class="fa-solid fa-id-card"></i> NOMBRE
                     </h1>
-                    <input type="text" name="titulo" placeholder="NOMBRE" id="NOMBRE">
-                    <button id="ingreso">ups</button>
+                    <div class="input-container-micro"> 
+                    <input type="text" name="titulo" placeholder="NOMBRE" id="NOMBRE" class="Input_con_micro">
+                    <i class="fas fa-microphone microphone-icon" id="record-icon" onclick="setUpMic()"></i>
+                    </div>
                     <h1 class="titulos-modal">
                         <i id="iconos-modal" class="fa-solid fa-school"></i> INSTITUCIÓN EDUCATIVA
                     </h1>
-                    <input type="text" name="nombre_institucion" placeholder="INSTITUCIÓN EDUCATIVA">
+                    <div class="input-container-micro"> 
+                    <input type="text" name="nombre_institucion" placeholder="INSTITUCIÓN EDUCATIVA" class="Input_con_micro">
+                     <i class="fas fa-microphone microphone-icon" id="record-icon" onclick="setUpMic()"></i>
+                     </div> 
                     <div class="modal-separador-educacion">
                         <h5 class="modal-title-separador">++ INFORMACIÓN</h5>
                     </div>
 
                     <!-- FECHAS -->
-                    <div class="fecha-contenedor" id=>
+                    <div class="fecha-contenedor" >
                         <div class="fecha-header">
                             <h3>FECHAS</h3>
                         </div>
@@ -297,7 +301,9 @@
                                 <label for="disciplina-academica">DISCIPLINA ACADÉMICA</label>
                             </div>
                             <div class="fecha-selectores">
-                                <input id="disciplina-academica" type="text" name="disciplina_academica">
+                            <div class="input-container-micro">
+                                <input id="disciplina-academica" type="text" name="disciplina_academica" class="Input_con_micro">
+                                 <i class="fas fa-microphone microphone-icon" id="record-icon" onclick="setUpMic()"></i>
                             </div>
                         </div>
 
@@ -307,7 +313,8 @@
                                 <label for="actividades_grupo">ACTIVIDADES DE GRUPO</label>
                             </div>
                             <div class="fecha-selectores">
-                                <input id="actividades-grupo" type="text" name="actividades_grupo">
+                                <input id="actividades-grupo" type="text" name="actividades_grupo" class="Input_con_micro">
+                                 <i class="fas fa-microphone microphone-icon" id="record-icon" onclick="setUpMic()"></i>
                             </div>
                         </div>
                     </div>
@@ -315,7 +322,7 @@
                     <h1 class="titulos-modal">
                         <i id="iconos-modal" class="fa-solid fa-pen-nib"></i> DESCRIPCIÓN
                     </h1>
-                    <input type="text" name="Descripcion">
+                    <input type="text" name="Descripcion" class="Input_con_micro">
 
                     <input type="hidden" name="id_info_empleado" value="@Model.id" />
                     <div class="modal-footer">
@@ -342,9 +349,9 @@
                     <h1 class="titulos-modal">
                         <i id="iconos-modal" class="fa-solid fa-pen-nib"></i> ESCRIBÍ UN PÁRRAFO ENUMERANDO TUS NECESIDADES DE ADAPTACION
                     </h1>
-                    <div class="input-container">
-                        <input type="text" name="nombre" placeholder="TUS NECESIDADES">
-                        <i class="fas fa-microphone microphone-icon" id="record-icon"></i>
+                    <div class="input-container-micro">
+                        <input type="text" name="nombre" placeholder="TUS NECESIDADES" class="Input_con_micro" >
+                        <i class="fas fa-microphone microphone-icon" id="record-icon" onclick="setUpMic()"></i>
                     </div>
                     <div id="sugerencias-container"></div>
                     <div class="modal-footer-adaptacion">
@@ -362,7 +369,7 @@
     @{
         var modelId = Model.id;
     }
-    <script>
+<script>
     function handleFiles(files) {
     console.log('handleFiles function called');
     const fileList = document.getElementById('fileList');
@@ -405,7 +412,6 @@
         });
     }
 }
-
 
 $('#ModalEducacionForm').submit(function(e) {
     e.preventDefault(); 
@@ -523,6 +529,13 @@ function eliminarArchivo(button, itemUrl) {
 
 
 //api nativa web speech, text-to-speech y viceversa
+document.addEventListener('DOMContentLoaded', function() {
+    text_to_speech('Bienvenido @Model.nombre_apellido');
+    setupAdaptacionListeners();
+    setupEducacionListeners();
+    setupPersonalListeners(); 
+});
+
 function text_to_speech(text) {
     const speech = new SpeechSynthesisUtterance(text);
     speech.lang = 'es-ES'; 
@@ -531,7 +544,6 @@ function text_to_speech(text) {
 
 function setupAdaptacionListeners() {
     const modalAdaptacion = document.getElementById('ModalAdaptacion');
-    
     $(modalAdaptacion).on('shown.bs.modal', function () {
         console.log('Modal Adaptacion shown');  
         text_to_speech('Adaptación');
@@ -566,6 +578,18 @@ function setupEducacionListeners() {
     });
 }
 
+function setupPersonalListeners() {
+    const modalPersonal = document.getElementById('ModalPersonal');
+
+    $(modalPersonal).on('shown.bs.modal', function () {
+        text_to_speech('Información Personal');
+        document.querySelectorAll('#form-modal-personal input').forEach(input => {
+            input.removeEventListener('focus', handleInputFocus); 
+            input.addEventListener('focus', handleInputFocus);
+        });
+    });
+}
+
 // GENERAL HANDLES
 function handleInputFocus(event) {
     const input = event.target;
@@ -587,34 +611,29 @@ function handlesFechasFocus(event) {
     }
 }
 
-document.addEventListener('DOMContentLoaded', function() {
-    text_to_speech('Bienvenido @Model.nombre_apellido');
-    setupAdaptacionListeners();
-    setupEducacionListeners();
+// speech to text + confirmación 
+let transcriptToConfirm = '';
 
-    const hasSpeechRecognition = 'webkitSpeechRecognition' in window || 'SpeechRecognition' in window; // Verifica si la API está disponible
-
+function setUpMic() {
+    console.log("debug: función setUpMic");
+    const hasSpeechRecognition = 'webkitSpeechRecognition' in window || 'SpeechRecognition' in window; 
     if (hasSpeechRecognition) {
         const recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
         recognition.lang = 'es-ES';
-        recognition.interimResults = false;
+        recognition.interimResults = false; 
 
-        let isConfirming = false; 
-        let transcriptToConfirm = ''; 
-
-        document.getElementById('record-icon').addEventListener('click', function() {
-            if (!isConfirming) {
+        if (transcriptToConfirm === '') {
+            
                 text_to_speech('¡Hable!'); 
                 setTimeout(function() {
                     recognition.start(); 
-                }, 1000); 
-            }
-        });
+                }, 3000); 
+            
+        }
 
-       recognition.onresult = function(event) {
+        recognition.onresult = function(event) {
             const transcript = event.results[0][0].transcript.toLowerCase();
-
-            if (!isConfirming) {
+           
                 const inputField = document.querySelector('#modal-adaptacion input[name="nombre"]');  
                 if (inputField) {
                     inputField.value = transcript;
@@ -624,51 +643,43 @@ document.addEventListener('DOMContentLoaded', function() {
                 
                 setTimeout(function() {
                     recognition.start(); 
-                    isConfirming = true;
                 }, 9000); 
-
-            }
-// revisar, te odio
-                const correctResponses = ['sí', 'correcto'];
-                const incorrectResponses = ['no', 'incorrecto'];
-
-                if (correctResponses.includes(transcript)) {
-                    text_to_speech('Gracias. Continuamos.');
-                    isConfirming = false; 
-                } else if (incorrectResponses.includes(transcript)) {
-
-                    text_to_speech('Entendido, repita su respuesta.');
-                    setTimeout(() => {
-                        recognition.start(); 
-                    }, 2000); 
-                } else {
-                    
-                    text_to_speech('No entendí su respuesta. Por favor, repita.');
-                    setTimeout(() => {
-                        recognition.start(); 
-
-                    }, 2000);
-                }
-            }
-
-         recognition.onspeechend = function() {
-            recognition.stop(); 
             
+            const afirmativo = ['si', 'correcto'];
+            const negativo = ['no', 'incorrecto'];
+
+            if (afirmativo.includes(transcript)) {
+                text_to_speech('Gracias. Continuamos.');
+            } else if (negativo.includes(transcript)) {
+                text_to_speech('Entendido, repita su respuesta.');
+                setTimeout(() => {
+                    recognition.start(); 
+                }, 5000); 
+                setUpMic();
+            } else {
+                text_to_speech('No entendí su respuesta. Por favor, repita.');
+                setTimeout(() => {
+                    recognition.start(); 
+                }, 6000);
+            }
+        };
+        recognition.onspeechend = function() {
+            recognition.stop(); 
         };
 
         recognition.onerror = function(event) {
             console.error('Error de reconocimiento:', event.error);
-            
             text_to_speech('Error al reconocer la voz. Inténtelo de nuevo.');
         };
-    } else {
-        console.log('La API de reconocimiento de voz no está soportada en este navegador.');
     }
-});
+    
+}
+
+document.querySelector("#record-icon").addEventListener("click", setUpMic);
 
 
 </script>
-
+</body>
 <style>
 /*profesion */
 .profesion-container {
@@ -706,5 +717,7 @@ document.addEventListener('DOMContentLoaded', function() {
 }
 
 </style>
+
+
 
 <!--HOLIIS-->

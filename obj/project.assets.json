@@ -549,24 +549,31 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\camib\\.nuget\\packages\\": {}
+    "C:\\Users\\47801123\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\HiringOficial\\Hiring.csproj",
+      "projectUniqueName": "C:\\Users\\47801123\\Desktop\\HiringOficial\\Hiring.csproj",
       "projectName": "Hiring",
-      "projectPath": "C:\\HiringOficial\\Hiring.csproj",
-      "packagesPath": "C:\\Users\\camib\\.nuget\\packages\\",
-      "outputPath": "C:\\HiringOficial\\obj\\",
+      "projectPath": "C:\\Users\\47801123\\Desktop\\HiringOficial\\Hiring.csproj",
+      "packagesPath": "C:\\Users\\47801123\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\47801123\\Desktop\\HiringOficial\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+      ],
       "configFilePaths": [
-        "C:\\Users\\camib\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        "C:\\Users\\47801123\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "net8.0"
       ],
       "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -622,7 +629,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.302/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.204/PortableRuntimeIdentifierGraph.json"
       }
     }
   }
