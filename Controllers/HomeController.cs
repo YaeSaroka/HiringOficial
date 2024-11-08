@@ -66,8 +66,8 @@ public class HomeController : Controller
             return View("PerfilLee", perfil);
         }
         else  {
-            BD.user = usuario;
-            return RedirectToAction("PerfilNoLee");
+            Informacion_Personal_Empleado perfil= Models.BD.CargarPerfilLogin(usuario.id);
+            return View("PerfilNoLee", perfil);
         }
     }
     [HttpPost]

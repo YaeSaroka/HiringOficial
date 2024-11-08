@@ -1,0 +1,583 @@
+@using Hiring.Models
+@model Informacion_Personal_Empleado
+
+@{ 
+    ViewData["Title"] = "PerfilNoLee";
+}
+
+<script>
+function text_to_speech(text) {
+    const speech = new SpeechSynthesisUtterance(text);
+    speech.lang = 'es-ES'; 
+    window.speechSynthesis.speak(speech);
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+    text_to_speech('Bienvenido a Hiring.... Inicio');
+    setTimeout(function() {
+        text_to_speech('Izquierda Información Personal, abajo experiencia. Derecha educación, abajo necesidades de adaptación.');
+    }, 4000);
+});
+
+document.querySelectorAll('.cuadro span').forEach(span => { 
+    span.addEventListener('focus', function() {
+        const propiedad = span.textContent.trim();
+        if (propiedad) {
+            text_to_speech(`${propiedad}, ¿entrar?`);
+        }
+    });
+});
+
+let usandoOpcionesAlternativas = false;
+
+function cambiarOpciones() {
+    const cuadros = document.querySelectorAll('.cuadro span');
+    const opciones = [
+        { texto: "Certificaciones", modal: "#Modal_Certificaciones" },
+        { texto: "Certificado Único de discapacidad (CUD)", modal: "#Modal_CUD" },
+        { texto: "Idiomas", modal: "#Modal_Idiomas" },
+        { texto: "Solicitar Recomendación", modal: "#Modal_Recomendacion" },
+        { texto: "Volver", modal: "#Modal_Volver" }
+    ];
+    const opcionesDefault = [
+        { texto: "Informacion Personal", modal: "#Modal_InformacionPersonal" },
+        { texto: "Educacion", modal: "#Modal_Educacion" },
+        { texto: "Experiencia", modal: "#Modal_Experiencia" },
+        { texto: "Necesidades de adaptación", modal: "#Modal_Necesidades" },
+        { texto: "Otras Opciones", modal: "#Modal_OtrasOpciones" }
+    ];
+
+    cuadros.forEach((opcion, index) => {
+        const config = usandoOpcionesAlternativas ? opcionesDefault[index] : opciones[index];
+        opcion.textContent = config.texto;
+        opcion.parentNode.setAttribute('data-bs-target', config.modal);
+    });
+
+    usandoOpcionesAlternativas = !usandoOpcionesAlternativas;
+}
+
+function repetirTexto(){
+    if (usandoOpcionesAlternativas) {
+        text_to_speech('Ahora las opciones disponibles son Certificaciones, Certificado Único de discapacidad, Idiomas, Solicitar Recomendación, y Volver.');
+    } else {
+        text_to_speech('Izquierda Información Personal, abajo experiencia. Derecha educación, abajo necesidades de adaptación.');
+    }
+}
+
+function confirmarEntrada(texto) {
+    text_to_speech(texto);
+
+    const modalActual = bootstrap.Modal.getInstance(document.querySelector('.modal.show'));
+    if (modalActual) {
+        modalActual.hide(); 
+    }
+
+    if (texto === 'Entrando a Información Personal') {
+        pedirNombre(); 
+
+
+
+
+        
+    } else if (texto === 'Entrando a Certificaciones') {
+        const modalCertificaciones = new bootstrap.Modal(document.getElementById('Modal_Certificaciones'));
+        modalCertificaciones.show();
+    } else if (texto === 'Entrando a Educación') {
+        const modalEducacion = new bootstrap.Modal(document.getElementById('Modal_Educacion'));
+        modalEducacion.show();
+    } else if (texto === 'Entrando a Experiencia') {
+        const modalExperiencia = new bootstrap.Modal(document.getElementById('Modal_Experiencia'));
+        modalExperiencia.show();
+    } else if (texto === 'Entrando a Necesidades de adaptación') {
+        const modalNecesidades = new bootstrap.Modal(document.getElementById('Modal_Necesidades'));
+        modalNecesidades.show();
+    } else if (texto === 'Solicitando Recomendación') {
+        const modalRecomendacion = new bootstrap.Modal(document.getElementById('Modal_Recomendacion'));
+        modalRecomendacion.show();
+    } else if (texto === 'Volviendo') {
+        const modalVolver = new bootstrap.Modal(document.getElementById('Modal_Volver'));
+        modalVolver.show();
+    }
+}
+
+function pedirNombre() {
+    const modalInformacionPersonal = bootstrap.Modal.getInstance(document.getElementById('Modal_InformacionPersonal'));
+    if (modalInformacionPersonal) {
+        modalInformacionPersonal.hide(); 
+        console.log("Modal de Información Personal cerrado.");
+    }
+
+    const modalNombre = new bootstrap.Modal(document.getElementById('Modal_RecibirNombre'));
+    if (modalNombre) {
+        console.log("Intentando abrir el modal de Recibir Nombre...");
+        modalNombre.show();
+    } else {
+        console.error("No se encontró el modal de Recibir Nombre.");
+    }
+}
+
+function iniciarReconocimientoVoz() {
+    const recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
+    recognition.lang = 'es-ES';
+    recognition.start();
+
+    recognition.onresult = function(event) {
+        document.getElementById('NOMBRE').value = "hola";
+        const nombre = event.results[0][0].transcript;
+        document.getElementById('NOMBRE').value = nombre;
+        text_to_speech(`Has dicho: ${nombre}`);
+    };
+
+    recognition.onerror = function(event) {
+        console.error("Error de reconocimiento de voz:", event.error);
+    };
+}
+
+
+function IngresodeNombre(){
+    $('#IngresarNombre').modal('hide'); 
+    $('#Modal_RecibirNombre').modal('show');
+    iniciarReconocimientoVoz();
+}
+function ABRIRMODAL(texto){
+    if(texto === 'Informacion'){
+        $('#Informacion').modal('show');
+        text_to_speech('¿Desea entrar en la sección de Información Personal? arriba Si, abajo No');
+        console.log("hola");
+    }
+    if(texto === 'Educacion'){
+        $('#Educacion').modal('show');
+        text_to_speech('¿Desea entrar en la sección de Educacion? arriba Si, abajo No');
+        console.log("hola");
+    }
+
+//EDUCACION
+    if(texto === 'IngTitulo'){
+        $('#Educacion').modal('hide'); 
+        $('#IngresarTitulo').modal('show');
+        text_to_speech('¿Ingresar Titulo? arriba Si, abajo No');
+    }
+    if(texto === 'InputTitulo'){
+        $('#IngresarNombre').modal('hide'); 
+        $('#Modal_RecibirTitulo').modal('show');
+    }
+    if(texto === 'IngInstitucion'){
+        $('#IngresarTitulo').modal('hide'); $('#IngresarInstitucion').modal('show');
+        text_to_speech('¿Ingresar Nombre de Institucion? arriba Si, abajo No');
+    }
+    if(texto === 'IngDisciplina'){
+        $('#IngresarDisciplina').modal('hide'); $('#Ingresaractividades_grupo').modal('show');
+        text_to_speech('¿Ingresar Disciplina Académica? arriba Si, abajo No');
+    }
+    if(texto === 'IngActividadesGrupo')
+    if(texto === 'IngDescripcion'){
+        $('#IngresarDisciplina').modal('hide'); $('#Ingresaractividades_grupo').modal('show');
+        text_to_speech('¿Ingresar Disciplina Académica? arriba Si, abajo No');
+    }
+
+
+
+
+
+//INFORMACION
+    if(texto === 'IngNombre'){
+        $('#Informacion').modal('hide'); 
+        $('#IngresarNombre').modal('show');
+        text_to_speech('¿Ingresar Nombre? arriba Si, abajo No');
+    }
+    if(texto === 'IngMail'){
+        $('#IngresarNombre').modal('hide'); $('#IngresarMail').modal('show');
+        text_to_speech('¿Ingresar Mail? arriba Si, abajo No');
+    }
+    if(texto === 'IngTelefono'){
+        $('#IngresarMail').modal('hide'); $('#IngresarTelefono').modal('show');
+        text_to_speech('¿Ingresar Telefono? arriba Si, abajo No');
+    }
+    if(texto === 'IngProfesion'){
+        $('#IngresarTelefono').modal('hide'); $('#IngresarProfesion').modal('show');
+        text_to_speech('¿Ingresar Profesion actual? arriba Si, abajo No');
+    }
+    if(texto === 'IngEstilo'){
+        $('#IngresarProfesion').modal('hide'); $('#IngresarEstilo').modal('show');
+        text_to_speech('¿Ingresar Estilo? arriba Si, abajo No');
+    }
+    if(texto === 'IngUbicacion'){
+        $('#IngresarEstilo').modal('hide'); $('#IngresarUbicacion').modal('show');
+        text_to_speech('¿Ingresar Ubicacion? arriba Si, abajo No');
+    }
+    if(texto === 'IngSitioWeb'){
+        $('#IngresarUbicacion').modal('hide'); $('#IngresarSitioWeb').modal('show');
+        text_to_speech('¿Ingresar Sitio Web? arriba Si, abajo No');
+    }
+    if(texto === 'IngFoto'){
+        $('#IngresarSitioWeb').modal('hide'); $('#IngresarFotoDePerfil').modal('show');
+        text_to_speech('¿Ingresar Foto de perfil? arriba Si, abajo No');
+    }
+    if(texto === 'FIN'){
+        $('#IngresarFotoDePerfil').modal('hide'); $('#Fin').modal('show');
+        setTimeout(() => {
+            text_to_speech("Guardando datos.... volviendo a inicio.");
+        }, 2000);
+        $('#Fin').modal('hide');
+    }
+    
+}
+
+
+
+</script>
+
+<div class="container-no-lee">
+    <div class="cuadro" id="cuadro1"><a data-bs-toggle="modal" onclick="ABRIRMODAL('Informacion')"> <span>Informacion Personal</span></a></div>
+    <div class="cuadro" id="cuadro2"><a data-bs-toggle="modal" onclick="ABRIRMODAL('Educacion')"> <span>Educacion</span></a></div>
+    <div class="cuadro" id="cuadro3"><a data-bs-toggle="modal" data-bs-target="#Modal_Experiencia"><span>Experiencia</span></a></div>
+    <div class="cuadro" id="cuadro4"><a data-bs-toggle="modal" data-bs-target="#Modal_Necesidades"> <span>Necesidades de adaptación</span></a></div>
+    <div class="cuadro" id="cuadro5"> <button onclick="repetirTexto()"> Repetir </button></div>
+    <div class="cuadro" id="cuadro6"> <button onclick="cambiarOpciones()"><span>Otras Opciones</span></button></div>
+</div>
+
+<!-- Modals -->
+    <div class="modal fade" id="Informacion" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+        <div class="modal-header">
+            <h1 class="modal-title" id="exampleModalLabel">¿Desea entrar en la sección de Información Personal?</h1>
+        </div>
+            <button type="button" class="cuadro_conf grande" onclick="ABRIRMODAL('IngNombre')">Si</button>
+            <button type="button" class="cuadro_conf grande" data-bs-dismiss="modal">No</button>
+        </div>
+    </div>
+    </div>
+    <div class="modal fade" id="Educacion" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+        <div class="modal-header">
+            <h1 class="modal-title" id="exampleModalLabel">¿Desea entrar en la sección de Educacion?</h1>
+        </div>
+            <button type="button" class="cuadro_conf grande" onclick="ABRIRMODAL('IngTitulo')">Si</button>
+            <button type="button" class="cuadro_conf grande" data-bs-dismiss="modal">No</button>
+        </div>
+    </div>
+    </div>
+
+
+<!-- DATOS edu? -->
+    <div class="modal fade" id="IngresarTitulo" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true"> <!-- 1 -->
+            <div class="modal-dialog">
+                <div class="modal-content">
+                        <div class="modal-header">
+                            <h1 class="modal-title fs-5" id="exampleModalLabel">¿Ingresar Título?</h1>
+                        </div>
+                            <button type="button" class="cuadro_conf grande" onclick="">Si</button>
+                            <button type="button" class="cuadro_conf grande" onclick="ABRIRMODAL('IngInstitucion')">No</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </div>
+    <div class="modal fade" id="IngresarInstitucion" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true"> <!-- 1 -->
+        <div class="modal-dialog">
+            <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="exampleModalLabel">¿Ingresar Institucion educativa?</h1>
+                    </div>
+                        <button type="button" class="cuadro_conf grande" onclick="">Si</button>
+                        <button type="button" class="cuadro_conf grande" onclick="ABRIRMODAL('IngActividadesGrupo')">No</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="IngresarActividadesGrupo" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true"> <!-- 1 -->
+        <div class="modal-dialog">
+            <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="exampleModalLabel">¿Ingresar Descripcion?</h1>
+                    </div>
+                        <button type="button" class="cuadro_conf grande" onclick="">Si</button>
+                        <button type="button" class="cuadro_conf grande" onclick="ABRIRMODAL('Ing-')">No</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="IngresarDescripcion" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true"> <!-- 1 -->
+        <div class="modal-dialog">
+            <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="exampleModalLabel">¿Ingresar Descripcion?</h1>
+                    </div>
+                        <button type="button" class="cuadro_conf grande" onclick="">Si</button>
+                        <button type="button" class="cuadro_conf grande" onclick="ABRIRMODAL('Ing-')">No</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    
+
+    <!-- inputs edu -->
+        <div class="modal fade" id="Modal_RecibirTitulo" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                                <div> Hable para ingresar "TITULO" apenas escuche el pitido</div>
+                                <input type="hidden" name="id" id="id" value="">
+                                <input type="hidden" name="id_info_empleado" id="id_info_empleado" value="@Model.id">
+                                <input type="text" name="titulo" placeholder="NOMBRE" id="NOMBRE" class="Input_con_micro"> <!-- revisar, conectar con ajax-->
+                                <div> ¿Es correcto?</div>
+
+                                <button type="button" class="cuadro_conf grande" onclick="$('#Modal_RecibirNombre').modal('hide'); $('#Fin').modal('show');">siguiente</button>
+
+                            </div>
+                        </div>
+                    </div>
+            </div>
+        <div class="modal fade" id="Modal_RecibirInstitucion" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                                <div> Hable para ingresar "Institucion educativa" apenas escuche el pitido</div>
+                                <input type="text" name="nombre_institucion" placeholder="INSTITUCIÓN EDUCATIVA" class="Input_con_micro"> <!-- revisar, conectar con ajax-->
+                                <div> ¿Es correcto?</div>
+                                <button type="button" class="cuadro_conf grande" onclick="$('#Modal_RecibirNombre').modal('hide'); $('#Fin').modal('show');">siguiente</button>
+
+                            </div>
+                        </div>
+                    </div>
+            </div>
+
+
+<!-- DATOS Info -->
+        <!-- Modal -->
+        <div class="modal fade" id="IngresarNombre" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true"> <!-- 1 -->
+        <div class="modal-dialog">
+            <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="exampleModalLabel">¿Ingresar Nombre?</h1>
+                    </div>
+                        <button type="button" class="cuadro_conf grande" onclick="IngresodeNombre()">Si</button>
+                        <button type="button" class="cuadro_conf grande" onclick="ABRIRMODAL('IngMail')">No</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+        <div class="modal fade" id="IngresarMail" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true"> <!-- 2 -->
+        <div class="modal-dialog">
+            <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="exampleModalLabel">¿Ingresar Mail?</h1>
+                    </div>
+                        <button type="button" class="cuadro_conf grande" onclick="">Si</button>
+                        <button type="button" class="cuadro_conf grande" onclick="ABRIRMODAL('IngTelefono')">No</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+        <div class="modal fade" id="IngresarTelefono" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true"> <!-- 3 -->
+        <div class="modal-dialog">
+            <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="exampleModalLabel">¿Ingresar Telefono?</h1>
+                    </div>
+                        <button type="button" class="cuadro_conf grande" onclick="">Si</button>
+                        <button type="button" class="cuadro_conf grande" onclick="ABRIRMODAL('IngProfesion')">No</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+        <div class="modal fade" id="IngresarProfesion" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true"> <!-- 4 -->
+        <div class="modal-dialog">
+            <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="exampleModalLabel">¿Ingresar Profesion actual?</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                        <button type="button" class="cuadro_conf grande" onclick="">Si</button>
+                        <button type="button" class="cuadro_conf grande" onclick="ABRIRMODAL('IngEstilo')">No</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+        <div class="modal fade" id="IngresarEstilo" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true"> <!-- 4 -->
+        <div class="modal-dialog">
+            <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="exampleModalLabel">¿Ingresar Estilo?</h1>
+                    </div>
+                    <div class="modal-body"> 
+                        <div> Verde </div>
+                        <div> Rosa </div>
+                        <div> Negro </div>
+                        <div> Azul </div>
+                    </div>
+                    <button type="button" class="cuadro_conf grande">Si</button>
+                    <button type="button" class="cuadro_conf grande" onclick="ABRIRMODAL('IngUbicacion')">No</button>
+                </div>
+            </div>
+        </div>
+        </div>
+        <div class="modal fade" id="IngresarUbicacion" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true"> <!-- 3 -->
+        <div class="modal-dialog">
+            <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="exampleModalLabel">¿Ingresar Ubicacion?</h1>
+                    </div>
+                        <button type="button" class="cuadro_conf grande" onclick="">Si</button>
+                        <button type="button" class="cuadro_conf grande" onclick="ABRIRMODAL('IngSitioWeb')">No</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+        <div class="modal fade" id="IngresarSitioWeb" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true"> <!-- 3 -->
+        <div class="modal-dialog">
+            <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="exampleModalLabel">¿Ingresar Sitio web?</h1>
+                    </div>
+                        <button type="button" class="cuadro_conf grande" onclick="">Si</button>
+                        <button type="button" class="cuadro_conf grande" onclick="ABRIRMODAL('IngFoto')">No</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+        <div class="modal fade" id="IngresarFotoDePerfil" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true"> <!-- 3 -->
+        <div class="modal-dialog">
+            <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="exampleModalLabel">¿Ingresar Foto de perfil?</h1>
+                    </div>
+                        <button type="button" class="cuadro_conf grande" onclick="">Si</button>
+                        <button type="button" class="cuadro_conf grande" onclick="ABRIRMODAL('FIN')">No</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+
+        <!-- Modal que hace nombre-->
+        <div class="modal fade" id="Modal_RecibirNombre" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h1 class="modal-title fs-5" id="exampleModalLabel">Por favor, diga su nombre</h1>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                            <div> Hable para ingresar "NOMBRE y APELLIDO" apenas escuche el pitido</div>
+                            <input type="hidden" name="id" id="id" value="">
+                            <input type="hidden" name="id_info_empleado" id="id_info_empleado" value="@Model.id">
+                            <input type="text" name="titulo" placeholder="NOMBRE" id="NOMBRE" class="Input_con_micro"> <!-- revisar, conectar con ajax-->
+                            <div> ¿Es correcto?</div>
+
+                            <button type="button" class="cuadro_conf grande" onclick="$('#Modal_RecibirNombre').modal('hide'); $('#Fin').modal('show');">siguiente</button>
+
+                        </div>
+                    </div>
+                </div>
+        </div>
+        <div class="modal fade" id="Modal_RecibirMail" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true"> 
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h1 class="modal-title fs-5" id="exampleModalLabel">Por favor, diga su Mail</h1>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                            <div> Hable para ingresar "MAIL" apenas escuche el pitido</div>
+                            <input type="hidden" name="id" id="id" value="">
+                            <input type="hidden" name="id_info_empleado" id="id_info_empleado" value="@Model.id">
+                            <input type="text" name="titulo" placeholder="MAIL" id="MAIL" class="Input_con_micro">
+                            <div> ¿Es correcto?</div>
+
+                            <button type="button" class="cuadro_conf grande" onclick="$('#Modal_RecibirNombre').modal('hide'); $('#Fin').modal('show');">siguiente</button>
+
+                        </div>
+                    </div>
+                </div>
+        </div>
+
+        
+
+<!-- FIN -->
+<div class="modal fade" id="Fin" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <h1> No hay más información que agregar</h1>
+                <p> Volviendo a inicio...</p>
+        </div>
+    </div>
+</div>
+
+
+<style>
+.container-no-lee {
+    display: flex;
+    flex-wrap: wrap;
+    height: 100vh;
+}
+.cuadro, .cuadro_conf {
+    flex: 1 0 50%;
+    height: 40%;
+    border: 1px solid white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-weight: bold;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+.grande {
+    font-size: 3rem;  
+    margin: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    text-align: center;
+    height: 100%; 
+}
+.cuadro_conf {
+    background-color: #48B1A1;
+    color: white;
+    font-size: 2rem;
+    border-radius: 8px;
+    padding: 20px;
+    margin: 5px;
+}
+.cuadro_conf.grande {
+    background-color: #4CAF50;
+    width: 45%; 
+    height: 80%; 
+}
+.cuadro_conf.grande:last-child {
+    background-color: #F44336;
+    width: 45%; 
+    height: 80%; 
+}
+.modal-body {
+    display: flex;
+    flex-direction: row; 
+    justify-content: space-evenly;
+    align-items: center;
+    padding: 20px;
+}
+.modalCont {
+    background-color: white;
+    text-align: center;
+    padding: 20px;
+}
+#cuadro1 { background-color: #D6F4EF; }
+#cuadro2 { background-color: #ABE7DD; }
+#cuadro3 { background-color: #7ECCC0; }
+#cuadro4 { background-color: #48B1A1; }
+#cuadro5 { color: white; background-color: #16544B; height: 20%; }
+#cuadro6 { color: white; background-color: #09302A; height: 20%; }
+</style>

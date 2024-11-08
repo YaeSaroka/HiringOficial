@@ -9,55 +9,59 @@ build_property.EnforceExtendedAnalyzerRules =
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = Hiring
 build_property.RootNamespace = Hiring
-build_property.ProjectDir = C:\Users\47801123\Desktop\HiringOficial\
+build_property.ProjectDir = C:\Users\devandroid\Documents\HiringOficial\
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 
 build_property.RazorLangVersion = 8.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = C:\Users\47801123\Desktop\HiringOficial
+build_property.MSBuildProjectDirectory = C:\Users\devandroid\Documents\HiringOficial
 build_property._RazorSourceGeneratorDebug = 
 
-[C:/Users/47801123/Desktop/HiringOficial/Views/Home/Index.cshtml]
+[C:/Users/devandroid/Documents/HiringOficial/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/47801123/Desktop/HiringOficial/Views/Home/OlvideContrasena.cshtml]
+[C:/Users/devandroid/Documents/HiringOficial/Views/Home/OlvideContrasena.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxPbHZpZGVDb250cmFzZW5hLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/47801123/Desktop/HiringOficial/Views/Home/PerfilLee.cshtml]
+[C:/Users/devandroid/Documents/HiringOficial/Views/Home/PerfilLee.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQZXJmaWxMZWUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/47801123/Desktop/HiringOficial/Views/Home/Privacy.cshtml]
+[C:/Users/devandroid/Documents/HiringOficial/Views/Home/PerfilNoLee.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQZXJmaWxOb0xlZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/devandroid/Documents/HiringOficial/Views/Home/Privacy.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/47801123/Desktop/HiringOficial/Views/Home/Registro.cshtml]
+[C:/Users/devandroid/Documents/HiringOficial/Views/Home/Registro.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxSZWdpc3Ryby5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/47801123/Desktop/HiringOficial/Views/Home/_ListaEducacionPartial.cshtml]
+[C:/Users/devandroid/Documents/HiringOficial/Views/Home/_ListaEducacionPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxfTGlzdGFFZHVjYWNpb25QYXJ0aWFsLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/47801123/Desktop/HiringOficial/Views/Shared/Error.cshtml]
+[C:/Users/devandroid/Documents/HiringOficial/Views/Shared/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/47801123/Desktop/HiringOficial/Views/Shared/_ValidationScriptsPartial.cshtml]
+[C:/Users/devandroid/Documents/HiringOficial/Views/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/47801123/Desktop/HiringOficial/Views/_ViewImports.cshtml]
+[C:/Users/devandroid/Documents/HiringOficial/Views/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/47801123/Desktop/HiringOficial/Views/_ViewStart.cshtml]
+[C:/Users/devandroid/Documents/HiringOficial/Views/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/47801123/Desktop/HiringOficial/Views/Shared/_Layout.cshtml]
+[C:/Users/devandroid/Documents/HiringOficial/Views/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = b-50en0jbhoy
